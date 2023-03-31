@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Statistics&amp;amp;Probability: Confidence IntervalSamplingWhen we create a sample, we do not need matching. Matching is to have you sample composition exactly proportional to that of the population.  For">
+<meta name="keywords" content="statistics&amp;probability">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Statistics&amp;Probability: Confidence Interval">
+<meta property="og:url" content="http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="Statistics&amp;amp;Probability: Confidence IntervalSamplingWhen we create a sample, we do not need matching. Matching is to have you sample composition exactly proportional to that of the population.  For">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/sampling_1.png">
+<meta property="og:image" content="http://yoursite.com/image/sampling_2.png">
+<meta property="og:image" content="http://yoursite.com/image/sampling_3.png">
+<meta property="og:image" content="http://yoursite.com/image/sampling_4.png">
+<meta property="og:image" content="http://yoursite.com/image/sampling_5.png">
+<meta property="og:image" content="http://yoursite.com/image/sampling_6.png">
+<meta property="og:image" content="http://yoursite.com/image/sampling_7.png">
+<meta property="og:image" content="http://yoursite.com/image/sampling_8.png">
+<meta property="og:image" content="http://yoursite.com/image/sampling_9.png">
+<meta property="og:image" content="http://yoursite.com/image/sampling_10.png">
+<meta property="og:updated_time" content="2020-04-27T13:38:07.642Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Statistics&amp;Probability: Confidence Interval">
+<meta name="twitter:description" content="Statistics&amp;amp;Probability: Confidence IntervalSamplingWhen we create a sample, we do not need matching. Matching is to have you sample composition exactly proportional to that of the population.  For">
+<meta name="twitter:image" content="http://yoursite.com/image/sampling_1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Statistics&amp;Probability: Confidence Interval</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/04/06/LeetCode-Problem-Two-Pointer-Topics/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/04/04/LeetCode-Problem-Union-Find-Topics/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/&text=Statistics&amp;Probability: Confidence Interval"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/&title=Statistics&amp;Probability: Confidence Interval"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/&is_video=false&description=Statistics&amp;Probability: Confidence Interval"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Statistics&amp;Probability: Confidence Interval&body=Check out this article: http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/&title=Statistics&amp;Probability: Confidence Interval"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/&title=Statistics&amp;Probability: Confidence Interval"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/&title=Statistics&amp;Probability: Confidence Interval"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/&title=Statistics&amp;Probability: Confidence Interval"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/&name=Statistics&amp;Probability: Confidence Interval&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Statistics-amp-Probability-Confidence-Interval"><span class="toc-number">1.</span> <span class="toc-text">Statistics&amp;Probability: Confidence Interval</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sampling"><span class="toc-number">1.1.</span> <span class="toc-text">Sampling</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sampling-Distribution"><span class="toc-number">1.2.</span> <span class="toc-text">Sampling Distribution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Confidence-Interval"><span class="toc-number">1.3.</span> <span class="toc-text">Confidence Interval</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Margin-of-error"><span class="toc-number">1.4.</span> <span class="toc-text">Margin of error</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Statistics&amp;Probability: Confidence Interval
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-04-04T14:29:42.000Z" itemprop="datePublished">2020-04-04</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/statistics-probability/">statistics&probability</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Statistics-amp-Probability-Confidence-Interval"><a href="#Statistics-amp-Probability-Confidence-Interval" class="headerlink" title="Statistics&amp;Probability: Confidence Interval"></a>Statistics&amp;Probability: Confidence Interval</h1><h2 id="Sampling"><a href="#Sampling" class="headerlink" title="Sampling"></a>Sampling</h2><p>When we create a sample, we do not need <code>matching</code>. Matching is to have you sample composition <strong>exactly proportional</strong> to that of the population. </p>
+<p>For example, if we have a population of students on campus, 64% of the students are females and 40% are males. Then we want to have a random sample that matches the population on this particular variable, i.e., 64% of the sampling students are females and 40% are males. However, in practice, we have many variables(such as age, birthplace, etc) that can potentially impact the outcome of the interest. If we want to match on all these variables, this can be very hard. </p>
+<p>Therefore, all we need is to sample <strong>randomly</strong> from the population with an <strong>equal chance</strong>.</p>
+<h2 id="Sampling-Distribution"><a href="#Sampling-Distribution" class="headerlink" title="Sampling Distribution"></a>Sampling Distribution</h2><p>Here, we create two populations using 200 LEGO pieces. Each population, population <code>A</code> and population <code>B</code>, has 100 pieces:</p>
+<p><img src="/image/sampling_1.png" alt="sampling_1" title="sampling_1"></p>
+<p>The variable of interest, <code>x</code>, is <strong>the number of points</strong> on a sampled LEGO piece. For population <code>A</code>, we counted the number of points on <strong>each</strong> of the pieces(We are the “god”, and we know about the truth of population <code>A</code>), and concluded that the average of <code>x</code> is 4.35. And For population B, the average for <code>x</code> is 5.84.</p>
+<p>We <strong>randomly</strong> select samples from these two populations. We do sampling many many times, and each time we randomly select 10 sampled LEGO pieces, calculate the <strong>mean</strong> of the number of points(As each time we use different random samples, we have <code>sampling variability</code>). Therefore we can generate the sampling distributions of two populations:</p>
+<p><img src="/image/sampling_2.png" alt="sampling_2" title="sampling_2"></p>
+<p>In this case, we calculate the <strong>mean</strong> to generate the sample distribution, and we can also use the <code>median</code>, the <code>standard deviation</code> and the <code>quantile</code> to generate the distribution. There is an important factor that affects sampling distribution, which is the <code>sample size</code>. In this case, our sample size is <code>10</code>. As the sample size grows, our estimate should be more and more accurate.</p>
+<p>In practice, we normally do not do sampling many times. We only have one sample from a population and use the mean of this sample to estimate the poplulation. And we should use probability model to conduct the <code>statistical inference</code>.</p>
+<h2 id="Confidence-Interval"><a href="#Confidence-Interval" class="headerlink" title="Confidence Interval"></a>Confidence Interval</h2><p>Our first statistical inference topic is <code>confidence interval</code>. We use confidence interval to extend a <code>point estimate</code>(such as sample mean) to an <code>interval estimate</code>. By doing this, our chance of covering the true value of the population increases.</p>
+<p>How we use confidence interval? Assume we actually know the sampling distribution(we are the “god”, and we know the truth), and we want to create a region(interval) where most of the sample estimates fall into:</p>
+<p><img src="/image/sampling_3.png" alt="sampling_3" title="sampling_3"></p>
+<p>The lenght of the region in the above picture, corresponds to 95% of chance. And the half of the length is called <code>margin of error</code>:</p>
+<p><img src="/image/sampling_4.png" alt="sampling_4" title="sampling_4"></p>
+<p>For example, if we do sampling 100 times, we can say that there are 95 times that our sample mean falls within this range:</p>
+<p><img src="/image/sampling_5.png" alt="sampling_5" title="sampling_5"></p>
+<p>However, in practice we do not know the true sampling distribution(we are not god), therefore it is invisible:</p>
+<p><img src="/image/sampling_6.png" alt="sampling_6" title="sampling_6"></p>
+<p>Based on the sample data and certain assumptions, we can derive this “95%” width:</p>
+<p><img src="/image/sampling_7.png" alt="sampling_7" title="sampling_7"></p>
+<p>And we can apply this width(this  confidence interval) to individual sample estimates:</p>
+<p><img src="/image/sampling_8.png" alt="sampling_8" title="sampling_8"></p>
+<p>Although in practice, we do not know where the population truth is, there should be a 95% chance that this individual interval created using individual sample estimates can cover the invisible truth:</p>
+<p><img src="/image/sampling_9.png" alt="sampling_9" title="sampling_9"></p>
+<h2 id="Margin-of-error"><a href="#Margin-of-error" class="headerlink" title="Margin of error"></a>Margin of error</h2><p>From our previous discussion, we can know that the confidence interval is <code>estimate +/- margin of error</code>. And we can have other confidence values such as 90%. </p>
+<p>We also know that the <code>margin of error</code> is half the width of the confidence interval. If the confidence interval/margin of error is too wide, the results could be right with high probability, but is not very useful. For example, we can predict tomorrow’s temperature to be between 50 degrees and 90 degrees, and with 99% confidence. This is a very highly confident estimate, but it’s not very useful. Therefore in practice, we need to reduce margin of error.</p>
+<p>There are several factors affecting margin of error:</p>
+<ol>
+<li>The overall variability in the population: The higher the variability in the population, the wider the margin of error tend to be.</li>
+<li>The confidence level: The higher confidence we want in our results, the wider the margin of error tend to be.</li>
+<li>The sample size: The larger the sample size, the narrower the margin of error tends to be.</li>
+</ol>
+<p>For example, let’s go back to our LEGO example. For population A and population B, we have several interval estimates:</p>
+<p><img src="/image/sampling_10.png" alt="sampling_10" title="sampling_10"></p>
+<p>As shown:</p>
+<ol>
+<li><p>Population A has a higher variability than popluation B, therefore the confidence interval of A is wider.</p>
+</li>
+<li><p>For each population, as the sample size becomes larger(from 10 to 20), the confidence interval becomes narrower.</p>
+</li>
+<li><p>The blue lines in the picture are the true means of these two popluations. We can see that there seems to have a <code>systematic bias</code> in population B’s samples. And the intervals are also systematic biased. We observe a trend that in the samples from population B, nearly all the intervals have the sample mean above the truth. This systematic bias did not go away when we increased sample size, which tells us that, <strong>increasing sample size always reduce the variability in the interval estimate, but it does not reduce bias</strong>. If we have a systematic bias in our interval estimate, increasing the sample size to reduce margin of error may make our interval estimate converge to a wrong center, give us an <strong>illusion</strong> that our estimate is getting more precise.</p>
+</li>
+</ol>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Statistics-amp-Probability-Confidence-Interval"><span class="toc-number">1.</span> <span class="toc-text">Statistics&amp;Probability: Confidence Interval</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sampling"><span class="toc-number">1.1.</span> <span class="toc-text">Sampling</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sampling-Distribution"><span class="toc-number">1.2.</span> <span class="toc-text">Sampling Distribution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Confidence-Interval"><span class="toc-number">1.3.</span> <span class="toc-text">Confidence Interval</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Margin-of-error"><span class="toc-number">1.4.</span> <span class="toc-text">Margin of error</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/&text=Statistics&amp;Probability: Confidence Interval"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/&title=Statistics&amp;Probability: Confidence Interval"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/&is_video=false&description=Statistics&amp;Probability: Confidence Interval"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Statistics&amp;Probability: Confidence Interval&body=Check out this article: http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/&title=Statistics&amp;Probability: Confidence Interval"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/&title=Statistics&amp;Probability: Confidence Interval"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/&title=Statistics&amp;Probability: Confidence Interval"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/&title=Statistics&amp;Probability: Confidence Interval"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/04/04/Statistics-Probability-Confidence-Interval/&name=Statistics&amp;Probability: Confidence Interval&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

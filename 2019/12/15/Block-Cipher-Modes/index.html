@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Block Cipher ModesBlock ciphers (such as DES and AES) can be used directly only for a single block of plaintext. However, typically we want to encrypt plaintext that is much longer than a single block">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Block Cipher Modes">
+<meta property="og:url" content="http://yoursite.com/2019/12/15/Block-Cipher-Modes/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="Block Cipher ModesBlock ciphers (such as DES and AES) can be used directly only for a single block of plaintext. However, typically we want to encrypt plaintext that is much longer than a single block">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/ecb.png">
+<meta property="og:image" content="http://yoursite.com/image/cbc.png">
+<meta property="og:image" content="http://yoursite.com/image/ctr.png">
+<meta property="og:image" content="http://yoursite.com/image/ind_cpa_game.png">
+<meta property="og:image" content="http://yoursite.com/image/ind_cpa_game2.png">
+<meta property="og:image" content="http://yoursite.com/image/ecb_pattern.png">
+<meta property="og:image" content="http://yoursite.com/image/cbc_ctr_pattern.png">
+<meta property="og:updated_time" content="2019-12-15T16:16:57.187Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Block Cipher Modes">
+<meta name="twitter:description" content="Block Cipher ModesBlock ciphers (such as DES and AES) can be used directly only for a single block of plaintext. However, typically we want to encrypt plaintext that is much longer than a single block">
+<meta name="twitter:image" content="http://yoursite.com/image/ecb.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Block Cipher Modes</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/12/16/Symmetric-Cryptography-Advanced-Encryption-Standard-AES/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/12/13/Understanding-SQL-Index/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/15/Block-Cipher-Modes/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/15/Block-Cipher-Modes/&text=Block Cipher Modes"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/15/Block-Cipher-Modes/&title=Block Cipher Modes"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/15/Block-Cipher-Modes/&is_video=false&description=Block Cipher Modes"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Block Cipher Modes&body=Check out this article: http://yoursite.com/2019/12/15/Block-Cipher-Modes/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/15/Block-Cipher-Modes/&title=Block Cipher Modes"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/15/Block-Cipher-Modes/&title=Block Cipher Modes"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/15/Block-Cipher-Modes/&title=Block Cipher Modes"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/15/Block-Cipher-Modes/&title=Block Cipher Modes"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/15/Block-Cipher-Modes/&name=Block Cipher Modes&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Block-Cipher-Modes"><span class="toc-number">1.</span> <span class="toc-text">Block Cipher Modes</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Electronic-Codebook-ECB-Mode"><span class="toc-number">1.1.</span> <span class="toc-text">Electronic Codebook (ECB) Mode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cipher-Block-Chaining-CBC-Mode"><span class="toc-number">1.2.</span> <span class="toc-text">Cipher Block Chaining (CBC) Mode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Counter-CTR-Mode"><span class="toc-number">1.3.</span> <span class="toc-text">Counter(CTR) Mode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Indistinguishability-Under-Chosen-plaintext-IND-CPA-Game"><span class="toc-number">1.4.</span> <span class="toc-text">Indistinguishability Under Chosen-plaintext (IND-CPA) Game</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ECB-is-not-secure"><span class="toc-number">1.4.1.</span> <span class="toc-text">ECB is not secure</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CBC-and-CTR-are-secure"><span class="toc-number">1.4.2.</span> <span class="toc-text">CBC and CTR are secure</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Block Cipher Modes
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-15T06:13:26.000Z" itemprop="datePublished">2019-12-15</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Block-Cipher-Modes"><a href="#Block-Cipher-Modes" class="headerlink" title="Block Cipher Modes"></a>Block Cipher Modes</h1><p>Block ciphers (such as <code>DES</code> and <code>AES</code>) can be used directly only for a single block of plaintext. However, typically we want to encrypt plaintext that is much longer than a single block. There are several block cipher modes to help us to this securely.</p>
+<h2 id="Electronic-Codebook-ECB-Mode"><a href="#Electronic-Codebook-ECB-Mode" class="headerlink" title="Electronic Codebook (ECB) Mode"></a>Electronic Codebook (ECB) Mode</h2><p>ECB is the easist way to do block cipher, which applies the encryption/decryption block by block:</p>
+<p><img src="/image/ecb.png" alt="ecb" title="ecb"></p>
+<h2 id="Cipher-Block-Chaining-CBC-Mode"><a href="#Cipher-Block-Chaining-CBC-Mode" class="headerlink" title="Cipher Block Chaining (CBC) Mode"></a>Cipher Block Chaining (CBC) Mode</h2><p>CBC adds a random <code>initialisation vector</code> (IV) to randomise the first block, and then uses each block to randomise the next block. The encryption/decryption process is as below:</p>
+<p><img src="/image/cbc.png" alt="cbc" title="cbc"></p>
+<p>There are several things worth noting:</p>
+<ol>
+<li>The IV should be <strong>randomly chosen</strong> for each encryption. </li>
+<li>We must store the IV with the ciphertext, otherwise it’s not possible to decrypt. Thus, the IV is random, but <strong>not secret</strong>.</li>
+<li>Since the ciphertext includes the IV, it is one block longer than the plaintext. So we have <strong>a small expansion in size</strong>.</li>
+</ol>
+<h2 id="Counter-CTR-Mode"><a href="#Counter-CTR-Mode" class="headerlink" title="Counter(CTR) Mode"></a>Counter(CTR) Mode</h2><p>To encrypt a message, we chose a random <code>nonce</code>(number used once), and then set up a <code>counter</code> which is incremented for each block:</p>
+<p><img src="/image/ctr.png" alt="ctr" title="ctr"></p>
+<p>The <code>nonce</code> must be stored with or transmitted with the ciphertext blocks. Thus, similarly to the IV in CBC, in CTR mode the nonce must be chosen at random, but is not secret. Like CBC, CTR also increases the size of the ciphtertext by one block.</p>
+<h2 id="Indistinguishability-Under-Chosen-plaintext-IND-CPA-Game"><a href="#Indistinguishability-Under-Chosen-plaintext-IND-CPA-Game" class="headerlink" title="Indistinguishability Under Chosen-plaintext (IND-CPA) Game"></a>Indistinguishability Under Chosen-plaintext (IND-CPA) Game</h2><p>Are the above block cipher modes really secure? We can play a <code>IND-CPA</code> game to verify the security. Here is the process of <code>IND-CPA</code> game:</p>
+<p><img src="/image/ind_cpa_game.png" alt="ind_cpa_game" title="ind_cpa_game"></p>
+<p><code>IND-CPA</code> gives the attackers a lot of power, i.e., they can do efficient operations (<strong>polinomial</strong> time). However, attackers cannot search through all keys, as the number of possible keys increases <strong>exponentially</strong> with the length of the key. </p>
+<p>Does the attacker really win this game if <code>b&#39; = b</code>? If we flip a coin, it is either head up or tail up, which means we have a 50% chance to guess the right answer. In this game, an attacker can also guess an answer, and the probability of winning is also 50%. Therefore, we should have a more precise way of defining how to win <code>IND-CPA</code> game:</p>
+<p><img src="/image/ind_cpa_game2.png" alt="ind_cpa_game2" title="ind_cpa_game2"></p>
+<p>Now we have figured out what is <code>IND-CPA</code> game and how to win this game. Then we can verify the security of block cipher by playing this game.</p>
+<h3 id="ECB-is-not-secure"><a href="#ECB-is-not-secure" class="headerlink" title="ECB is not secure"></a>ECB is not secure</h3><p>ECB is not secure, an attacker can easily win the <code>IND-CPA</code> game. For ECB mode, <strong>identical</strong> blocks within a plaintext always produce <strong>identical</strong> ciphertext blocks, which means we can easily distinguish the plaintext <strong>patterns</strong>:</p>
+<p><img src="/image/ecb_pattern.png" alt="ecb_pattern" title="ecb_pattern"></p>
+<p>For example(not very appropriate), to win the game, an attacker can send <code>m0</code> and <code>m1</code> like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">m0: 1111111111111111</span><br><span class="line">m1: 1234123412341234</span><br></pre></td></tr></table></figure>
+
+<p>We know that <code>m0</code> and <code>m1</code> follow different patterns, and their ciphertexts’ patterns must also be different. Therefore we can easily distinguish which one the challenger chose.</p>
+<h3 id="CBC-and-CTR-are-secure"><a href="#CBC-and-CTR-are-secure" class="headerlink" title="CBC and CTR are secure"></a>CBC and CTR are secure</h3><p>Unlike ECB, in CBC and CTR we can not distinguish the plaintext patterns:</p>
+<p><img src="/image/cbc_ctr_pattern.png" alt="cbc_ctr_pattern" title="cbc_ctr_pattern"></p>
+<p>Therefore using CBC mode or CTR mode is secure.</p>
+<p>However, there is a variation of CBC, which is not secure. In CBC, we should use a random IV each time. Here, we are simply incrementing the IV used last time, instead of taking a fresh random one:</p>
+<p><code>Each time an encryption is done, the IV that is used is the previous IV plus 1.</code></p>
+<p>This variation is insecure:</p>
+<p>Consider what would happen if a counter, starting from zero, was used as an IV. Suppose the first message sent is <code>0000000000000000</code>. The IV would be <code>0000000000000000</code>, so the input to the block cipher is <code>0000000000000000</code>. Now, suppose a second message <code>0000000000000001</code> is encrypted. This time, the IV is <code>0000000000000001</code>, causing the input to the block cipher to be the same as before: <code>0000000000000000</code> (because 1 XOR 1 is 0). </p>
+<p>In general, <strong>whenever the first plaintext block is equal to the IV, the result will always be the encryption of <code>0000000000000000</code></strong>. If the adversary knows this value, they can look at a given <code>(IV, ciphertext)</code> pair(IV is not secret!) and know whether or not the first block is the same as the IV. When the IV is random, it’s much less likely for the IV to coincide with the first plaintext block by accident.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Block-Cipher-Modes"><span class="toc-number">1.</span> <span class="toc-text">Block Cipher Modes</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Electronic-Codebook-ECB-Mode"><span class="toc-number">1.1.</span> <span class="toc-text">Electronic Codebook (ECB) Mode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cipher-Block-Chaining-CBC-Mode"><span class="toc-number">1.2.</span> <span class="toc-text">Cipher Block Chaining (CBC) Mode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Counter-CTR-Mode"><span class="toc-number">1.3.</span> <span class="toc-text">Counter(CTR) Mode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Indistinguishability-Under-Chosen-plaintext-IND-CPA-Game"><span class="toc-number">1.4.</span> <span class="toc-text">Indistinguishability Under Chosen-plaintext (IND-CPA) Game</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ECB-is-not-secure"><span class="toc-number">1.4.1.</span> <span class="toc-text">ECB is not secure</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CBC-and-CTR-are-secure"><span class="toc-number">1.4.2.</span> <span class="toc-text">CBC and CTR are secure</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/15/Block-Cipher-Modes/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/15/Block-Cipher-Modes/&text=Block Cipher Modes"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/15/Block-Cipher-Modes/&title=Block Cipher Modes"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/15/Block-Cipher-Modes/&is_video=false&description=Block Cipher Modes"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Block Cipher Modes&body=Check out this article: http://yoursite.com/2019/12/15/Block-Cipher-Modes/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/15/Block-Cipher-Modes/&title=Block Cipher Modes"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/15/Block-Cipher-Modes/&title=Block Cipher Modes"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/15/Block-Cipher-Modes/&title=Block Cipher Modes"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/15/Block-Cipher-Modes/&title=Block Cipher Modes"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/15/Block-Cipher-Modes/&name=Block Cipher Modes&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

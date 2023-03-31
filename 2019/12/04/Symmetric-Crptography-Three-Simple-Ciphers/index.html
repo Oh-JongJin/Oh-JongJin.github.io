@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Symmetric Crptography: Three Simple Ciphers1. Columnar Transposition CipherSuppose we have a plaintext: To be or not to be, that is a question. And we want to encrypt it using the key denmark.  Firstl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Symmetric Crptography: Three Simple Ciphers">
+<meta property="og:url" content="http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="Symmetric Crptography: Three Simple Ciphers1. Columnar Transposition CipherSuppose we have a plaintext: To be or not to be, that is a question. And we want to encrypt it using the key denmark.  Firstl">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/columnar_transposition_cipher_1.png">
+<meta property="og:image" content="http://yoursite.com/image/columnar_transposition_cipher_2.png">
+<meta property="og:image" content="http://yoursite.com/image/columnar_transposition_cipher_3.png">
+<meta property="og:image" content="http://yoursite.com/image/columnar_transposition_cipher_4.png">
+<meta property="og:updated_time" content="2019-12-07T14:55:07.641Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Symmetric Crptography: Three Simple Ciphers">
+<meta name="twitter:description" content="Symmetric Crptography: Three Simple Ciphers1. Columnar Transposition CipherSuppose we have a plaintext: To be or not to be, that is a question. And we want to encrypt it using the key denmark.  Firstl">
+<meta name="twitter:image" content="http://yoursite.com/image/columnar_transposition_cipher_1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Symmetric Crptography: Three Simple Ciphers</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/12/07/Symmetric-Cryptography-Data-Encrypton-Standard（DES/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/12/01/Understanding-Program-Efficiency/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/&text=Symmetric Crptography: Three Simple Ciphers"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/&title=Symmetric Crptography: Three Simple Ciphers"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/&is_video=false&description=Symmetric Crptography: Three Simple Ciphers"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Symmetric Crptography: Three Simple Ciphers&body=Check out this article: http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/&title=Symmetric Crptography: Three Simple Ciphers"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/&title=Symmetric Crptography: Three Simple Ciphers"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/&title=Symmetric Crptography: Three Simple Ciphers"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/&title=Symmetric Crptography: Three Simple Ciphers"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/&name=Symmetric Crptography: Three Simple Ciphers&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Symmetric-Crptography-Three-Simple-Ciphers"><span class="toc-number">1.</span> <span class="toc-text">Symmetric Crptography: Three Simple Ciphers</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Columnar-Transposition-Cipher"><span class="toc-number">1.1.</span> <span class="toc-text">1. Columnar Transposition Cipher</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Substitution-Cipher"><span class="toc-number">1.2.</span> <span class="toc-text">2. Substitution Cipher</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-One-Time-Pad"><span class="toc-number">1.3.</span> <span class="toc-text">3. One-Time Pad</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Symmetric Crptography: Three Simple Ciphers
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-04T08:54:36.000Z" itemprop="datePublished">2019-12-04</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Symmetric-Crptography-Three-Simple-Ciphers"><a href="#Symmetric-Crptography-Three-Simple-Ciphers" class="headerlink" title="Symmetric Crptography: Three Simple Ciphers"></a>Symmetric Crptography: Three Simple Ciphers</h1><h2 id="1-Columnar-Transposition-Cipher"><a href="#1-Columnar-Transposition-Cipher" class="headerlink" title="1. Columnar Transposition Cipher"></a>1. Columnar Transposition Cipher</h2><p>Suppose we have a plaintext:</p>
+<p><code>To be or not to be, that is a question.</code></p>
+<p>And we want to encrypt it using the key <code>denmark</code>. </p>
+<p>Firstly we write the plaintext out in a grid. Note that the column number of the grid is the number of letters in the key. Since the key <code>denmark</code> has 7 letters, there are 7 columns:</p>
+<p><img src="/image/columnar_transposition_cipher_1.png" alt="columnar_transposition_cipher_1" title="columnar_transposition_cipher_1"></p>
+<p>Then we take the letters in the key in alphabetical order, and read down the columns in this order:</p>
+<p><img src="/image/columnar_transposition_cipher_2.png" alt="columnar_transposition_cipher_2" title="columnar_transposition_cipher_2"></p>
+<p>Therefore our ciphertext is <code>OBSI TOHU OTAE NTQT EOIT BTTS REAO</code>.</p>
+<p>Note that if a letter is repeated, we do the one that appears first, then the next and so on. For example, if we changed our  key to <code>william</code>, we should encrypt the plaintext like this:</p>
+<p><img src="/image/columnar_transposition_cipher_3.png" alt="columnar_transposition_cipher_3" title="columnar_transposition_cipher_3"></p>
+<p>The decryption process is pretty simple if we have the key. We have the key <code>denmark</code>, which has 7 letters, and we know the ciphertext is <code>OBSI TOHU OTAE NTQT EOIT BTTS REAO</code>, which has 28 letters. Therefore we can know there are 7 columns, and each column has <code>28/7 = 4</code> rows. </p>
+<p>We can divide the ciphertext into 7 groups, each group has 4 letters. And according to the alphabetical order of the key, we can put each group as a column back to the grid:</p>
+<p><img src="/image/columnar_transposition_cipher_4.png" alt="columnar_transposition_cipher_4" title="columnar_transposition_cipher_4"></p>
+<p>Is this cipher secure? The answer is <strong>No</strong>. An attacker should firstly determine the length of the key, once the attacker has picked a key length, he/she can shuffle the columns around until they start to line up into meaningful fragments of text. </p>
+<p>Given any ciphertext, attacker tries all possible values for the key. For a message of size <code>n</code> there are at most <code>n</code> possibilities for the key, hence attacker will obtain plaintext.</p>
+<h2 id="2-Substitution-Cipher"><a href="#2-Substitution-Cipher" class="headerlink" title="2. Substitution Cipher"></a>2. Substitution Cipher</h2><p>The basic idea of substitution cipher is to substitute every plaintext character for a different ciphertext character. A simple version of substitution cipher is so-called <code>Caesar cipher</code>(the key of which is a single number). </p>
+<p>A more complicated version is <code>monoalphabetic substitution cipher</code>, the keys of which usually consist of 26 letters. Here is an example key:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plain alphabet: abcdefghijklmnopqrstuvwxyz</span><br><span class="line">cipher alphabet: phqgiumeaylnofdxjkrcvstzwb</span><br></pre></td></tr></table></figure>
+
+<p>Using the above key, we can encrypt our plaintext:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plaintext : To be or not to be that is a question</span><br><span class="line">ciphertext: cd hi dk fdc cd hi cepc ar p jvircadf</span><br></pre></td></tr></table></figure>
+
+<p>The decryption process and the encryption process are invertible.</p>
+<p>How many keys are there? When we choose a key, the letter <code>a</code> has 26 choices, and the letter <code>b</code> has 25 choices, <code>c</code> has 24 choices…so on and so forth. Therefore there are <code>26! ≈ 2^86</code> possible keys. Although there are many possiblities, we can use <code>frequency analysis</code> to break the cipher. Frequency of letter occurrence varies dramatically amongst letters. In English text, 12.7% of all letters are “e”, and 0.2% of all letters are “x”. </p>
+<h2 id="3-One-Time-Pad"><a href="#3-One-Time-Pad" class="headerlink" title="3. One-Time Pad"></a>3. One-Time Pad</h2><p>Again, we want to encrypt the sentence <code>To be or not to be, that is a question</code>, which has 28 letters. Suppose we have a 26-sided dice, we roll this dice for 28 times and obtain a <code>pad</code> of numbers:</p>
+<p><code>9 4 9 24 26 5 9 2 9 2 7 26 26 26 25 12 9 17 21 25 25 4 24 21 16 5 4 14</code></p>
+<p>Just like <code>Caesar cipher</code>, each of the above number is a “key”:</p>
+<ul>
+<li>The first number <code>9</code> is the key of the first letter <code>t</code>. As <code>t</code> is the 20th letter of the English alphabet, <code>20 + 9 = 3 mod 26</code>, therefore the cipertext of <code>t</code> is <code>c</code>(the 3rd letter of the English alphabet).</li>
+<li>The second number <code>4</code> is the key of the second letter <code>o</code>. As <code>o</code> is the 15th letter of the English alphabet, <code>15 + 4 = 19 mod 26</code>, therefore the cipertext of <code>o</code> is <code>s</code>(the 19th letter of the English alphabet).</li>
+<li>The thrid number 9 is the key of the third letter <code>b</code>…</li>
+</ul>
+<p>As the process of generating key is totally random, the one-time pad is <strong>perfectly secure</strong>. The attacker cannot learn anything by looking at ciphertexts except the size of the ciphertext. But the one-pad time is not very practical, because the key is long (same length as the plaintext) and can be used only once.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Symmetric-Crptography-Three-Simple-Ciphers"><span class="toc-number">1.</span> <span class="toc-text">Symmetric Crptography: Three Simple Ciphers</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Columnar-Transposition-Cipher"><span class="toc-number">1.1.</span> <span class="toc-text">1. Columnar Transposition Cipher</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Substitution-Cipher"><span class="toc-number">1.2.</span> <span class="toc-text">2. Substitution Cipher</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-One-Time-Pad"><span class="toc-number">1.3.</span> <span class="toc-text">3. One-Time Pad</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/&text=Symmetric Crptography: Three Simple Ciphers"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/&title=Symmetric Crptography: Three Simple Ciphers"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/&is_video=false&description=Symmetric Crptography: Three Simple Ciphers"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Symmetric Crptography: Three Simple Ciphers&body=Check out this article: http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/&title=Symmetric Crptography: Three Simple Ciphers"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/&title=Symmetric Crptography: Three Simple Ciphers"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/&title=Symmetric Crptography: Three Simple Ciphers"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/&title=Symmetric Crptography: Three Simple Ciphers"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/&name=Symmetric Crptography: Three Simple Ciphers&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

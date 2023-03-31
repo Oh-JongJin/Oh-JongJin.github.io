@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="ArrayList in JavaDifferences between array and ArrayList When we declare an array, we should specify the capacity of the array(e.g., int[] array = new int[10];). However, we do not need to specify the">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ArrayList in Java">
+<meta property="og:url" content="http://yoursite.com/2019/10/26/ArrayList-in-Java/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="ArrayList in JavaDifferences between array and ArrayList When we declare an array, we should specify the capacity of the array(e.g., int[] array = new int[10];). However, we do not need to specify the">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/arraylist_output_1.png">
+<meta property="og:image" content="http://yoursite.com/image/arraylist_output_2.png">
+<meta property="og:updated_time" content="2020-05-01T15:13:33.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ArrayList in Java">
+<meta name="twitter:description" content="ArrayList in JavaDifferences between array and ArrayList When we declare an array, we should specify the capacity of the array(e.g., int[] array = new int[10];). However, we do not need to specify the">
+<meta name="twitter:image" content="http://yoursite.com/image/arraylist_output_1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>ArrayList in Java</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/10/31/For-each-in-Java/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/10/18/A-brief-introduction-of-JUnit-5/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/10/26/ArrayList-in-Java/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/10/26/ArrayList-in-Java/&text=ArrayList in Java"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/10/26/ArrayList-in-Java/&title=ArrayList in Java"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/10/26/ArrayList-in-Java/&is_video=false&description=ArrayList in Java"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ArrayList in Java&body=Check out this article: http://yoursite.com/2019/10/26/ArrayList-in-Java/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/10/26/ArrayList-in-Java/&title=ArrayList in Java"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/10/26/ArrayList-in-Java/&title=ArrayList in Java"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/10/26/ArrayList-in-Java/&title=ArrayList in Java"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/10/26/ArrayList-in-Java/&title=ArrayList in Java"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/10/26/ArrayList-in-Java/&name=ArrayList in Java&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ArrayList-in-Java"><span class="toc-number">1.</span> <span class="toc-text">ArrayList in Java</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Differences-between-array-and-ArrayList"><span class="toc-number">1.1.</span> <span class="toc-text">Differences between array and ArrayList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Remove-method-in-ArrayList"><span class="toc-number">1.2.</span> <span class="toc-text">Remove method in ArrayList</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RemoveDemo1"><span class="toc-number">1.2.1.</span> <span class="toc-text">RemoveDemo1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RemoveDemo2"><span class="toc-number">1.2.2.</span> <span class="toc-text">RemoveDemo2</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        ArrayList in Java
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-10-26T09:11:48.000Z" itemprop="datePublished">2019-10-26</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="ArrayList-in-Java"><a href="#ArrayList-in-Java" class="headerlink" title="ArrayList in Java"></a>ArrayList in Java</h1><h2 id="Differences-between-array-and-ArrayList"><a href="#Differences-between-array-and-ArrayList" class="headerlink" title="Differences between array and ArrayList"></a>Differences between array and ArrayList</h2><ol>
+<li><p>When we declare an array, we should specify the capacity of the array(e.g., <code>int[] array = new int[10];</code>). However, we do not need to specify the size when we create an ArrayList. Therefore, if we know the size beforehand, we can use array, which is more efficient. If we do not know the size, we can use ArrayList, which is <strong>resizable</strong>(the initial capacity is 10, and the capacity grows automatically as elements are added to the list).</p>
+</li>
+<li><p>ArrayList can only hold object, which means we can not have an ArrayList of primitive-type elements. For example, if we write <code>ArrayList&lt;int&gt;</code>, the code doesn’t compile. To obtain an ArrayList which stores integers, we should use <code>ArrayList&lt;Integer&gt;</code>.</p>
+</li>
+</ol>
+<h2 id="Remove-method-in-ArrayList"><a href="#Remove-method-in-ArrayList" class="headerlink" title="Remove method in ArrayList"></a>Remove method in ArrayList</h2><p><code>remove()</code> method can remove the element at the specified position in an ArrayList. It is worth noting that <strong>after removing the specified element, this method would shift any subsequent elements to the left (subtracts one from their indices)</strong>. The following examples can help us fully understand <code>remove()</code> method.</p>
+<h3 id="RemoveDemo1"><a href="#RemoveDemo1" class="headerlink" title="RemoveDemo1"></a>RemoveDemo1</h3><p>In this Demo, <code>removeEven()</code> is used to remove even elements in an ArrayList. For example, if we have an ArrayList <code>{1,3,2,4}</code>, this method is expected to return <code>{1,3}</code>. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoveDemo1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ArrayList&lt;Integer&gt; <span class="title">removeEven</span><span class="params">(ArrayList&lt;Integer&gt; list)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(list.get(i) % <span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">                list.remove(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        list.add(<span class="number">1</span>);</span><br><span class="line">        list.add(<span class="number">3</span>);</span><br><span class="line">        list.add(<span class="number">2</span>);</span><br><span class="line">        list.add(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">        list = removeEven(list);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>However, when we run this class, the result is not as expected：</p>
+<p><img src="/image/arraylist_output_1.png" alt="arraylist_output_1" title="arraylist_output_1"></p>
+<p>The reason is that after removing the 3rd element(which is 2) in the list, the index of the 4th element(which is 4) is changed:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Before removing:</span><br><span class="line"></span><br><span class="line">List : &#123;1,3,2,4&#125;</span><br><span class="line">Index:  0 1 2 3</span><br><span class="line"></span><br><span class="line">After removing:</span><br><span class="line"></span><br><span class="line">List : &#123;1,3,4&#125;</span><br><span class="line">Index:  0 1 2</span><br></pre></td></tr></table></figure>
+
+<p>And in the for-loop, the counter i keeps incresing, which mean the element 4 is skipped.</p>
+<h3 id="RemoveDemo2"><a href="#RemoveDemo2" class="headerlink" title="RemoveDemo2"></a>RemoveDemo2</h3><p>To address the problem mentioned above, we should make a subtle change to the code:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoveDemo1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ArrayList&lt;Integer&gt; <span class="title">removeEven</span><span class="params">(ArrayList&lt;Integer&gt; list)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(list.get(i) % <span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">                list.remove(i--); <span class="comment">// After removing the element, we push the counter i backward by 1.</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        list.add(<span class="number">1</span>);</span><br><span class="line">        list.add(<span class="number">3</span>);</span><br><span class="line">        list.add(<span class="number">2</span>);</span><br><span class="line">        list.add(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">        list = removeEven(list);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This time we obtain the expected result:</p>
+<p><img src="/image/arraylist_output_2.png" alt="arraylist_output_2" title="arraylist_output_2"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ArrayList-in-Java"><span class="toc-number">1.</span> <span class="toc-text">ArrayList in Java</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Differences-between-array-and-ArrayList"><span class="toc-number">1.1.</span> <span class="toc-text">Differences between array and ArrayList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Remove-method-in-ArrayList"><span class="toc-number">1.2.</span> <span class="toc-text">Remove method in ArrayList</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RemoveDemo1"><span class="toc-number">1.2.1.</span> <span class="toc-text">RemoveDemo1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RemoveDemo2"><span class="toc-number">1.2.2.</span> <span class="toc-text">RemoveDemo2</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/10/26/ArrayList-in-Java/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/10/26/ArrayList-in-Java/&text=ArrayList in Java"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/10/26/ArrayList-in-Java/&title=ArrayList in Java"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/10/26/ArrayList-in-Java/&is_video=false&description=ArrayList in Java"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=ArrayList in Java&body=Check out this article: http://yoursite.com/2019/10/26/ArrayList-in-Java/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/10/26/ArrayList-in-Java/&title=ArrayList in Java"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/10/26/ArrayList-in-Java/&title=ArrayList in Java"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/10/26/ArrayList-in-Java/&title=ArrayList in Java"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/10/26/ArrayList-in-Java/&title=ArrayList in Java"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/10/26/ArrayList-in-Java/&name=ArrayList in Java&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

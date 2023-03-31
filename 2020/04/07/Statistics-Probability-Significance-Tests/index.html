@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Statistics&amp;amp;Probability: Significance TestsStatistical SignificanceHere is a link for a study: https://www.nhlbi.nih.gov/news/2015/landmark-nih-study-shows-intensive-blood-pressure-management-may-s">
+<meta name="keywords" content="statistics&amp;probability">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Statistics&amp;Probability: Significance Tests">
+<meta property="og:url" content="http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="Statistics&amp;amp;Probability: Significance TestsStatistical SignificanceHere is a link for a study: https://www.nhlbi.nih.gov/news/2015/landmark-nih-study-shows-intensive-blood-pressure-management-may-s">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/statistical_significance_1.png">
+<meta property="og:image" content="http://yoursite.com/image/statistical_significance_2.png">
+<meta property="og:image" content="http://yoursite.com/image/statistical_significance_3.png">
+<meta property="og:image" content="http://yoursite.com/image/significance_test_1.png">
+<meta property="og:updated_time" content="2020-04-27T13:38:38.197Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Statistics&amp;Probability: Significance Tests">
+<meta name="twitter:description" content="Statistics&amp;amp;Probability: Significance TestsStatistical SignificanceHere is a link for a study: https://www.nhlbi.nih.gov/news/2015/landmark-nih-study-shows-intensive-blood-pressure-management-may-s">
+<meta name="twitter:image" content="http://yoursite.com/image/statistical_significance_1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Statistics&amp;Probability: Significance Tests</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/04/08/LeetCode-Problem-Random-Topics/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/04/06/LeetCode-Problem-Two-Pointer-Topics/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/&text=Statistics&amp;Probability: Significance Tests"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/&title=Statistics&amp;Probability: Significance Tests"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/&is_video=false&description=Statistics&amp;Probability: Significance Tests"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Statistics&amp;Probability: Significance Tests&body=Check out this article: http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/&title=Statistics&amp;Probability: Significance Tests"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/&title=Statistics&amp;Probability: Significance Tests"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/&title=Statistics&amp;Probability: Significance Tests"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/&title=Statistics&amp;Probability: Significance Tests"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/&name=Statistics&amp;Probability: Significance Tests&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Statistics-amp-Probability-Significance-Tests"><span class="toc-number">1.</span> <span class="toc-text">Statistics&amp;Probability: Significance Tests</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Statistical-Significance"><span class="toc-number">1.1.</span> <span class="toc-text">Statistical Significance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hypotheses"><span class="toc-number">1.2.</span> <span class="toc-text">Hypotheses</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Statistics&amp;Probability: Significance Tests
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-04-07T12:41:07.000Z" itemprop="datePublished">2020-04-07</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/statistics-probability/">statistics&probability</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Statistics-amp-Probability-Significance-Tests"><a href="#Statistics-amp-Probability-Significance-Tests" class="headerlink" title="Statistics&amp;Probability: Significance Tests"></a>Statistics&amp;Probability: Significance Tests</h1><h2 id="Statistical-Significance"><a href="#Statistical-Significance" class="headerlink" title="Statistical Significance"></a>Statistical Significance</h2><p>Here is a link for a study:</p>
+<p><a href="https://www.nhlbi.nih.gov/news/2015/landmark-nih-study-shows-intensive-blood-pressure-management-may-save-lives" target="_blank" rel="noopener">https://www.nhlbi.nih.gov/news/2015/landmark-nih-study-shows-intensive-blood-pressure-management-may-save-lives</a></p>
+<p>The above study concerns a population of individuals. The population they want to study<br>is patients who are 50 years old, or order, and at an increased risk of heart disease and/or kidney disease. </p>
+<p>This is a large population, and we need to select a small set of individuals to carry out the comparison of different treatments. Therefore, the first step of the study is <strong>recruitment</strong>. The recruitment is done through more than 100 medical centers and clinical practices to derive a diverse sample of women, minority, and elderly. The reason for that, is different individuals in the population may have different probability of being selected if the sample is carried out randomly. To create a more representative sample, sometimes we need to design sampling strategies to have better coverage.</p>
+<p><img src="/image/statistical_significance_1.png" alt="statistical_significance_1" title="statistical_significance_1"></p>
+<p>After this requirement, we need derive a small set of individuals who will participate in the study– about 9,300 of them. After the recruitment, our focus will be on these 9,300 participants instead of the entire population out there, even though our conclusion will hopefully be applicable to the entire population under study. The design of study is summarized as following:</p>
+<p><img src="/image/statistical_significance_2.png" alt="statistical_significance_2" title="statistical_significance_2"></p>
+<p>As shown, you have 9,300 participants. The first step after the start of the study is <strong>random assignments</strong>. So you will assign these 9,300 participants into two groups randomly. The first group is a <strong>treatment group</strong>. The second group is a <strong>control group</strong>. And these two groups are created so that they’re similar, except for <strong>differences due to chance</strong>.<br>The reason why they may be different is these 9,300 are all different. They’re all individuals.They all have their own environmental factors, demographic background, and their individual profiles. They have different values for age, for height, for weight, for health habits, for their occupation risks, so on and so forth. So they’re all different. In the random assignment they will be randomly put in treatment group and control group. Therefore, the two groups will have some random differences because they have different individuals.</p>
+<p>Then, after the group assignments, the two groups of individuals will receive different treatments. In the treatment group, you will receive a new targeted level of blood pressure control. In the control group, you will receive a conventional target level of blood pressure control.</p>
+<p>In this study, this target level of blood pressure control are achieved using a whole array of medical assistance. So that is not part of the difference between the two groups. The difference between the two groups is their targeted level of blood pressure. So after a certain period of treatments, we will observe and measure the health results from the two groups, and then we’ll compare them.</p>
+<p>Then we will observe some differences, because these two different individuals received<br>two different treatments. So now the scientific question, and the question for the statistician who will analyze this data, is <strong>whether this difference can be explained purely by chance</strong>. Can we observe difference in health results, even these two treatments have no difference in effects? Can this different be purely explained by chance? </p>
+<p>Here we have input, which is the different treatments and blood pressure management, and we want to study its true effect on the output, which is the health results based on blood pressure control. But at the same time, we know that there are other random factors that may have random effects on the outcome, such as the age of the participants, the other health habits and occupation risks, and the environmental factors that could potentially affect the outcome.</p>
+<p><img src="/image/statistical_significance_3.png" alt="statistical_significance_3" title="statistical_significance_3"></p>
+<p>So our question is, as a statistician, how do we carry out the statistical inference so that we can estimate the extent of the random effects, and then use that to establish the size of the true effect? And the other way to say this exercise is, how we evaluate the observed effect so that we can say whether it is likely to occur purely by chance? That whether is it possible the two groups look different because they started off, after the random assignment as different groups, then they will exhibit different health results at the end of the study– whether we can observe that. If it’s very unlikely to observe a certain level of differences, we will call it <strong>statistically significant</strong>. Which is a way of saying that <strong>the effect is so big that we do not think that it can be explained purely by chance</strong>, and we believe part of it is due to a really existing true effect from the treatments.</p>
+<p><strong>Statisticians using statistical method establishes the statistical significance of observed signal by studying randomness.</strong></p>
+<h2 id="Hypotheses"><a href="#Hypotheses" class="headerlink" title="Hypotheses"></a>Hypotheses</h2><p>Significance tests work with <code>hypotheses</code>. A hypothesis is a <strong>statement</strong> about the population that we try to collect evidence to prove or disprove.</p>
+<p>For example, now we want to test whether a coin is biased or not. And our hypothesis is the following statement:</p>
+<p><code>The coin is fair.</code></p>
+<p>We know that a fair coin produces heads 50% of the time. To check the fairness, we need to collect and observe data. The data we observe come from 10 tosses using this coin. Suppose <strong>in the 10 tosses, 10 heads are observed</strong>. </p>
+<p>If the coin is fair, the probability of observing 10 heads is:</p>
+<p><img src="/image/significance_test_1.png" alt="significance_test_1" title="significance_test_1"></p>
+<p>Then the question is whether this evidence – we collected 10 heads for 10 tosses – is a statistically significant evidence against the statement that we want to check. </p>
+<p>This is the logic we want to exercise in a significance test:</p>
+<ol>
+<li><p>We have a statement, in this case, <code>the coin is fair</code>.</p>
+</li>
+<li><p>We have a model generated according to the statement, i.e., <code>a fair coin produces heads 50% of the time</code>.</p>
+</li>
+<li><p>We check the <code>consistency</code> of the statement with the data we collected. This consistency is usually measured by a probability. In our case, if the statement is true, the probability of observing 10 heads is less than 0.001. </p>
+</li>
+<li><p>Then we ask ourselves:</p>
+</li>
+</ol>
+<p><code>Is this probability small enough for us to question the validity of our statement?</code></p>
+<p>In practice, we use <code>p-value</code> as our probability. P-value is <strong>a probability assuming the null hypothesis is true</strong>. And we reject the null hypothesis when the p-value is small enough.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Statistics-amp-Probability-Significance-Tests"><span class="toc-number">1.</span> <span class="toc-text">Statistics&amp;Probability: Significance Tests</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Statistical-Significance"><span class="toc-number">1.1.</span> <span class="toc-text">Statistical Significance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hypotheses"><span class="toc-number">1.2.</span> <span class="toc-text">Hypotheses</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/&text=Statistics&amp;Probability: Significance Tests"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/&title=Statistics&amp;Probability: Significance Tests"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/&is_video=false&description=Statistics&amp;Probability: Significance Tests"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Statistics&amp;Probability: Significance Tests&body=Check out this article: http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/&title=Statistics&amp;Probability: Significance Tests"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/&title=Statistics&amp;Probability: Significance Tests"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/&title=Statistics&amp;Probability: Significance Tests"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/&title=Statistics&amp;Probability: Significance Tests"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/04/07/Statistics-Probability-Significance-Tests/&name=Statistics&amp;Probability: Significance Tests&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

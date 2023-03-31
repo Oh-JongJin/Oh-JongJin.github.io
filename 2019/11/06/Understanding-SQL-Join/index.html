@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Understanding SQL JoinBasic set theorySetRelational databases are based on set theory. A set is a collection of elements, with no ordering and no repeats. For example, {1, 2, 3, 4} is a set, which is">
+<meta name="keywords" content="database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Understanding SQL Join">
+<meta property="og:url" content="http://yoursite.com/2019/11/06/Understanding-SQL-Join/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="Understanding SQL JoinBasic set theorySetRelational databases are based on set theory. A set is a collection of elements, with no ordering and no repeats. For example, {1, 2, 3, 4} is a set, which is">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/cartesian_product.png">
+<meta property="og:image" content="http://yoursite.com/image/sql_relation.png">
+<meta property="og:image" content="http://yoursite.com/image/student_and_course_table.png">
+<meta property="og:image" content="http://yoursite.com/image/select_result.png">
+<meta property="og:image" content="http://yoursite.com/image/join_and_cross_product.png">
+<meta property="og:image" content="http://yoursite.com/image/natural_join_1.png">
+<meta property="og:image" content="http://yoursite.com/image/natural_join_2.png">
+<meta property="og:image" content="http://yoursite.com/image/natural_join_3.png">
+<meta property="og:image" content="http://yoursite.com/image/natural_join_4.png">
+<meta property="og:image" content="http://yoursite.com/image/natural_join_5.png">
+<meta property="og:image" content="http://yoursite.com/image/outer_join_1.png">
+<meta property="og:image" content="http://yoursite.com/image/outer_join_2.png">
+<meta property="og:image" content="http://yoursite.com/image/outer_join_3.png">
+<meta property="og:image" content="http://yoursite.com/image/outer_join_4.png">
+<meta property="og:updated_time" content="2020-04-27T13:48:03.406Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Understanding SQL Join">
+<meta name="twitter:description" content="Understanding SQL JoinBasic set theorySetRelational databases are based on set theory. A set is a collection of elements, with no ordering and no repeats. For example, {1, 2, 3, 4} is a set, which is">
+<meta name="twitter:image" content="http://yoursite.com/image/cartesian_product.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Understanding SQL Join</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/11/16/Something-About-Bash/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/11/06/Functions-in-Java/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/11/06/Understanding-SQL-Join/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/11/06/Understanding-SQL-Join/&text=Understanding SQL Join"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/11/06/Understanding-SQL-Join/&title=Understanding SQL Join"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/11/06/Understanding-SQL-Join/&is_video=false&description=Understanding SQL Join"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Understanding SQL Join&body=Check out this article: http://yoursite.com/2019/11/06/Understanding-SQL-Join/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/11/06/Understanding-SQL-Join/&title=Understanding SQL Join"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/11/06/Understanding-SQL-Join/&title=Understanding SQL Join"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/11/06/Understanding-SQL-Join/&title=Understanding SQL Join"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/11/06/Understanding-SQL-Join/&title=Understanding SQL Join"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/11/06/Understanding-SQL-Join/&name=Understanding SQL Join&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Understanding-SQL-Join"><span class="toc-number">1.</span> <span class="toc-text">Understanding SQL Join</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-set-theory"><span class="toc-number">1.1.</span> <span class="toc-text">Basic set theory</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Set"><span class="toc-number">1.1.1.</span> <span class="toc-text">Set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tuple"><span class="toc-number">1.1.2.</span> <span class="toc-text">Tuple</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cartesian-product"><span class="toc-number">1.1.3.</span> <span class="toc-text">Cartesian product</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL-relations"><span class="toc-number">1.1.4.</span> <span class="toc-text">SQL relations</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Understanding-Join-in-SQL"><span class="toc-number">1.2.</span> <span class="toc-text">Understanding Join in SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Inner-Join"><span class="toc-number">1.2.1.</span> <span class="toc-text">Inner Join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Natural-Join"><span class="toc-number">1.2.2.</span> <span class="toc-text">Natural Join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Outer-Join"><span class="toc-number">1.2.3.</span> <span class="toc-text">Outer Join</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Understanding SQL Join
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-11-06T13:18:37.000Z" itemprop="datePublished">2019-11-06</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/database/">database</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Understanding-SQL-Join"><a href="#Understanding-SQL-Join" class="headerlink" title="Understanding SQL Join"></a>Understanding SQL Join</h1><h2 id="Basic-set-theory"><a href="#Basic-set-theory" class="headerlink" title="Basic set theory"></a>Basic set theory</h2><h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>Relational databases are based on <code>set theory</code>. A set is a collection of elements, with no ordering and no repeats. For example, <code>{1, 2, 3, 4}</code> is a set, which is same as <code>{2, 1, 3, 4}</code>,  because sets are unordered. And <code>{1, 1, 2, 3}</code> is not a set, because there is a repeated element <code>1</code>.</p>
+<h3 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h3><p>A tuple is a list of elements, e.g., (a, b, c, d, …). An n-tuple is a tuple with n elements, meanwhile <strong>the order of elements is maintained</strong>. For example, <code>(a, b)</code> is a 2-tuple, while <code>(b, a)</code> is a <strong>different</strong> 2-tuple.</p>
+<h3 id="Cartesian-product"><a href="#Cartesian-product" class="headerlink" title="Cartesian product"></a>Cartesian product</h3><p>For example, there are two sets A = {1, 2} and B = {a, b}, so the Cartesian product of A and B is:</p>
+<p><code>A x B = {1,2} x {a,b} = {(1,a), (1,b), (2,a), (2,b)}</code></p>
+<p>Note that the result of Cartesian product is <strong>a set of tuple</strong>, which means the elements <code>(1, a)</code>, <code>(1, b)</code>, <code>(2, a)</code> and <code>(2, b)</code> are <strong>ordered</strong> pairs(2-tuples), therefore we can easily know that <code>A x B</code> is not same as <code>B x A</code>.</p>
+<p><img src="/image/cartesian_product.png" alt="cartesian_product" title="cartesian_product"></p>
+<h3 id="SQL-relations"><a href="#SQL-relations" class="headerlink" title="SQL relations"></a>SQL relations</h3><p>In SQL, a relation is <strong>a set of tuples</strong>: </p>
+<p><img src="/image/sql_relation.png" alt="sql_relation" title="sql_relation"></p>
+<p>As shown in the above picture, in this so-called relation set, each row is an element, and each element is a tuple. A relation has no duplicates, so no tuple can appear twice. As for the  <code>attribute</code>, the values in each attribute(column) have a same type. In addition, a <code>key</code> is an attribute of a relation the value of which is <strong>unique for each tuple</strong>.</p>
+<p>In SQL, we use tables to “implement” or realise relations.</p>
+<h2 id="Understanding-Join-in-SQL"><a href="#Understanding-Join-in-SQL" class="headerlink" title="Understanding Join in SQL"></a>Understanding Join in SQL</h2><h3 id="Inner-Join"><a href="#Inner-Join" class="headerlink" title="Inner Join"></a>Inner Join</h3><p>In this article, we use PostgreSQL to explian <code>Join</code> operation. Let’s firstly create two tables <code>course</code> and <code>student</code>:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> COURSE</span><br><span class="line">( </span><br><span class="line">    <span class="keyword">ID</span> <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>, </span><br><span class="line">    COURSENAME <span class="built_in">VARCHAR</span>( <span class="number">20</span> ), </span><br><span class="line">    DETAILS <span class="built_in">VARCHAR</span>( <span class="number">100</span> ) </span><br><span class="line">) ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> STUDENT</span><br><span class="line">( </span><br><span class="line">    STUDENTID <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>, </span><br><span class="line">    <span class="keyword">NAME</span> <span class="built_in">VARCHAR</span>( <span class="number">30</span> ), </span><br><span class="line">    COURSEID <span class="built_in">INT</span> <span class="keyword">REFERENCES</span> COURSE( <span class="keyword">ID</span> )  </span><br><span class="line">) ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> COURSE </span><br><span class="line">( COURSENAME, DETAILS ) </span><br><span class="line"><span class="keyword">VALUES</span> </span><br><span class="line">( <span class="string">'MSc'</span>, <span class="string">'The MSc CS Course'</span> ), </span><br><span class="line">( <span class="string">'BSc'</span>, <span class="string">'The BSc CS Course'</span> ) ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> STUDENT</span><br><span class="line">( <span class="keyword">NAME</span>, COURSEID ) </span><br><span class="line"><span class="keyword">VALUES</span> </span><br><span class="line">( <span class="string">'S1'</span>, <span class="number">1</span> ), </span><br><span class="line">( <span class="string">'S2'</span>, <span class="number">2</span> ), </span><br><span class="line">( <span class="string">'S3'</span>, <span class="number">1</span> ) ;</span><br></pre></td></tr></table></figure>
+
+<p>So, now we have two tables in PostgreSQL:</p>
+<p><img src="/image/student_and_course_table.png" alt="student_and_course_table" title="student_and_course_table"></p>
+<p>And if we query by <code>SELECT * FROM STUDENT, COURSE;</code> and <code>SELECT * FROM COURSE, STUDENT;</code>, SQL will return the Cartesian product(cross product) of <code>student</code> and <code>course</code>:</p>
+<p><img src="/image/select_result.png" alt="select_result" title="select_result"></p>
+<p>You might have noticed that because of the different order, <code>STUDENT, COURSE</code> and <code>COURSE, STUDENT</code> are not the same. If we want to realize a <code>Join</code> using this cross product, we should add a WHERE clause, i.e., <code>SELECT * FROM STUDENT, COURSE WHERE STUDENT.COURSEID = COURSE.ID;</code>, which is  equivalent to <code>SELECT * FROM STUDENT JOIN COURSE ON (STUDENT.COURSEID = COURSE.ID);</code>.</p>
+<p><img src="/image/join_and_cross_product.png" alt="join_and_cross_product" title="join_and_cross_product"></p>
+<p>Actually, a <code>Join</code>(<code>inner join</code>, in SQL, joins are by default inner join, therefore we can omit <code>inner</code>) provides an implicit way of simultaneously selecting the cross product <strong>AND</strong> applying the where condition to filter out the rows we are not interested in. </p>
+<h3 id="Natural-Join"><a href="#Natural-Join" class="headerlink" title="Natural Join"></a>Natural Join</h3><p>Now we create two new tables:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">LANGUAGE</span></span><br><span class="line">( </span><br><span class="line">    LANGUAGEID <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>, </span><br><span class="line">    DESCRIPTION <span class="built_in">VARCHAR</span>( <span class="number">20</span> )</span><br><span class="line">) ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> FILM</span><br><span class="line">( </span><br><span class="line">    FILMID <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>, </span><br><span class="line">    TITLE <span class="built_in">VARCHAR</span>( <span class="number">20</span> ), </span><br><span class="line">    <span class="keyword">CATEGORY</span> <span class="built_in">VARCHAR</span>( <span class="number">100</span> ),</span><br><span class="line">    LANGUAGEID <span class="built_in">INT</span> <span class="keyword">REFERENCES</span> <span class="keyword">LANGUAGE</span>( LANGUAGEID ) </span><br><span class="line">) ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">LANGUAGE</span> </span><br><span class="line">( DESCRIPTION ) </span><br><span class="line"><span class="keyword">VALUES</span> </span><br><span class="line">( <span class="string">'English'</span> ), </span><br><span class="line">( <span class="string">'Chinese'</span> ),</span><br><span class="line">( <span class="string">'French'</span> );</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> FILM </span><br><span class="line">( TITLE, <span class="keyword">CATEGORY</span>, LANGUAGEID ) </span><br><span class="line"><span class="keyword">VALUES</span> </span><br><span class="line">( <span class="string">'Braveheart'</span>, <span class="string">'HISTORY'</span>, <span class="number">1</span> ), </span><br><span class="line">( <span class="string">'The Ghouls'</span>, <span class="string">'ACTION'</span>, <span class="number">2</span> ),</span><br><span class="line">( <span class="string">'Jeux d enfants'</span>, <span class="string">'LOVE'</span>, <span class="number">3</span> );</span><br></pre></td></tr></table></figure>
+
+<p>Now we have two new tables in PostgreSQL:</p>
+<p><img src="/image/natural_join_1.png" alt="natural_join_1" title="natural_join_1"></p>
+<p>We can use <code>natural join</code> to join these two tables:</p>
+<p><code>SELECT TITLE, DESCRIPTION FROM FILM NATURAL JOIN LANGUAGE;</code></p>
+<p>which is equivalent to the following <code>inner join</code> statement:</p>
+<p><code>SELECT TITLE, DESCRIPTION FROM FILM JOIN LANGUAGE ON FILM.LANGUAGEID = LANGUAGE.LANGUAGEID;</code></p>
+<p><img src="/image/natural_join_2.png" alt="natural_join_2" title="natural_join_2"></p>
+<p>Note that natural join <strong>eliminates duplicate columns</strong>, while inner join cannot do this for us.For example:</p>
+<p><img src="/image/natural_join_3.png" alt="natural_join_3" title="natural_join_3"></p>
+<p>One interesting thing is that if we use a table to natural join itself:</p>
+<p><code>SELECT * FROM FILM A NATURAL JOIN FILM B;</code></p>
+<p>It returns the same table <code>FILM</code>, that is, the above statement is equivalent to:</p>
+<p><code>SELECT * FROM FILM;</code></p>
+<p><img src="/image/natural_join_4.png" alt="natural_join_4" title="natural_join_4"></p>
+<p>How do we confirm this? We can use the following statement:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> FILM A <span class="keyword">NATURAL</span> <span class="keyword">JOIN</span> FILM B) <span class="keyword">EXCEPT</span> (<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> FILM)</span><br><span class="line"><span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">(<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> FILM) <span class="keyword">EXCEPT</span> (<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> FILM A <span class="keyword">NATURAL</span> <span class="keyword">JOIN</span> FILM B);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/natural_join_5.png" alt="natural_join_5" title="natural_join_5"></p>
+<p>Why we need <code>UNION</code>? Because we have to check in two directions to make sure that:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A - B = ∅</span><br><span class="line">B - A = ∅</span><br></pre></td></tr></table></figure>
+
+<p>Then we can know that <code>A = B</code>.</p>
+<h3 id="Outer-Join"><a href="#Outer-Join" class="headerlink" title="Outer Join"></a>Outer Join</h3><p>Now let’s first insert some new values into the table <code>FILM</code> and <code>LANGUAGE</code>:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">LANGUAGE</span> </span><br><span class="line">( DESCRIPTION ) </span><br><span class="line"><span class="keyword">VALUES</span> </span><br><span class="line">( <span class="string">'Spanish'</span> ),</span><br><span class="line">( <span class="string">'Korean'</span> );</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> FILM </span><br><span class="line">( TITLE, <span class="keyword">CATEGORY</span>, LANGUAGEID ) </span><br><span class="line"><span class="keyword">VALUES</span> </span><br><span class="line">( <span class="string">'Seven Samurai'</span>, <span class="string">'HISTORY'</span>, <span class="literal">NULL</span> ), </span><br><span class="line">( <span class="string">'Rashomon'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> );</span><br></pre></td></tr></table></figure>
+
+<p>Now these two tables are like this:</p>
+<p><img src="/image/outer_join_1.png" alt="outer_join_1" title="outer_join_1"></p>
+<p>Here we only talk about left join. We can use <code>left outer join</code>, or <code>left join</code>, or <code>natural left outer join</code>, or <code>natural left join</code>:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1. left outer join</span></span><br><span class="line"><span class="keyword">SELECT</span> TITLE, DESCRIPTION <span class="keyword">FROM</span> FILM <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> <span class="keyword">LANGUAGE</span> <span class="keyword">USING</span>(LANGUAGEID);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2. left join</span></span><br><span class="line"><span class="keyword">SELECT</span> TITLE, DESCRIPTION <span class="keyword">FROM</span> FILM <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> <span class="keyword">LANGUAGE</span> <span class="keyword">USING</span>(LANGUAGEID);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 3. natural left outer join</span></span><br><span class="line"><span class="keyword">SELECT</span> TITLE, DESCRIPTION <span class="keyword">FROM</span> FILM <span class="keyword">NATURAL</span> <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> <span class="keyword">LANGUAGE</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 4. natural left join</span></span><br><span class="line"><span class="keyword">SELECT</span> TITLE, DESCRIPTION <span class="keyword">FROM</span> FILM <span class="keyword">NATURAL</span> <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> <span class="keyword">LANGUAGE</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/outer_join_2.png" alt="outer_join_2" title="outer_join_2"></p>
+<p>In this case, we can interpret the outer join like this:</p>
+<p><img src="/image/outer_join_3.png" alt="outer_join_3" title="outer_join_3"></p>
+<ol>
+<li>We firstly select out <strong>all the titles</strong> in the <code>FILM</code> table.</li>
+<li>Then we select out the <strong>matching decription</strong> in the LANGUAGE table. For a certain title, if there is no equivalent description, we just show <code>NULL</code>.</li>
+</ol>
+<p>For outer join, a tricky thing is like this:</p>
+<p><img src="/image/outer_join_4.png" alt="outer_join_4" title="outer_join_4"></p>
+<p>As shown, if we use <code>SELECT TITLE, DESCRIPTION FROM FILM NATURAL LEFT JOIN LANGUAGE;</code>, we can get all the titles. Based on that, if we add <code>WHERE LANGUAGEID != 2</code>, it would eliminate the titles whose mathching language id is 2 or matching language is <code>NULL</code>. </p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Understanding-SQL-Join"><span class="toc-number">1.</span> <span class="toc-text">Understanding SQL Join</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-set-theory"><span class="toc-number">1.1.</span> <span class="toc-text">Basic set theory</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Set"><span class="toc-number">1.1.1.</span> <span class="toc-text">Set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tuple"><span class="toc-number">1.1.2.</span> <span class="toc-text">Tuple</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cartesian-product"><span class="toc-number">1.1.3.</span> <span class="toc-text">Cartesian product</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL-relations"><span class="toc-number">1.1.4.</span> <span class="toc-text">SQL relations</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Understanding-Join-in-SQL"><span class="toc-number">1.2.</span> <span class="toc-text">Understanding Join in SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Inner-Join"><span class="toc-number">1.2.1.</span> <span class="toc-text">Inner Join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Natural-Join"><span class="toc-number">1.2.2.</span> <span class="toc-text">Natural Join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Outer-Join"><span class="toc-number">1.2.3.</span> <span class="toc-text">Outer Join</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/11/06/Understanding-SQL-Join/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/11/06/Understanding-SQL-Join/&text=Understanding SQL Join"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/11/06/Understanding-SQL-Join/&title=Understanding SQL Join"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/11/06/Understanding-SQL-Join/&is_video=false&description=Understanding SQL Join"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Understanding SQL Join&body=Check out this article: http://yoursite.com/2019/11/06/Understanding-SQL-Join/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/11/06/Understanding-SQL-Join/&title=Understanding SQL Join"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/11/06/Understanding-SQL-Join/&title=Understanding SQL Join"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/11/06/Understanding-SQL-Join/&title=Understanding SQL Join"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/11/06/Understanding-SQL-Join/&title=Understanding SQL Join"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/11/06/Understanding-SQL-Join/&name=Understanding SQL Join&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

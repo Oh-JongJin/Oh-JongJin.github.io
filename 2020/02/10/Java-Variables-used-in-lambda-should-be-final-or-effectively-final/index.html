@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Java: Variables used in lambda should be final or effectively finalIn Java, a lambda expression can reference a variable outside the expression itself. It can reference:  local variable(should be fina">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java: Variables used in lambda should be final or effectively final">
+<meta property="og:url" content="http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="Java: Variables used in lambda should be final or effectively finalIn Java, a lambda expression can reference a variable outside the expression itself. It can reference:  local variable(should be fina">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/lambda_reference.png">
+<meta property="og:updated_time" content="2020-05-01T15:11:59.544Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java: Variables used in lambda should be final or effectively final">
+<meta name="twitter:description" content="Java: Variables used in lambda should be final or effectively finalIn Java, a lambda expression can reference a variable outside the expression itself. It can reference:  local variable(should be fina">
+<meta name="twitter:image" content="http://yoursite.com/image/lambda_reference.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Java: Variables used in lambda should be final or effectively final</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/02/10/Amortized-Complexity/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/02/08/Java-Collections/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/&text=Java: Variables used in lambda should be final or effectively final"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/&title=Java: Variables used in lambda should be final or effectively final"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/&is_video=false&description=Java: Variables used in lambda should be final or effectively final"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java: Variables used in lambda should be final or effectively final&body=Check out this article: http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/&title=Java: Variables used in lambda should be final or effectively final"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/&title=Java: Variables used in lambda should be final or effectively final"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/&title=Java: Variables used in lambda should be final or effectively final"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/&title=Java: Variables used in lambda should be final or effectively final"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/&name=Java: Variables used in lambda should be final or effectively final&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-Variables-used-in-lambda-should-be-final-or-effectively-final"><span class="toc-number">1.</span> <span class="toc-text">Java: Variables used in lambda should be final or effectively final</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-a-local-variable"><span class="toc-number">1.1.</span> <span class="toc-text">Reference a local variable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-an-instance-variable"><span class="toc-number">1.2.</span> <span class="toc-text">Reference an instance variable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-a-static-variable"><span class="toc-number">1.3.</span> <span class="toc-text">Reference a static variable</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Java: Variables used in lambda should be final or effectively final
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-02-10T06:31:11.000Z" itemprop="datePublished">2020-02-10</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Java-Variables-used-in-lambda-should-be-final-or-effectively-final"><a href="#Java-Variables-used-in-lambda-should-be-final-or-effectively-final" class="headerlink" title="Java: Variables used in lambda should be final or effectively final"></a>Java: Variables used in lambda should be final or effectively final</h1><p>In Java, a lambda expression can reference a variable outside the expression itself. It can reference:</p>
+<ol>
+<li><p>local variable(should be final or effectively final)</p>
+</li>
+<li><p>instance variable</p>
+</li>
+<li><p>static variable </p>
+</li>
+</ol>
+<h2 id="Reference-a-local-variable"><a href="#Reference-a-local-variable" class="headerlink" title="Reference a local variable"></a>Reference a local variable</h2><p>If a expression references a local variable, the local variable should be final or effectively final. For example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LambdaReference</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        list.add(<span class="string">"Orange"</span>);</span><br><span class="line">        list.add(<span class="string">"Marshall"</span>);</span><br><span class="line">        list.add(<span class="string">"Aroma"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// s is a local variable, which is *inside* a method.</span></span><br><span class="line">        String s = <span class="string">"Amplifier"</span>;</span><br><span class="line"></span><br><span class="line">        list.forEach(e -&gt; System.out.println(e + <span class="string">" "</span> + s));       </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In the above code, the lambda function references a local variable <code>s</code>, and the output of the code is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Orange Amplifier</span><br><span class="line">Marshall Amplifier</span><br><span class="line">Aroma Amplifier</span><br></pre></td></tr></table></figure>
+
+<p>In this case, the variable <code>s</code> should be <strong>effectively final</strong>, which means that we cannot change its value. If we change its value from “Amplifier” to “Factory”, there would be an error:</p>
+<p><img src="/image/lambda_reference.png" alt="lambda_reference" title="lambda_reference"></p>
+<p>Therefore, a more clean and straightfoward way is to declare the variable <code>s</code> as a final variable:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LambdaReference</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        list.add(<span class="string">"Orange"</span>);</span><br><span class="line">        list.add(<span class="string">"Marshall"</span>);</span><br><span class="line">        list.add(<span class="string">"Aroma"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// We declare s as a final variable.</span></span><br><span class="line">        <span class="keyword">final</span> String s = <span class="string">"Amplifier"</span>;</span><br><span class="line"></span><br><span class="line">        list.forEach(e -&gt; System.out.println(e + <span class="string">" "</span> + s));       </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Another thing worth noting is that, a variable of reference type is considered effectively final if the <strong>reference</strong> does not change, even if the object itself is mutable and changes. For example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The variable "set" is effectively final, even its content has</span></span><br><span class="line"><span class="comment">// been changed.</span></span><br><span class="line">TreeSet&lt;Employee&gt; set = <span class="keyword">new</span> TreeSet&lt;Employee&gt;();</span><br><span class="line">list.forEach( entry -&gt; set.add(entry) );</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference-an-instance-variable"><a href="#Reference-an-instance-variable" class="headerlink" title="Reference an instance variable"></a>Reference an instance variable</h2><p>A lambda expression can also reference an instance variable:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LambdaReference</span> </span>&#123;</span><br><span class="line">    <span class="comment">// s is an instance variable.</span></span><br><span class="line">    String s = <span class="string">"Amplifier"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        list.add(<span class="string">"Orange"</span>);</span><br><span class="line">        list.add(<span class="string">"Marshall"</span>);</span><br><span class="line">        list.add(<span class="string">"Aroma"</span>);</span><br><span class="line"></span><br><span class="line">        list.forEach(e -&gt; System.out.println(e + <span class="string">" "</span> + s));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        LambdaReference lr = <span class="keyword">new</span> LambdaReference();</span><br><span class="line">        lr.foo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In the above code, <code>s</code> is an instance variable, and the output of the code is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Orange Amplifier</span><br><span class="line">Marshall Amplifier</span><br><span class="line">Aroma Amplifier</span><br></pre></td></tr></table></figure>
+
+<p>Note that <code>s</code> does not have to be final or effectively final, which means that we can change the value of <code>s</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LambdaReference</span> </span>&#123;</span><br><span class="line">    <span class="comment">// s is an instance variable.</span></span><br><span class="line">    String s = <span class="string">"Amplifier"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        list.add(<span class="string">"Orange"</span>);</span><br><span class="line">        list.add(<span class="string">"Marshall"</span>);</span><br><span class="line">        list.add(<span class="string">"Aroma"</span>);</span><br><span class="line"></span><br><span class="line">        list.forEach(e -&gt; System.out.println(e + <span class="string">" "</span> + s));</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"----------------------------"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// We can change the value of s.</span></span><br><span class="line">        s = <span class="string">"Factory"</span>;</span><br><span class="line">        list.forEach(e -&gt; System.out.println(e + <span class="string">" "</span> + s));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        LambdaReference lr = <span class="keyword">new</span> LambdaReference();</span><br><span class="line">        lr.foo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The output is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Orange Amplifier</span><br><span class="line">Marshall Amplifier</span><br><span class="line">Aroma Amplifier</span><br><span class="line">----------------------------</span><br><span class="line">Orange Factory</span><br><span class="line">Marshall Factory</span><br><span class="line">Aroma Factory</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference-a-static-variable"><a href="#Reference-a-static-variable" class="headerlink" title="Reference a static variable"></a>Reference a static variable</h2><p>Similar to instance variable, static variable can be referenced by instance variable, and it needs not to be final or effectively final:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LambdaReference</span> </span>&#123;</span><br><span class="line">    <span class="comment">// s is a static variable.</span></span><br><span class="line">    <span class="keyword">static</span> String s = <span class="string">"Amplifier"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        list.add(<span class="string">"Orange"</span>);</span><br><span class="line">        list.add(<span class="string">"Marshall"</span>);</span><br><span class="line">        list.add(<span class="string">"Aroma"</span>);</span><br><span class="line"></span><br><span class="line">        list.forEach(e -&gt; System.out.println(e + <span class="string">" "</span> + s));</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"----------------------------"</span>);</span><br><span class="line"></span><br><span class="line">        s = <span class="string">"Factory"</span>;</span><br><span class="line">        list.forEach(e -&gt; System.out.println(e + <span class="string">" "</span> + s));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The output of the above code is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Orange Amplifier</span><br><span class="line">Marshall Amplifier</span><br><span class="line">Aroma Amplifier</span><br><span class="line">----------------------------</span><br><span class="line">Orange Factory</span><br><span class="line">Marshall Factory</span><br><span class="line">Aroma Factory</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-Variables-used-in-lambda-should-be-final-or-effectively-final"><span class="toc-number">1.</span> <span class="toc-text">Java: Variables used in lambda should be final or effectively final</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-a-local-variable"><span class="toc-number">1.1.</span> <span class="toc-text">Reference a local variable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-an-instance-variable"><span class="toc-number">1.2.</span> <span class="toc-text">Reference an instance variable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-a-static-variable"><span class="toc-number">1.3.</span> <span class="toc-text">Reference a static variable</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/&text=Java: Variables used in lambda should be final or effectively final"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/&title=Java: Variables used in lambda should be final or effectively final"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/&is_video=false&description=Java: Variables used in lambda should be final or effectively final"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java: Variables used in lambda should be final or effectively final&body=Check out this article: http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/&title=Java: Variables used in lambda should be final or effectively final"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/&title=Java: Variables used in lambda should be final or effectively final"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/&title=Java: Variables used in lambda should be final or effectively final"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/&title=Java: Variables used in lambda should be final or effectively final"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/02/10/Java-Variables-used-in-lambda-should-be-final-or-effectively-final/&name=Java: Variables used in lambda should be final or effectively final&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Game TheoryThere are two kinds of strategic interactions:  sequential: The players take actions in turn, e.g., playing chess.  simultaneous: The players act at the same time, in ignorance of the other">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Game Theory">
+<meta property="og:url" content="http://yoursite.com/2020/02/14/Game-Theory/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="Game TheoryThere are two kinds of strategic interactions:  sequential: The players take actions in turn, e.g., playing chess.  simultaneous: The players act at the same time, in ignorance of the other">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/game_theory_1.png">
+<meta property="og:image" content="http://yoursite.com/image/game_theory_2.png">
+<meta property="og:image" content="http://yoursite.com/image/game_theory_3.png">
+<meta property="og:image" content="http://yoursite.com/image/game_theory_4.png">
+<meta property="og:image" content="http://yoursite.com/image/game_theory_5.png">
+<meta property="og:image" content="http://yoursite.com/image/game_theory_6.png">
+<meta property="og:image" content="http://yoursite.com/image/game_theory_7.png">
+<meta property="og:updated_time" content="2020-04-26T19:02:25.545Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Game Theory">
+<meta name="twitter:description" content="Game TheoryThere are two kinds of strategic interactions:  sequential: The players take actions in turn, e.g., playing chess.  simultaneous: The players act at the same time, in ignorance of the other">
+<meta name="twitter:image" content="http://yoursite.com/image/game_theory_1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Game Theory</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/02/19/Introduction-to-Linear-Regression/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/02/10/Amortized-Complexity/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/02/14/Game-Theory/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/02/14/Game-Theory/&text=Game Theory"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/02/14/Game-Theory/&title=Game Theory"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/02/14/Game-Theory/&is_video=false&description=Game Theory"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Game Theory&body=Check out this article: http://yoursite.com/2020/02/14/Game-Theory/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/02/14/Game-Theory/&title=Game Theory"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/02/14/Game-Theory/&title=Game Theory"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/02/14/Game-Theory/&title=Game Theory"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/02/14/Game-Theory/&title=Game Theory"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/02/14/Game-Theory/&name=Game Theory&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Game-Theory"><span class="toc-number">1.</span> <span class="toc-text">Game Theory</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sequential-Move-Game"><span class="toc-number">1.1.</span> <span class="toc-text">Sequential Move Game</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Simultaneous-Move-Game"><span class="toc-number">1.2.</span> <span class="toc-text">Simultaneous Move Game</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Prisoners’-Dilemmas"><span class="toc-number">1.2.1.</span> <span class="toc-text">Prisoners’ Dilemmas</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nash-Equilibrium"><span class="toc-number">1.2.2.</span> <span class="toc-text">Nash Equilibrium</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chicken-Game-amp-Battle-of-the-Sexes"><span class="toc-number">1.2.3.</span> <span class="toc-text">Chicken Game &amp; Battle of the Sexes</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Game Theory
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-02-14T12:44:40.000Z" itemprop="datePublished">2020-02-14</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Game-Theory"><a href="#Game-Theory" class="headerlink" title="Game Theory"></a>Game Theory</h1><p>There are two kinds of strategic interactions:</p>
+<ol>
+<li><p>sequential: The players take actions <strong>in turn</strong>, e.g., playing chess.</p>
+</li>
+<li><p>simultaneous: The players act <strong>at the same time</strong>, in ignorance of the others’ current actions, e.g., <code>prisoners’ dilemma</code>.</p>
+</li>
+</ol>
+<h2 id="Sequential-Move-Game"><a href="#Sequential-Move-Game" class="headerlink" title="Sequential Move Game"></a>Sequential Move Game</h2><p>For sequential move games, we can follow the rule:</p>
+<p><code>Look forward and reason backward.</code></p>
+<p>Each player should figure out the other players’ future responses and use them in calculating his own best current move.</p>
+<p>A <code>game tree</code> can help us to look forward and reason backward. Let’s look at the following example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Lucy holds a football on the ground and invites Charlie to run up and kick it. At the last moment, Lucy pulls the ball away. Charlie, kicking only air, lands on his back, and this gives Lucy great perverse pleasure.</span><br></pre></td></tr></table></figure>
+
+<p>In this example, before taking any action, Charlie can draw a <code>game tree</code> like this:</p>
+<p><img src="/image/game_theory_1.png" alt="game_theory_1" title="game_theory_1"></p>
+<p>Based on other contexts, Charlie can know Lucy’s character and predict she will choose the upper branch. Therefore, Charlie should choose the lower branch:</p>
+<p><img src="/image/game_theory_2.png" alt="game_theory_2" title="game_theory_2"></p>
+<p>In real world, we can have more complex game trees, and in many cases we must face <strong>uncertainty</strong> about other players’ choices and make educated guesses on their choices.</p>
+<hr>
+<h2 id="Simultaneous-Move-Game"><a href="#Simultaneous-Move-Game" class="headerlink" title="Simultaneous Move Game"></a>Simultaneous Move Game</h2><h3 id="Prisoners’-Dilemmas"><a href="#Prisoners’-Dilemmas" class="headerlink" title="Prisoners’ Dilemmas"></a>Prisoners’ Dilemmas</h3><p>In real life, they are many instances of the prisoners’ dilemma. For example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Two gas stations at the same corner, or two supermarkets in the same neighborhood, sometimes get into fierce price wars with each other.</span><br></pre></td></tr></table></figure>
+
+<p>In this case, if the gas station <code>A</code> charges a low price, the <code>B</code> station had better set its own price low to avoid losing too many customers; if <code>A</code> prices its gas high, <code>B</code> can divert many customers its way by pricing low. However, when both stations price low, neither makes money. </p>
+<p>Without knowing each other’s choice, two stations take actions <strong>simultaneously</strong>. They all choose their best choice, however, the result is disappointing. That’s why we call it <code>dilemma</code>.</p>
+<p>To analysis the above simultaneous move game, we can use a table to lay out all the combinations of the simultaneous choices two stations could make:</p>
+<p><img src="/image/game_theory_3.png" alt="game_theory_3" title="game_theory_3"></p>
+<p>As shown, suppose we are station <code>B</code>:</p>
+<ul>
+<li><p>If station <code>A</code> choose high price, then we should choose low price.</p>
+</li>
+<li><p>If station <code>A</code> choose low price, we should also choose low price.</p>
+</li>
+</ul>
+<p>For station <code>B</code>, no matter what choice station <code>A</code> would make, the better choice is always <code>low price</code>. Therefore, in this case, <code>low price</code> is station <code>B</code>‘s  <code>dominant strategy</code>. And we should remember:</p>
+<p><code>If you have a dominant strategy, use it.</code></p>
+<p>In this case, station <code>A</code>‘s dominant strategy is also <code>low price</code>. The two stations both choose to low their prices, but they all makes less money(if they did not low their prices, they can earn 5, which is bigger than 4).</p>
+<p>How to resolve the dilemma? In this gas station case, two stations can make agreements on keeping high price. </p>
+<p>Basically, we should make sure the players have strong incentives to <strong>achieve cooperation</strong>. If they choose cooperation, they can recieve a reward. And if someone choose defection, he would be punished. This need players design reward/punishment in advance.</p>
+<h3 id="Nash-Equilibrium"><a href="#Nash-Equilibrium" class="headerlink" title="Nash Equilibrium"></a>Nash Equilibrium</h3><p>One evening, two hunters meet at a campfire party. They have a talk with each other and realise that:</p>
+<ul>
+<li><p>By cooperating they could hunt bigger animals, such as stag or bison. </p>
+</li>
+<li><p>One person on his own cannot expect any success hunting either stag or bison. </p>
+</li>
+</ul>
+<p>Therefore, they decide to go hunting together the following day. However, in the next morning, they both have forgotten whether they decided to go after stag or bison. The hunting grounds for the two species are in opposite directions. There were no cell phones, and they have to make choices(stag or bison) in isolation.</p>
+<p>Unlike prisoners’ dilemma, in this case two players <strong>do not have dominant strategies</strong>. In another word, hunter <code>A</code>‘s best choice depends on what Hunter <code>B</code> does, and vice versa. Each hunter has to think about the other’s choice and figure out his own choice. We can have a table like this:</p>
+<p><img src="/image/game_theory_4.png" alt="game_theory_4" title="game_theory_4"></p>
+<p>This game has two <code>Nash equilibria</code>:</p>
+<p><img src="/image/game_theory_5.png" alt="game_theory_5" title="game_theory_5"></p>
+<p>Which equilibrium the two hunters tend to achieve? To achieve one of these equilibria, the two hunters need to find the <code>focal point</code>.</p>
+<p>What is focal point? Suppose each of two players is asked to choose a positive integer. If both choose the same number, both get a prize. If the two choose different numbers, neither gets anything. The overwhelmingly frequent choice is <code>1</code>, because it is the first among the whole positive integers, it is the smallest. Therefore, 1 the is <strong>focal point</strong> in this case.</p>
+<p>Back to our hunting problem, if during the two hunters’ talk, they both agree that stag is more delicious than bison, their focal point could be stag. The focal point can help them make the right choice.</p>
+<h3 id="Chicken-Game-amp-Battle-of-the-Sexes"><a href="#Chicken-Game-amp-Battle-of-the-Sexes" class="headerlink" title="Chicken Game &amp; Battle of the Sexes"></a>Chicken Game &amp; Battle of the Sexes</h3><p>Chicken game is a classic game:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Two people drive toward each other on a straight road, and the first one to swerve to avoid a collision is the loser, or chicken. If both keep straight, however, they crash, and that is the worst outcome for both.</span><br></pre></td></tr></table></figure>
+
+<p>For this game, we can have a playoff table like this:</p>
+<p><img src="/image/game_theory_6.png" alt="game_theory_6" title="game_theory_6"></p>
+<p>Note that we have two <code>Nash equilibria</code> here, but each person wants to achieve his preferred equilibrium. </p>
+<p>To solve this problem, one of the players, say person A, may <strong>make a commitment</strong> to choosing his preferred strategy, namely going straight. It is important to make this commitment credible and to ensure that the other player knows it.</p>
+<p>Let’s look at a similar game, i.e., battle of the sexes:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">A husband and wife have different preferences in movies, and the two available choices are very different. </span><br><span class="line"></span><br><span class="line">The husband wants to see &apos;300&apos;. The wife likes &apos;A Beautiful Mind&apos;. </span><br><span class="line"></span><br><span class="line">But both prefer watching either movie in the other’s company to watching any movie on their own.</span><br></pre></td></tr></table></figure>
+
+<p>For this problem, we can have the following table:</p>
+<p><img src="/image/game_theory_7.png" alt="game_theory_7" title="game_theory_7"></p>
+<p>Like the chicken game, one of the couple can <strong>make a commitment</strong> to insist his/her choice. In this way, he/she can force the other to accept his/her choice.</p>
+<p>However, the conflict in this game is not as sharp as in chicken game. And the husband and wife will live together for a long time.Therefore, this time, they can make decision based on the wife’s preference, and next time the husband’s preference…</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Game-Theory"><span class="toc-number">1.</span> <span class="toc-text">Game Theory</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sequential-Move-Game"><span class="toc-number">1.1.</span> <span class="toc-text">Sequential Move Game</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Simultaneous-Move-Game"><span class="toc-number">1.2.</span> <span class="toc-text">Simultaneous Move Game</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Prisoners’-Dilemmas"><span class="toc-number">1.2.1.</span> <span class="toc-text">Prisoners’ Dilemmas</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nash-Equilibrium"><span class="toc-number">1.2.2.</span> <span class="toc-text">Nash Equilibrium</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chicken-Game-amp-Battle-of-the-Sexes"><span class="toc-number">1.2.3.</span> <span class="toc-text">Chicken Game &amp; Battle of the Sexes</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/02/14/Game-Theory/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/02/14/Game-Theory/&text=Game Theory"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/02/14/Game-Theory/&title=Game Theory"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/02/14/Game-Theory/&is_video=false&description=Game Theory"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Game Theory&body=Check out this article: http://yoursite.com/2020/02/14/Game-Theory/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/02/14/Game-Theory/&title=Game Theory"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/02/14/Game-Theory/&title=Game Theory"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/02/14/Game-Theory/&title=Game Theory"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/02/14/Game-Theory/&title=Game Theory"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/02/14/Game-Theory/&name=Game Theory&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="How to use PostgreSQL on MacPostgreSQL(psql, PG) is an open source object-relational database system. In this article, we will talk about how to get start with PostgreSQL on Mac. Install PostgreSQL us">
+<meta name="keywords" content="database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to use PostgreSQL on Mac">
+<meta property="og:url" content="http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="How to use PostgreSQL on MacPostgreSQL(psql, PG) is an open source object-relational database system. In this article, we will talk about how to get start with PostgreSQL on Mac. Install PostgreSQL us">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/psql_postgres.png">
+<meta property="og:image" content="http://yoursite.com/image/create_new_user_in_psql.png">
+<meta property="og:image" content="http://yoursite.com/image/create_database.png">
+<meta property="og:image" content="http://yoursite.com/image/access_database.png">
+<meta property="og:updated_time" content="2020-04-27T13:49:04.441Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to use PostgreSQL on Mac">
+<meta name="twitter:description" content="How to use PostgreSQL on MacPostgreSQL(psql, PG) is an open source object-relational database system. In this article, we will talk about how to get start with PostgreSQL on Mac. Install PostgreSQL us">
+<meta name="twitter:image" content="http://yoursite.com/image/psql_postgres.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>How to use PostgreSQL on Mac</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/11/06/Functions-in-Java/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/11/02/What-is-memory-leak/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/&text=How to use PostgreSQL on Mac"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/&title=How to use PostgreSQL on Mac"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/&is_video=false&description=How to use PostgreSQL on Mac"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to use PostgreSQL on Mac&body=Check out this article: http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/&title=How to use PostgreSQL on Mac"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/&title=How to use PostgreSQL on Mac"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/&title=How to use PostgreSQL on Mac"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/&title=How to use PostgreSQL on Mac"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/&name=How to use PostgreSQL on Mac&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#How-to-use-PostgreSQL-on-Mac"><span class="toc-number">1.</span> <span class="toc-text">How to use PostgreSQL on Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-PostgreSQL-using-Homebrew"><span class="toc-number">1.1.</span> <span class="toc-text">Install PostgreSQL using Homebrew</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Start-and-stop-database-services"><span class="toc-number">1.2.</span> <span class="toc-text">Start and stop database services</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Start-using-PostgreSQL"><span class="toc-number">1.3.</span> <span class="toc-text">Start using PostgreSQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-and-access-database"><span class="toc-number">1.4.</span> <span class="toc-text">Create and access database</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Common-commands-in-PostgreSQL"><span class="toc-number">1.5.</span> <span class="toc-text">Common commands in PostgreSQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#e-command"><span class="toc-number">1.5.1.</span> <span class="toc-text">\e command</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        How to use PostgreSQL on Mac
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-11-05T05:22:23.000Z" itemprop="datePublished">2019-11-05</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/database/">database</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="How-to-use-PostgreSQL-on-Mac"><a href="#How-to-use-PostgreSQL-on-Mac" class="headerlink" title="How to use PostgreSQL on Mac"></a>How to use PostgreSQL on Mac</h1><p>PostgreSQL(psql, PG) is an open source object-relational database system. In this article, we will talk about how to get start with PostgreSQL on Mac.</p>
+<h2 id="Install-PostgreSQL-using-Homebrew"><a href="#Install-PostgreSQL-using-Homebrew" class="headerlink" title="Install PostgreSQL using Homebrew"></a>Install PostgreSQL using Homebrew</h2><p>In your terminal, <code>brew install postgresql</code> command can help you automatically download and install PostgreSQL. After installation, you can open a new terminal to use PostgreSQL.</p>
+<h2 id="Start-and-stop-database-services"><a href="#Start-and-stop-database-services" class="headerlink" title="Start and stop database services"></a>Start and stop database services</h2><p>Before using PostgreSQL, you should use <code>brew services start postgresql</code> to start database services. After using PostgreSQL, you should use <code>brew services stop postgresql</code> to stop database services.</p>
+<h2 id="Start-using-PostgreSQL"><a href="#Start-using-PostgreSQL" class="headerlink" title="Start using PostgreSQL"></a>Start using PostgreSQL</h2><p>You can use <code>psql postgres</code> to start the PostgreSQL teminal:</p>
+<p><img src="/image/psql_postgres.png" alt="psql_postgres" title="psql_postgres"></p>
+<p>Then you need to create a new user using the following command:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1. Create a new user:</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">ROLE</span> username <span class="keyword">WITH</span> LOGIN <span class="keyword">PASSWORD</span> <span class="string">'password'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2. Give the new user privileges to create, edit, and delete databases:</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">ROLE</span> username CREATEDB;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- If necessary, you can delete role using this code:</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">ROLE</span> role_name;</span><br></pre></td></tr></table></figure>
+
+<p>After creating a new user, you should quit the PostgreSQL terminal using <code>\q</code>, then restart it using <code>psql postgres -U username</code>:</p>
+<p><img src="/image/create_new_user_in_psql.png" alt="create_new_user_in_psql" title="create_new_user_in_psql"></p>
+<p>Note that the command prompt changes from <code>postgres=#</code>(which means you are are a superuser,  because you installed the PostgreSQL instance yourself) to <code>postgres=&gt;</code> .</p>
+<h2 id="Create-and-access-database"><a href="#Create-and-access-database" class="headerlink" title="Create and access database"></a>Create and access database</h2><p>To create a new database, you should use the <code>CREATE DATABASE database_name</code> command:</p>
+<p><img src="/image/create_database.png" alt="create_database" title="create_database"></p>
+<p>And then you can use <code>\c database_name</code> to connect to the database you created:</p>
+<p><img src="/image/access_database.png" alt="access_database" title="access_database"></p>
+<h2 id="Common-commands-in-PostgreSQL"><a href="#Common-commands-in-PostgreSQL" class="headerlink" title="Common commands in PostgreSQL"></a>Common commands in PostgreSQL</h2><p>To get familiar with PostgreSQL commands, inside the PostgreSQL terminal you can type <code>\?</code> (for internal commands) or <code>\help</code> (for SQL commands) to obtain the help documentation. Here are some common commands:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Command</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>\l</code></td>
+<td align="center">list databases</td>
+</tr>
+<tr>
+<td align="center"><code>\dt</code></td>
+<td align="center">list tables</td>
+</tr>
+<tr>
+<td align="center"><code>\d table_name</code></td>
+<td align="center">describe table</td>
+</tr>
+<tr>
+<td align="center"><code>\i file_name</code></td>
+<td align="center">execute commands from file, e.g., <code>\i filepath/filename.sql</code></td>
+</tr>
+<tr>
+<td align="center"><code>\e</code></td>
+<td align="center">edit the query buffer (or file) with external editor</td>
+</tr>
+</tbody></table>
+<h3 id="e-command"><a href="#e-command" class="headerlink" title="\e command"></a>\e command</h3><p>Now I want to talk about <code>\e</code> command in detail. Sometimes if you need to input many SQL statements, it will be inconvenient to write them line by line directly in the PostgreSQL terminal. In this case, <code>\e</code> command can help you launch into a default text editor. This editor uses VIM environment, in which you can write SQL scripts. And when you write and quit(i.e., using <code>:wq</code> in VIM), PostgreSQL can automatically run the SQL commands saved in the editor and return the results. </p>
+<p>In addition, in one terminal session, the SQL statements executed previously are all saved in this editor, so you can modify them if necessary.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#How-to-use-PostgreSQL-on-Mac"><span class="toc-number">1.</span> <span class="toc-text">How to use PostgreSQL on Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-PostgreSQL-using-Homebrew"><span class="toc-number">1.1.</span> <span class="toc-text">Install PostgreSQL using Homebrew</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Start-and-stop-database-services"><span class="toc-number">1.2.</span> <span class="toc-text">Start and stop database services</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Start-using-PostgreSQL"><span class="toc-number">1.3.</span> <span class="toc-text">Start using PostgreSQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-and-access-database"><span class="toc-number">1.4.</span> <span class="toc-text">Create and access database</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Common-commands-in-PostgreSQL"><span class="toc-number">1.5.</span> <span class="toc-text">Common commands in PostgreSQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#e-command"><span class="toc-number">1.5.1.</span> <span class="toc-text">\e command</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/&text=How to use PostgreSQL on Mac"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/&title=How to use PostgreSQL on Mac"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/&is_video=false&description=How to use PostgreSQL on Mac"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to use PostgreSQL on Mac&body=Check out this article: http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/&title=How to use PostgreSQL on Mac"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/&title=How to use PostgreSQL on Mac"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/&title=How to use PostgreSQL on Mac"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/&title=How to use PostgreSQL on Mac"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/11/05/How-to-use-PostgreSQL-on-Mac/&name=How to use PostgreSQL on Mac&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="High Order Methods in JavaA higher-order method is one that takes another method as an argument. Suppose we have a class List: 1234567891011121314151617181920212223242526272829303132333435363738394041">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="High-Order Methods in Java">
+<meta property="og:url" content="http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="High Order Methods in JavaA higher-order method is one that takes another method as an argument. Suppose we have a class List: 1234567891011121314151617181920212223242526272829303132333435363738394041">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-01T15:11:25.814Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="High-Order Methods in Java">
+<meta name="twitter:description" content="High Order Methods in JavaA higher-order method is one that takes another method as an argument. Suppose we have a class List: 1234567891011121314151617181920212223242526272829303132333435363738394041">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>High-Order Methods in Java</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/02/07/Operating-System-Virtualization-of-Memory/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/02/05/Recursive-Structure-Tree/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/&text=High-Order Methods in Java"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/&title=High-Order Methods in Java"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/&is_video=false&description=High-Order Methods in Java"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=High-Order Methods in Java&body=Check out this article: http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/&title=High-Order Methods in Java"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/&title=High-Order Methods in Java"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/&title=High-Order Methods in Java"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/&title=High-Order Methods in Java"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/&name=High-Order Methods in Java&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#High-Order-Methods-in-Java"><span class="toc-number">1.</span> <span class="toc-text">High Order Methods in Java</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Map"><span class="toc-number">1.1.</span> <span class="toc-text">Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Filter"><span class="toc-number">1.2.</span> <span class="toc-text">Filter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reduce"><span class="toc-number">1.3.</span> <span class="toc-text">Reduce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Appendix"><span class="toc-number">1.4.</span> <span class="toc-text">Appendix</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        High-Order Methods in Java
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-02-05T11:34:46.000Z" itemprop="datePublished">2020-02-05</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="High-Order-Methods-in-Java"><a href="#High-Order-Methods-in-Java" class="headerlink" title="High Order Methods in Java"></a>High Order Methods in Java</h1><p>A higher-order method is one that takes another method as an argument. Suppose we have a class <code>List</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * List class defines a generic type called List, and provides</span></span><br><span class="line"><span class="comment"> * constructor and getter methods. </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">boolean</span> empty;</span><br><span class="line">    <span class="keyword">protected</span> E head;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;E&gt; tail;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The first constructor creates a list consisting of a head, that is,</span></span><br><span class="line"><span class="comment">     * an integer and a tail, which is another list of integers.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> head</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> tail</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">List</span><span class="params">(E head, List&lt;E&gt; tail)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.empty = <span class="keyword">false</span>; </span><br><span class="line">        <span class="keyword">this</span>.head = head;</span><br><span class="line">        <span class="keyword">this</span>.tail = tail;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  The second constructor creates an empty list, i.e., a list</span></span><br><span class="line"><span class="comment">     *  with no elements.  For this list, head and tail remain</span></span><br><span class="line"><span class="comment">     *  undefined, calls to the corresponding getters will have to</span></span><br><span class="line"><span class="comment">     *  result in an exception.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">List</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.empty = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * returns true if this list is empty</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.empty;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * returns the head of this list or throws an exception if the</span></span><br><span class="line"><span class="comment">     * list is empty</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IllegalStateException if the list is empty</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">getHead</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(</span><br><span class="line">                          <span class="string">"Trying to access head of an empty list"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.head;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * returns the tail of this list or throws an exception if the</span></span><br><span class="line"><span class="comment">     * list is empty</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IllegalStateException if the list is empty</span></span><br><span class="line"><span class="comment">     */</span>    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;E&gt; <span class="title">getTail</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(</span><br><span class="line">                          <span class="string">"Trying to access tail of an empty list"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.tail;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="string">"["</span> + toStringAux() + <span class="string">"]"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toStringAux</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       	<span class="keyword">if</span> (isEmpty()) &#123;</span><br><span class="line">						<span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">       	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (getTail().isEmpty())&#123;</span><br><span class="line">						<span class="keyword">return</span> getHead() + <span class="string">""</span>;</span><br><span class="line">       	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">						<span class="keyword">return</span> getHead() + <span class="string">", "</span> + getTail().toStringAux();</span><br><span class="line">       	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">				List&lt;E&gt; list = (List&lt;E&gt;) o;</span><br><span class="line">				<span class="keyword">if</span> (<span class="keyword">this</span>.empty &amp;&amp; list.isEmpty())</span><br><span class="line">						<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.isEmpty() || list.isEmpty()) &#123;</span><br><span class="line">						<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> ( <span class="keyword">this</span>.getHead().equals(list.getHead()) ) &#123;</span><br><span class="line">						<span class="keyword">return</span> <span class="keyword">this</span>.getTail().equals(list.getTail());</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">						<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now we can introduce a number of static high order methods to work with lists using the <code>List</code> class.</p>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p><code>map</code> method takes an input <code>List&lt;E&gt;</code> and produces an output <code>List&lt;R&gt;</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span>&lt;E,R&gt; List&lt;R&gt; <span class="title">map</span><span class="params">(Function&lt;E,R&gt; fun, List&lt;E&gt; a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (a.isEmpty())</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> List();</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> List(fun.apply(a.getHead()), map(fun, a.getTail()));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>map</code> is a high order method, beacause it takes <code>Function</code> as its argument, and it applies this function to every element of its input list. Suppose we have an input list:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Then we can call the <code>map</code> method in this way:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; result = map(x -&gt; x*x, list);<span class="comment">// x -&gt; x*x is a lambda expression</span></span><br></pre></td></tr></table></figure>
+
+<p>Our result list would be:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result: &#123;<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>,<span class="number">25</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h2><p><code>filter</code> method checks a predicate for all the elements of a list, and returns a list of those elements that satisfy the predicate:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span>&lt;E&gt; List&lt;E&gt; <span class="title">filter</span><span class="params">(Predicate&lt;E&gt; pred, List&lt;E&gt; a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a.isEmpty())</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> List();</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pred.test(a.getHead()))</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> List(a.getHead(), filter(pred, a.getTail()));</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> filter(pred, a.getTail());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Note that the output list is of the same type as the input list. Suppose we have an input list:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Then we can call the <code>filter</code> method in this way:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; result = filter(x -&gt; x % <span class="number">2</span> == <span class="number">0</span>, list);</span><br></pre></td></tr></table></figure>
+
+<p>Our result list would be:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result: &#123;<span class="number">2</span>,<span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reduce"><a href="#Reduce" class="headerlink" title="Reduce"></a>Reduce</h2><p><code>reduce</code> method applies a <code>binary operator</code> <strong>between</strong> all the elements of a list, and returns the resulting value:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span>&lt;E&gt; E <span class="title">reduce</span><span class="params">(BinaryOperator&lt;E&gt; op, List&lt;E&gt; a, E identity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a.isEmpty())</span><br><span class="line">        <span class="keyword">return</span> identity;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> op.apply(a.getHead(), reduce(op, a.getTail(), identity));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The <code>identity</code> parameter is the expected result for an empty list. Suppose we have a list:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = &#123;<span class="string">"all"</span>,<span class="string">"students"</span>,<span class="string">"are"</span>,<span class="string">"here"</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Then we can call the <code>reduce</code> method in this way:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; result = reduce((x,y) -&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span>(x.length() &gt;= y.length()) &#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, list, <span class="string">""</span>);<span class="comment">// "" is the identity</span></span><br></pre></td></tr></table></figure>
+
+<p>Let’s now go through the reduce method:</p>
+<ol>
+<li><p>As <code>reduce</code> is a recursive method, it would call itself again and again until reaching the base case. In this example, it firstly apply the <code>binary operator</code> between <code>&quot;here&quot;</code> and <code>&quot;&quot;</code>(which is the base case), which returns <code>&quot;here&quot;</code>.</p>
+</li>
+<li><p>Then applying the <code>binary operator</code> between <code>&quot;are&quot;</code> and <code>&quot;here&quot;</code>, which<br>returns <code>here</code>.</p>
+</li>
+<li><p>Then applying the <code>binary operator</code> between <code>&quot;students&quot;</code> and <code>&quot;here&quot;</code>, which<br>returns <code>&quot;students&quot;</code>.</p>
+</li>
+<li><p>Then applying the <code>binary operator</code> between <code>&quot;all&quot;</code> and <code>&quot;students&quot;</code>, which<br>returns <code>&quot;students&quot;</code>.</p>
+</li>
+</ol>
+<p>Therefore our result list is:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result: &#123;<span class="string">"students"</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h2><p>The code of some useful high order methods is as follows:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.function.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HighOrderMethods</span> </span>&#123;</span><br><span class="line">    <span class="comment">// map: a higher-order function</span></span><br><span class="line">    <span class="comment">// Applies a function to all the elements of a list to obtain a new list.</span></span><br><span class="line">    <span class="comment">// This is generic in two types, E and R, the element types of the</span></span><br><span class="line">    <span class="comment">// input list and output list respectively. The first argument is</span></span><br><span class="line">    <span class="comment">// a function from E to R, which will get "mapped" to all the</span></span><br><span class="line">    <span class="comment">// elements of the input list.</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span>&lt;E,R&gt; List&lt;R&gt; <span class="title">map</span><span class="params">(Function&lt;E,R&gt; fun, List&lt;E&gt; a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (a.isEmpty())</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> List();</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> List(fun.apply(a.getHead()), map(fun, a.getTail()));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// filter: a higher-order function</span></span><br><span class="line">    <span class="comment">// Checks a predicate for all the elements of a list, and returns</span></span><br><span class="line">    <span class="comment">// a list of those elements that satisfy the predicate.</span></span><br><span class="line">    <span class="comment">// Note that the output list is of the type as the input list.   </span></span><br><span class="line">    <span class="function"><span class="keyword">static</span>&lt;E&gt; List&lt;E&gt; <span class="title">filter</span><span class="params">(Predicate&lt;E&gt; pred, List&lt;E&gt; a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (a.isEmpty())</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> List();</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (pred.test(a.getHead()))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> List(a.getHead(), filter(pred, a.getTail()));</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> filter(pred, a.getTail());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// reduce: a higher-order function</span></span><br><span class="line">    <span class="comment">// Applies a binary operator between all the elements of a list,</span></span><br><span class="line">    <span class="comment">// and returns the resulting value.</span></span><br><span class="line">    <span class="comment">// The identity parameter is the expected result for an empty list.</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span>&lt;E&gt; E <span class="title">reduce</span><span class="params">(BinaryOperator&lt;E&gt; op, List&lt;E&gt; a, E identity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (a.isEmpty())</span><br><span class="line">            <span class="keyword">return</span> identity;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> op.apply(a.getHead(), reduce(op, a.getTail(), identity));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// fold: a higher-order function, more flexible than reduce</span></span><br><span class="line">    <span class="comment">// Applies a binary operator between all the elements of a list,</span></span><br><span class="line">    <span class="comment">// and returns the resulting value.</span></span><br><span class="line">    <span class="comment">// The identity parameter is the expected result for an empty list.</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span>&lt;E,R&gt; R <span class="title">fold</span><span class="params">(BiFunction&lt;E,R,R&gt; op, List&lt;E&gt; a, R identity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (a.isEmpty())</span><br><span class="line">            <span class="keyword">return</span> identity;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> op.apply(a.getHead(), fold(op, a.getTail(), identity));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Sum all the elements of an integer list</span></span><br><span class="line">    <span class="comment">// This uses the higher-order function reduce.</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> Integer <span class="title">sumShort</span><span class="params">(List&lt;Integer&gt; a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> reduce((x,y) -&gt; x+y, a, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Select all the positive values of an integer list.</span></span><br><span class="line">    <span class="comment">// This uses the higher-order function filter.</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> List&lt;Integer&gt; <span class="title">positives</span><span class="params">(List&lt;Integer&gt; a)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> filter((x) -&gt; x &gt;= <span class="number">0</span>, a);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Append two generic lists</span></span><br><span class="line">    <span class="comment">// This uses the higher-order function fold.</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span>&lt;E&gt; List&lt;E&gt; <span class="title">appendShort</span><span class="params">(List&lt;E&gt; a, List&lt;E&gt; b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fold((x,y) -&gt; <span class="keyword">new</span> List(x,y), a, b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#High-Order-Methods-in-Java"><span class="toc-number">1.</span> <span class="toc-text">High Order Methods in Java</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Map"><span class="toc-number">1.1.</span> <span class="toc-text">Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Filter"><span class="toc-number">1.2.</span> <span class="toc-text">Filter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reduce"><span class="toc-number">1.3.</span> <span class="toc-text">Reduce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Appendix"><span class="toc-number">1.4.</span> <span class="toc-text">Appendix</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/&text=High-Order Methods in Java"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/&title=High-Order Methods in Java"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/&is_video=false&description=High-Order Methods in Java"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=High-Order Methods in Java&body=Check out this article: http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/&title=High-Order Methods in Java"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/&title=High-Order Methods in Java"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/&title=High-Order Methods in Java"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/&title=High-Order Methods in Java"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/02/05/High-Order-Methods-in-Java/&name=High-Order Methods in Java&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

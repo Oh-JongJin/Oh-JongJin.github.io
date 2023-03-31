@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="SQL: Stored ProcedureStored ProcedureA stored procedure is a set of SQL statements with an assigned name, which is stored in a relational DBMS as a group. Therefore, a stored procedure can be reused a">
+<meta name="keywords" content="database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL: Stored Procedure">
+<meta property="og:url" content="http://yoursite.com/2020/04/16/SQL-Stored-Procedure/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="SQL: Stored ProcedureStored ProcedureA stored procedure is a set of SQL statements with an assigned name, which is stored in a relational DBMS as a group. Therefore, a stored procedure can be reused a">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-04-27T13:36:51.224Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL: Stored Procedure">
+<meta name="twitter:description" content="SQL: Stored ProcedureStored ProcedureA stored procedure is a set of SQL statements with an assigned name, which is stored in a relational DBMS as a group. Therefore, a stored procedure can be reused a">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>SQL: Stored Procedure</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/04/17/SQL-GROUP-BY/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/04/13/Average-Case-Time-Complexity/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/&text=SQL: Stored Procedure"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/&title=SQL: Stored Procedure"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/&is_video=false&description=SQL: Stored Procedure"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SQL: Stored Procedure&body=Check out this article: http://yoursite.com/2020/04/16/SQL-Stored-Procedure/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/&title=SQL: Stored Procedure"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/&title=SQL: Stored Procedure"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/&title=SQL: Stored Procedure"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/&title=SQL: Stored Procedure"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/&name=SQL: Stored Procedure&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL-Stored-Procedure"><span class="toc-number">1.</span> <span class="toc-text">SQL: Stored Procedure</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Stored-Procedure"><span class="toc-number">1.1.</span> <span class="toc-text">Stored Procedure</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo1"><span class="toc-number">1.1.1.</span> <span class="toc-text">Demo1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo2"><span class="toc-number">1.1.2.</span> <span class="toc-text">Demo2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo3"><span class="toc-number">1.1.3.</span> <span class="toc-text">Demo3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-JDBC-to-Call-Stored-Procedure"><span class="toc-number">1.2.</span> <span class="toc-text">Using JDBC to Call Stored Procedure</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo1-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">Demo1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo2-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">Demo2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-advantages-of-stored-procedure"><span class="toc-number">1.3.</span> <span class="toc-text">The advantages of stored procedure</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        SQL: Stored Procedure
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-04-16T05:30:42.000Z" itemprop="datePublished">2020-04-16</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/database/">database</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="SQL-Stored-Procedure"><a href="#SQL-Stored-Procedure" class="headerlink" title="SQL: Stored Procedure"></a>SQL: Stored Procedure</h1><h2 id="Stored-Procedure"><a href="#Stored-Procedure" class="headerlink" title="Stored Procedure"></a>Stored Procedure</h2><p>A stored procedure is a set of SQL statements with an assigned name, which is stored in a relational DBMS as a group. Therefore, a stored procedure can be <strong>reused</strong> and shared by multiple programs.</p>
+<p>In Java, if we want to reuse a piece of code, we can encapsulate the code as a function/method. Then we can call this method if necessary. Similarly, when we want to reuse SQL statements, we can use stored procedure:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE PROCEDURE procedure_name</span><br><span class="line">(</span><br><span class="line">IN  parameter_name parameter_type,</span><br><span class="line">OUT parameter_name parameter_type</span><br><span class="line">）</span><br><span class="line">BEGIN</span><br><span class="line">    SQL statements</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Demo1"><a href="#Demo1" class="headerlink" title="Demo1"></a>Demo1</h3><p>Here is a simple stored procedure without any parameter: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Create stored procedure --&gt;</span><br><span class="line">DELIMITER //</span><br><span class="line">CREATE PROCEDURE employee_avg_salary()</span><br><span class="line">BEGIN</span><br><span class="line">        SELECT AVG(salary) FROM employees;</span><br><span class="line">END //</span><br><span class="line"></span><br><span class="line">DELIMITER;</span><br><span class="line"></span><br><span class="line">&lt;!-- Call this stored procedure --&gt;</span><br><span class="line">CALL employee_avg_salary(); </span><br><span class="line"></span><br><span class="line">&lt;!-- Delete stored procedure --&gt;</span><br><span class="line">DROP PROCEDURE employee_avg_salary;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Demo2"><a href="#Demo2" class="headerlink" title="Demo2"></a>Demo2</h3><p>Here is a simple stored procedure with <code>IN</code> parameter: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Create stored procedure --&gt;</span><br><span class="line">DELIMITER //</span><br><span class="line">CREATE PROCEDURE employee_avg_salary(IN dept_no INT)</span><br><span class="line">BEGIN</span><br><span class="line">    SELECT avg(e.salary) FROM employee e WHERE e.deptno = dept_no;</span><br><span class="line">END //</span><br><span class="line"></span><br><span class="line">DELIMITER;</span><br><span class="line"></span><br><span class="line">&lt;!-- Call this stored procedure --&gt;</span><br><span class="line">CALL employee_avg_salary(10); </span><br><span class="line"></span><br><span class="line">&lt;!-- Delete stored procedure --&gt;</span><br><span class="line">DROP PROCEDURE employee_avg_salary;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Demo3"><a href="#Demo3" class="headerlink" title="Demo3"></a>Demo3</h3><p>Here is a simple stored procedure with <code>IN</code> and <code>OUT</code> parameter: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Create stored procedure --&gt;</span><br><span class="line">DELIMITER //</span><br><span class="line">CREATE PROCEDURE employee_avg_salary(IN dept_no INT, OUT avg_salary DECIMAL(8,2))</span><br><span class="line">BEGIN</span><br><span class="line">    SELECT avg(e.salary) INTO avg_salary FROM employee e WHERE e.deptno=dept_no;</span><br><span class="line">END //</span><br><span class="line"></span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line">&lt;!-- Call this stored procedure, and the output is stored in @result --&gt;</span><br><span class="line">CALL employee_avg_salary(10, @result); </span><br><span class="line"></span><br><span class="line">&lt;!-- We normally use JDBC to check the content of @result--&gt;</span><br><span class="line">SELECT @result;</span><br><span class="line"></span><br><span class="line">&lt;!-- Delete stored procedure --&gt;</span><br><span class="line">DROP PROCEDURE employee_avg_salary;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Using-JDBC-to-Call-Stored-Procedure"><a href="#Using-JDBC-to-Call-Stored-Procedure" class="headerlink" title="Using JDBC to Call Stored Procedure"></a>Using JDBC to Call Stored Procedure</h2><h3 id="Demo1-1"><a href="#Demo1-1" class="headerlink" title="Demo1"></a>Demo1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER //</span><br><span class="line">CREATE PROCEDURE update_employee_salary(IN empno INT)</span><br><span class="line">BEGIN</span><br><span class="line">    UPDATE employees e SET e.salary = e.salary + 1000 WHERE e.employee_no = empno;</span><br><span class="line">END // </span><br><span class="line">DELIMITER;</span><br><span class="line"></span><br><span class="line">CALL update_employee_salary(9527);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProcedureDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">        Connection connection = <span class="keyword">null</span>;</span><br><span class="line">        CallableStatement statement = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            connection = JDBCUtils.getConnection();</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// Create stored procedure object</span></span><br><span class="line">            statement = connection.prepareCall(<span class="string">"&#123;call update_employee_salary(?)&#125;"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Set the input parameter</span></span><br><span class="line">            statement.setInt(<span class="number">1</span>, <span class="number">9527</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Call stored procedure</span></span><br><span class="line">            statement.execute();</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">// Close resource</span></span><br><span class="line">            JDBCUtils.closeAll(connection, statement);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Demo2-1"><a href="#Demo2-1" class="headerlink" title="Demo2"></a>Demo2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER //</span><br><span class="line">CREATE PROCEDURE employee_avg_salary(IN dept_no INT, OUT avg_salary DECIMAL(8,2))</span><br><span class="line">BEGIN</span><br><span class="line">    SELECT avg(e.salary) INTO avg_salary FROM employee e WHERE e.deptno=dept_no;</span><br><span class="line">END //</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line">CALL employee_avg_salary(10, @result); </span><br><span class="line">SELECT @result;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProcedureDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">        Connection connection = <span class="keyword">null</span>;</span><br><span class="line">        CallableStatement statement = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            connection = JDBCUtils.getConnection();</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// Create stored procedure object</span></span><br><span class="line">            statement = connection.prepareCall(<span class="string">"&#123;call employee_avg_salary(?, ?)&#125;"</span>);</span><br><span class="line">            </span><br><span class="line">            statement.setInt(<span class="number">1</span>, <span class="number">10</span>);<span class="comment">// Set the input parameter</span></span><br><span class="line">            statement.registerOutParameter(<span class="number">2</span>, Types.DECIMAL);<span class="comment">// Set the output type</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// Call the stored procedure</span></span><br><span class="line">            statement.execute();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Obtain the @result</span></span><br><span class="line">            System.out.println(statement.getBigDecimal(<span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">// Close resources</span></span><br><span class="line">            JDBCUtils.closeAll(connection, statement);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="The-advantages-of-stored-procedure"><a href="#The-advantages-of-stored-procedure" class="headerlink" title="The advantages of stored procedure"></a>The advantages of stored procedure</h2><ol>
+<li><p>Security: Stored procedure(i.e., <code>callable statement</code>) can prevent <code>SQL injection</code>. Attackers may enter or change data, but do not write procedures. A stored procedure preserves data integrity because information is entered in a consistent manner. </p>
+</li>
+<li><p>Statements in a stored procedure only need to be written <strong>once</strong>.</p>
+</li>
+<li><p>Use of stored procedures can reduce network traffic between clients and servers, because the commands are executed as a single batch of code. This means only the call to execute the procedure is sent over a network, instead of every single line of code being sent individually.</p>
+</li>
+</ol>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL-Stored-Procedure"><span class="toc-number">1.</span> <span class="toc-text">SQL: Stored Procedure</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Stored-Procedure"><span class="toc-number">1.1.</span> <span class="toc-text">Stored Procedure</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo1"><span class="toc-number">1.1.1.</span> <span class="toc-text">Demo1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo2"><span class="toc-number">1.1.2.</span> <span class="toc-text">Demo2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo3"><span class="toc-number">1.1.3.</span> <span class="toc-text">Demo3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-JDBC-to-Call-Stored-Procedure"><span class="toc-number">1.2.</span> <span class="toc-text">Using JDBC to Call Stored Procedure</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo1-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">Demo1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo2-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">Demo2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-advantages-of-stored-procedure"><span class="toc-number">1.3.</span> <span class="toc-text">The advantages of stored procedure</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/&text=SQL: Stored Procedure"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/&title=SQL: Stored Procedure"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/&is_video=false&description=SQL: Stored Procedure"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SQL: Stored Procedure&body=Check out this article: http://yoursite.com/2020/04/16/SQL-Stored-Procedure/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/&title=SQL: Stored Procedure"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/&title=SQL: Stored Procedure"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/&title=SQL: Stored Procedure"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/&title=SQL: Stored Procedure"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/04/16/SQL-Stored-Procedure/&name=SQL: Stored Procedure&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

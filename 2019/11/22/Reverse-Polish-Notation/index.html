@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Reverse Polish NotationReverse Polish Notation(RPN) is used to represent expressions in which the operators are placed after the operands. For example, if we want to add two numbers a and b, we can wr">
+<meta name="keywords" content="algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reverse Polish Notation">
+<meta property="og:url" content="http://yoursite.com/2019/11/22/Reverse-Polish-Notation/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="Reverse Polish NotationReverse Polish Notation(RPN) is used to represent expressions in which the operators are placed after the operands. For example, if we want to add two numbers a and b, we can wr">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/rpn_1.png">
+<meta property="og:image" content="http://yoursite.com/image/rpn_2.png">
+<meta property="og:image" content="http://yoursite.com/image/rpn_3.png">
+<meta property="og:image" content="http://yoursite.com/image/rpn_4.png">
+<meta property="og:image" content="http://yoursite.com/image/rpn_5.png">
+<meta property="og:image" content="http://yoursite.com/image/rpn_6.png">
+<meta property="og:image" content="http://yoursite.com/image/rpn_7.png">
+<meta property="og:image" content="http://yoursite.com/image/rpn_8.png">
+<meta property="og:updated_time" content="2020-04-27T13:48:25.565Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Reverse Polish Notation">
+<meta name="twitter:description" content="Reverse Polish NotationReverse Polish Notation(RPN) is used to represent expressions in which the operators are placed after the operands. For example, if we want to add two numbers a and b, we can wr">
+<meta name="twitter:image" content="http://yoursite.com/image/rpn_1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Reverse Polish Notation</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/11/23/Local-Variable-Array-in-JVM-stack/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/11/19/Java-Virtual-Machine-Architecture/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/&text=Reverse Polish Notation"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/&title=Reverse Polish Notation"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/&is_video=false&description=Reverse Polish Notation"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Reverse Polish Notation&body=Check out this article: http://yoursite.com/2019/11/22/Reverse-Polish-Notation/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/&title=Reverse Polish Notation"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/&title=Reverse Polish Notation"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/&title=Reverse Polish Notation"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/&title=Reverse Polish Notation"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/&name=Reverse Polish Notation&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Reverse-Polish-Notation"><span class="toc-number">1.</span> <span class="toc-text">Reverse Polish Notation</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Reverse Polish Notation
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-11-22T00:55:52.000Z" itemprop="datePublished">2019-11-22</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/algorithm/">algorithm</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Reverse-Polish-Notation"><a href="#Reverse-Polish-Notation" class="headerlink" title="Reverse Polish Notation"></a>Reverse Polish Notation</h1><p>Reverse Polish Notation(RPN) is used to represent expressions in which the operators are placed after the operands. For example, if we want to add two numbers <code>a</code> and <code>b</code>, we can write an expression like this:</p>
+<pre><code>`a+b`</code></pre><p>This is called infix expression, because the operator <code>+</code> is between the operands <code>a</code> and <code>b</code>. And this expression can be represented in RPN as:</p>
+<pre><code>`a b +`</code></pre><p>RPN can save the interpreter or the compiler a lot of effort in executing a expression. For example, here are two infix expressions:</p>
+<pre><code>`a+b×c`
+`(a+b)×c`</code></pre><p>We are all taught at school that multiplication takes precedence, therefore in the expression <code>a+b×c</code>, we firstly multiply b by c then add a. If we want the addition operation come first, we should use brackets, i.e., <code>(a+b)×c</code>. However, computers do not know that addition has a lower precedence, and it would be confusing for a computer to execute <code>a+b×c</code> directly. To address this problem, we can convert the expressions above in PRN:</p>
+<pre><code>`a+b×c=&gt; abc×+`
+`(a+b)×c=&gt; ab+c×`</code></pre><p>We can see that RPN can avoid the use of brackets and make it easier for computers to interpret and execute expressions. Therefore, when we want to execute a expression(infix) in computer, we can convert it into RPN first. A algorithm called <strong>shunting-yard</strong> can help us realise the conversion.</p>
+<p>The shunting-yard algorithm makes use of two data structures stack and queue in the converting process:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Read an element in the infix expression</span><br><span class="line">If it is a number(operand) add it to queue</span><br><span class="line">If it is an operator:   </span><br><span class="line">    While there is an operator on the top of the stack with greater or equal precedence:</span><br><span class="line">        Pop operators from the stack onto the output queue</span><br><span class="line">    Push the current operator onto the stack</span><br><span class="line">If it is a left bracket, push it onto the stack</span><br><span class="line">If it is a right bracket:</span><br><span class="line">    While there is not a left bracket on the top of the stack:</span><br><span class="line">        Pop operators from the stack onto the output queue</span><br><span class="line">    Pop the left bracket from the stack and discard it</span><br><span class="line">While there are operators on the stack, pop them to the queue</span><br></pre></td></tr></table></figure>
+
+<p>Here is an example of using the above algorithm. Consider an infix expression:</p>
+<pre><code>`15×(3 + 6)`</code></pre><p>The first element is <code>15</code>, which is a number, add it to queue:</p>
+<p><img src="/image/rpn_1.png" alt="rpn_1" title="rpn_1"></p>
+<p>The second element is the operator <code>×</code>, and there is no operator on the top of the stack, therefore push the operator <code>×</code> onto the stack:</p>
+<p><img src="/image/rpn_2.png" alt="rpn_2" title="rpn_2"></p>
+<p>The third element is left bracket, push it onto the stack:</p>
+<p><img src="/image/rpn_3.png" alt="rpn_3" title="rpn_3"></p>
+<p>The fourth element is the number <code>3</code>, add it to queue:</p>
+<p><img src="/image/rpn_4.png" alt="rpn_4" title="rpn_4"></p>
+<p>The fifth element is the operator <code>+</code>, and the top of the stack is not an operator, therefore push the operator <code>+</code> onto the stack:</p>
+<p><img src="/image/rpn_5.png" alt="rpn_5" title="rpn_5"></p>
+<p>The sixth element is the number <code>6</code>, add it to queue:</p>
+<p><img src="/image/rpn_6.png" alt="rpn_6" title="rpn_6"></p>
+<p>The last element is right bracket, and the top of the stack is not a left bracket, therefore, pop operators from the stack until there is a left bracket on the top of the stack:</p>
+<p><img src="/image/rpn_7.png" alt="rpn_7" title="rpn_7"></p>
+<p>Pop the left bracket and discard it, then pop the operator <code>×</code> to the queue:</p>
+<p><img src="/image/rpn_8.png" alt="rpn_8" title="rpn_8"></p>
+<p>Now we read the elements in the queue from front to rear, which is the RPN of <code>15×(3 + 6)</code>:</p>
+<pre><code>`15 3 6 + ×`</code></pre><p>Reading from left to right, this is interpreted as follows:</p>
+<ol>
+<li>Push 15 onto the stack</li>
+<li>Push 3 onto the stack. Reading from the top, the stack now contains (3, 15)</li>
+<li>Push 6 onto the stack. Reading from the top, the stack now contains (6, 3, 15)</li>
+<li>Apply the + operation: take the top two numbers off the stack, add them together, and put the result back on the stack. The stack now contains (9, 15).</li>
+<li>Apply the × operation: take the top two numbers off the stack, multiply them together, and put the result back on the stack. The stack now contains just the number 135, which is the final result of the expression.</li>
+</ol>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Reverse-Polish-Notation"><span class="toc-number">1.</span> <span class="toc-text">Reverse Polish Notation</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/&text=Reverse Polish Notation"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/&title=Reverse Polish Notation"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/&is_video=false&description=Reverse Polish Notation"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Reverse Polish Notation&body=Check out this article: http://yoursite.com/2019/11/22/Reverse-Polish-Notation/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/&title=Reverse Polish Notation"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/&title=Reverse Polish Notation"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/&title=Reverse Polish Notation"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/&title=Reverse Polish Notation"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/11/22/Reverse-Polish-Notation/&name=Reverse Polish Notation&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

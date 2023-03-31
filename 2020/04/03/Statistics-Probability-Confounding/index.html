@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Statistics&amp;amp;Probability: ConfoundingConfoundingWhen we study association, we should understand that: association ≠ causation Association never equals causation, no matter how strong the association">
+<meta name="keywords" content="statistics&amp;probability">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Statistics&amp;Probability: Confounding">
+<meta property="og:url" content="http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="Statistics&amp;amp;Probability: ConfoundingConfoundingWhen we study association, we should understand that: association ≠ causation Association never equals causation, no matter how strong the association">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/confounding_1.png">
+<meta property="og:image" content="http://yoursite.com/image/confounding_2.png">
+<meta property="og:image" content="http://yoursite.com/image/confounding_3.png">
+<meta property="og:image" content="http://yoursite.com/image/confounding_4.png">
+<meta property="og:image" content="http://yoursite.com/image/confounding_5.png">
+<meta property="og:updated_time" content="2020-04-27T13:38:23.082Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Statistics&amp;Probability: Confounding">
+<meta name="twitter:description" content="Statistics&amp;amp;Probability: ConfoundingConfoundingWhen we study association, we should understand that: association ≠ causation Association never equals causation, no matter how strong the association">
+<meta name="twitter:image" content="http://yoursite.com/image/confounding_1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Statistics&amp;Probability: Confounding</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/04/04/LeetCode-Problem-Union-Find-Topics/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/04/01/Statistics-Probability-Association-Between-Variables/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/&text=Statistics&amp;Probability: Confounding"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/&title=Statistics&amp;Probability: Confounding"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/&is_video=false&description=Statistics&amp;Probability: Confounding"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Statistics&amp;Probability: Confounding&body=Check out this article: http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/&title=Statistics&amp;Probability: Confounding"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/&title=Statistics&amp;Probability: Confounding"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/&title=Statistics&amp;Probability: Confounding"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/&title=Statistics&amp;Probability: Confounding"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/&name=Statistics&amp;Probability: Confounding&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Statistics-amp-Probability-Confounding"><span class="toc-number">1.</span> <span class="toc-text">Statistics&amp;Probability: Confounding</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Confounding"><span class="toc-number">1.1.</span> <span class="toc-text">Confounding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Establish-Cause-effect-Relation"><span class="toc-number">1.2.</span> <span class="toc-text">Establish Cause-effect Relation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-B-testing"><span class="toc-number">1.2.1.</span> <span class="toc-text">A/B testing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#double-blinded-experiment"><span class="toc-number">1.2.2.</span> <span class="toc-text">double blinded experiment</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Statistics&amp;Probability: Confounding
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-04-03T14:05:22.000Z" itemprop="datePublished">2020-04-03</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/statistics-probability/">statistics&probability</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Statistics-amp-Probability-Confounding"><a href="#Statistics-amp-Probability-Confounding" class="headerlink" title="Statistics&amp;Probability: Confounding"></a>Statistics&amp;Probability: Confounding</h1><h2 id="Confounding"><a href="#Confounding" class="headerlink" title="Confounding"></a>Confounding</h2><p>When we study association, we should understand that:</p>
+<p><code>association ≠ causation</code></p>
+<p>Association <strong>never</strong> equals causation, no matter how strong the association it is. </p>
+<p>Association is <strong>symmetric</strong> between two variables <code>X</code> and <code>Y</code>. For example, if you find a strong association between watching television and live longer, it could be the other way around. That if you live longer, you tend to watch more television. However, causation is symmetric.</p>
+<p>Suppose we know that there is a strong association between variable <code>X</code> and <code>Y</code>, i.e., <code>X~Y</code>. Let’s consider different scenarios of this association:</p>
+<ol>
+<li><p>scenario 1: <code>X</code> <strong>causes</strong> variation in <code>Y</code>(<code>X</code> has a causal effect on <code>Y</code>, <code>X</code> and <code>Y</code> have a cause-effect relation), i.e., <code>X-&gt;Y</code>. For example, smoking causes cancer.</p>
+</li>
+<li><p>scenario 2: We have a third variable <code>Z</code> that causes variation in both <code>X</code> and <code>Y</code>. For example, <code>Z</code> can be the size of a fire, and <code>Y</code> is the damages caused by the fire, and the <code>X</code> is number all firefighters at the scene of the fire.</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X ~ Y</span><br><span class="line"> ↖️ ↗️</span><br><span class="line">  Z</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>scenario 3: We have <code>X</code> and <code>Y</code>. We observe association between <code>X</code> and <code>Y</code>:</li>
+</ol>
+<p><img src="/image/confounding_1.png" alt="confounding_1" title="confounding_1"></p>
+<p>And we sort of suspected that there might be a causation here. Therefore, there is a question mark whether you want to establish causation here:</p>
+<p><img src="/image/confounding_2.png" alt="confounding_2" title="confounding_2"></p>
+<p>There is a third variable <code>Z</code> that also potentially causes variation in <code>Y</code>:</p>
+<p><img src="/image/confounding_3.png" alt="confounding_3" title="confounding_3"></p>
+<p>At the same time <code>X</code> and <code>Z</code> are associated – they are mixed together:</p>
+<p><img src="/image/confounding_4.png" alt="confounding_4" title="confounding_4"></p>
+<p>This is called a confounding scenario, where <code>X</code> and <code>Z</code> are associated with each other and they both pretend to have an effect on <code>Y</code>, because they are associated it would be very hard for us to separate the effects.</p>
+<p>To make things worse, when <code>Z</code> becomes a hidden <code>confounder</code>, the effect of <code>Z</code> cannot be established using observed data:</p>
+<p><img src="/image/confounding_5.png" alt="confounding_5" title="confounding_5"></p>
+<p>In this case, we can only observe the association between <code>X</code> and <code>Y</code>, but in fact, some of the association can come from <code>Z</code>, because <code>Z</code> and <code>X</code> associated.</p>
+<p>One of the phenomena observed when <code>confounding</code> occurs is called the <code>Simpson&#39;s paradox</code>.</p>
+<h2 id="Establish-Cause-effect-Relation"><a href="#Establish-Cause-effect-Relation" class="headerlink" title="Establish Cause-effect Relation"></a>Establish Cause-effect Relation</h2><p>How to establish cause-effect relation between two variables? For example, how do we know smoking causes cancer? The most ideal way is to use <code>randomized experiment</code>, such as <code>A/B testing</code> and <code>double blinded experiment</code>. </p>
+<h3 id="A-B-testing"><a href="#A-B-testing" class="headerlink" title="A/B testing"></a>A/B testing</h3><p>In <code>A/B testing</code>, we have an experiment with one treatment group <code>A</code> and one control group, <code>B</code>.<br>And we randomly assign individuals to two groups, and to see whether they exhibit different values in the outcome of interest. The control group is used to:</p>
+<ol>
+<li>Create comparison</li>
+<li>Control <code>placebo effect</code></li>
+</ol>
+<p>In medical studies, if we gave the treatment group the new medication and give nothing to the people in the control group, the <code>placebo effect</code> may become the hidden confounder. Because the treatment group and the control group differ in <strong>two</strong> ways.</p>
+<ol>
+<li><p>They differ in the medication received. The group received some new medication. The control received nothing, no medication.</p>
+</li>
+<li><p>They also differ in the mechanism of the study. One were given a pill or a treatment, and the other received nothing of the similar nature.</p>
+</li>
+</ol>
+<p>Therefore, there are <strong>two</strong> variables here. And we need create placebo for the control group, such as a sugar pill.</p>
+<h3 id="double-blinded-experiment"><a href="#double-blinded-experiment" class="headerlink" title="double blinded experiment"></a>double blinded experiment</h3><p>In double blinded experiment, each individual do not know which group(treatment group or control group) he/she is assigned. And the people who evaluate the result of the experiment is also blinded, they do not know which group they are evaluated. </p>
+<p>The reason for that is knowledge about the group assignments may effect individual reaction to the treatment, and it would also impact the researchers when they evaluate the results from the experiment. Whenever possible we want to keep the experiment double blinded, so to remove potential hidden confounder effects.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Statistics-amp-Probability-Confounding"><span class="toc-number">1.</span> <span class="toc-text">Statistics&amp;Probability: Confounding</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Confounding"><span class="toc-number">1.1.</span> <span class="toc-text">Confounding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Establish-Cause-effect-Relation"><span class="toc-number">1.2.</span> <span class="toc-text">Establish Cause-effect Relation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-B-testing"><span class="toc-number">1.2.1.</span> <span class="toc-text">A/B testing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#double-blinded-experiment"><span class="toc-number">1.2.2.</span> <span class="toc-text">double blinded experiment</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/&text=Statistics&amp;Probability: Confounding"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/&title=Statistics&amp;Probability: Confounding"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/&is_video=false&description=Statistics&amp;Probability: Confounding"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Statistics&amp;Probability: Confounding&body=Check out this article: http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/&title=Statistics&amp;Probability: Confounding"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/&title=Statistics&amp;Probability: Confounding"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/&title=Statistics&amp;Probability: Confounding"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/&title=Statistics&amp;Probability: Confounding"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/04/03/Statistics-Probability-Confounding/&name=Statistics&amp;Probability: Confounding&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

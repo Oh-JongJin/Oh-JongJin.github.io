@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Statistics&amp;amp;Probability: Association Between VariablesAssociation Between Two Categorical VariablesThe association between two categorical variables is summarized using counts of joint occurrences.">
+<meta name="keywords" content="statistics&amp;probability">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Statistics&amp;Probability: Association Between Variables">
+<meta property="og:url" content="http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="Statistics&amp;amp;Probability: Association Between VariablesAssociation Between Two Categorical VariablesThe association between two categorical variables is summarized using counts of joint occurrences.">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/association_between_variables_1.png">
+<meta property="og:image" content="http://yoursite.com/image/association_between_variables_2.png">
+<meta property="og:image" content="http://yoursite.com/image/association_between_variables.png">
+<meta property="og:image" content="http://yoursite.com/image/association_between_variables_3.png">
+<meta property="og:image" content="http://yoursite.com/image/association_between_variables_4.png">
+<meta property="og:image" content="http://yoursite.com/image/association_between_variables_5.png">
+<meta property="og:image" content="http://yoursite.com/image/association_between_variables_6.png">
+<meta property="og:image" content="http://yoursite.com/image/association_between_variables_7.png">
+<meta property="og:image" content="http://yoursite.com/image/association_between_variables_8.png">
+<meta property="og:image" content="http://yoursite.com/image/association_between_variables_9.png">
+<meta property="og:updated_time" content="2020-04-27T13:37:51.174Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Statistics&amp;Probability: Association Between Variables">
+<meta name="twitter:description" content="Statistics&amp;amp;Probability: Association Between VariablesAssociation Between Two Categorical VariablesThe association between two categorical variables is summarized using counts of joint occurrences.">
+<meta name="twitter:image" content="http://yoursite.com/image/association_between_variables_1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Statistics&amp;Probability: Association Between Variables</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/04/03/Statistics-Probability-Confounding/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/03/30/LeetCode-Problem-Graph-Topics/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/&text=Statistics&amp;Probability: Association Between Variables"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/&title=Statistics&amp;Probability: Association Between Variables"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/&is_video=false&description=Statistics&amp;Probability: Association Between Variables"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Statistics&amp;Probability: Association Between Variables&body=Check out this article: http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/&title=Statistics&amp;Probability: Association Between Variables"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/&title=Statistics&amp;Probability: Association Between Variables"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/&title=Statistics&amp;Probability: Association Between Variables"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/&title=Statistics&amp;Probability: Association Between Variables"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/&name=Statistics&amp;Probability: Association Between Variables&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Statistics-amp-Probability-Association-Between-Variables"><span class="toc-number">1.</span> <span class="toc-text">Statistics&amp;Probability: Association Between Variables</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Association-Between-Two-Categorical-Variables"><span class="toc-number">1.1.</span> <span class="toc-text">Association Between Two Categorical Variables</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Association-Between-Categorical-Variable-and-Quantitative-Variable"><span class="toc-number">1.2.</span> <span class="toc-text">Association Between Categorical Variable and Quantitative Variable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Association-Between-Two-Quantitative-Variables"><span class="toc-number">1.3.</span> <span class="toc-text">Association Between Two Quantitative Variables</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Statistics&amp;Probability: Association Between Variables
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-04-01T14:26:38.000Z" itemprop="datePublished">2020-04-01</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/statistics-probability/">statistics&probability</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Statistics-amp-Probability-Association-Between-Variables"><a href="#Statistics-amp-Probability-Association-Between-Variables" class="headerlink" title="Statistics&amp;Probability: Association Between Variables"></a>Statistics&amp;Probability: Association Between Variables</h1><h2 id="Association-Between-Two-Categorical-Variables"><a href="#Association-Between-Two-Categorical-Variables" class="headerlink" title="Association Between Two Categorical Variables"></a>Association Between Two Categorical Variables</h2><p>The association between two categorical variables is summarized using <code>counts of joint occurrences</code>. For example, we have two categrical variables(age group &amp; Internet use) in the following table:</p>
+<p><img src="/image/association_between_variables_1.png" alt="association_between_variables_1" title="association_between_variables_1"></p>
+<p>We can display the above data using a <code>stacked bar chart</code>:</p>
+<p><img src="/image/association_between_variables_2.png" alt="association_between_variables_2" title="association_between_variables_2"></p>
+<p>As shown, compared to the old, a high percent of young people are Internet users. And this is the association between the Internet use and the age group. But how can we measure the association between these two categorical variables? </p>
+<p>Let’s simplify our analysis, we can see that from the data that:</p>
+<ul>
+<li>Young adults: 98% use Internet</li>
+<li>Senior adults: 58% use Internet</li>
+</ul>
+<p>There are three ways to measure the association:</p>
+<ol>
+<li>We can first report the <code>difference in porportions</code>, in this case, the difference between 98% and 58%, which is 40%.</li>
+</ol>
+<p><img src="/image/association_between_variables.png" alt="association_between_variables" title="association_between_variables"></p>
+<ol start="2">
+<li>We can compute <code>relative risks</code>:</li>
+</ol>
+<p><img src="/image/association_between_variables_3.png" alt="association_between_variables_3" title="association_between_variables_3"></p>
+<ol start="3">
+<li>We can compute <code>odds ratio</code>:</li>
+</ol>
+<p><img src="/image/association_between_variables_4.png" alt="association_between_variables_4" title="association_between_variables_4"></p>
+<h2 id="Association-Between-Categorical-Variable-and-Quantitative-Variable"><a href="#Association-Between-Categorical-Variable-and-Quantitative-Variable" class="headerlink" title="Association Between Categorical Variable and Quantitative Variable"></a>Association Between Categorical Variable and Quantitative Variable</h2><p>The assciation between categorical variable and quantitative variable, can be summarized by:</p>
+<ul>
+<li>distribution of the quantitative variable (<code>Y</code>)</li>
+<li>given (or conditioning) on each value of the categorical variable(<code>X</code>)</li>
+</ul>
+<p>The distribution of the variable <code>Y</code> can be summarized using different statistics, such as the <code>mean</code>, the <code>median</code>, the <code>quantile</code> and the <code>standard deviation</code>, etc. If the two variables are associated, the distribution of <code>Y</code> will be dependent on the value of <code>X</code>. </p>
+<p>For example, in the following chart we have displayed a categorical variable(education level)  and a quantitative variable(weekly income, to be precise, the mean of the weekly income):</p>
+<p><img src="/image/association_between_variables_5.png" alt="association_between_variables_5" title="association_between_variables_5"></p>
+<p>In the above chart, the distribution of the <code>Y</code> variable(weekly income) is summarized using the <code>mean</code> of the data collected. And there is a trend that for people who did not finish high school, the average weekly income is much lower than individuals who have had a higher degree. That is the association between these two variables. </p>
+<p>How we measure the association? We can also simplify our analysis, and we can know that:</p>
+<ul>
+<li>Individuals who did not finish high school: on average <code>$488</code> a week</li>
+<li>Individuals who have finished high school: on average <code>$668</code> a week</li>
+</ul>
+<p>And to measure the association, we can compute the difference of the averages, in this case <code>$668 - $488 = $180</code>. And one factor we need to consider is the <code>sample variation</code>. The averages that we are looking at, the $488 and the $668 a week, are based on randomly selected individuals from two sub-population, the population of high school degree holders, and the people who didn’t finish high school. Therefore, they may not have the most accurate measure about population(cannot reflect the population in 100%). These values have sampling variabilities.</p>
+<h2 id="Association-Between-Two-Quantitative-Variables"><a href="#Association-Between-Two-Quantitative-Variables" class="headerlink" title="Association Between Two Quantitative Variables"></a>Association Between Two Quantitative Variables</h2><p>The relation between two quantitative variables can be displayed using a <code>scatterplot</code>. For example, the following scatterplot displays the relation between the average income<br>of state(income per capita) and the percent of high school graduates for each state:</p>
+<p><img src="/image/association_between_variables_6.png" alt="association_between_variables_6" title="association_between_variables_6"></p>
+<p>From the above scatterplot we can see that the dots of the scatterplot create a trend that’s going upwards as the <code>x</code> variable increase. This is called a <strong>positive</strong> association. And the tighter the points are close to a clear linear pattern, the stronger our <strong>linear</strong> association<br>is between the <code>x</code> variable and the <code>y</code> variable.</p>
+<p>We can use <code>correlation</code> to measure the association. The correlation is computed like this:</p>
+<p><img src="/image/association_between_variables_7.png" alt="association_between_variables_7" title="association_between_variables_7"></p>
+<p>We can have a scatterplot of variable <code>X</code> and <code>Y</code>:</p>
+<p><img src="/image/association_between_variables_8.png" alt="association_between_variables_8" title="association_between_variables_8"></p>
+<p>We have four regions in the above plot. <code>(X1,Y1)</code> and <code>(X2,Y2)</code> contribute positive values in the calculation of correlation, and if we have a lot of points in these two regions, the correlation will be positive. <code>(X3,Y3)</code> and <code>(X4,Y4)</code> contribute negative values, and if we have a lot of points in these two regions, the correlation will be negative.</p>
+<p>The value of correlation is always between -1 and 1:</p>
+<ol>
+<li>-1: the strongest negative linear association</li>
+<li>1: the strongest positive linear association</li>
+<li>0: a weak <strong>linear</strong> association(e.g., a U-shape scatterplot)</li>
+</ol>
+<p><img src="/image/association_between_variables_9.png" alt="association_between_variables_9" title="association_between_variables_9"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Statistics-amp-Probability-Association-Between-Variables"><span class="toc-number">1.</span> <span class="toc-text">Statistics&amp;Probability: Association Between Variables</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Association-Between-Two-Categorical-Variables"><span class="toc-number">1.1.</span> <span class="toc-text">Association Between Two Categorical Variables</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Association-Between-Categorical-Variable-and-Quantitative-Variable"><span class="toc-number">1.2.</span> <span class="toc-text">Association Between Categorical Variable and Quantitative Variable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Association-Between-Two-Quantitative-Variables"><span class="toc-number">1.3.</span> <span class="toc-text">Association Between Two Quantitative Variables</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/&text=Statistics&amp;Probability: Association Between Variables"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/&title=Statistics&amp;Probability: Association Between Variables"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/&is_video=false&description=Statistics&amp;Probability: Association Between Variables"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Statistics&amp;Probability: Association Between Variables&body=Check out this article: http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/&title=Statistics&amp;Probability: Association Between Variables"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/&title=Statistics&amp;Probability: Association Between Variables"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/&title=Statistics&amp;Probability: Association Between Variables"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/&title=Statistics&amp;Probability: Association Between Variables"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/04/01/Statistics-Probability-Association-Between-Variables/&name=Statistics&amp;Probability: Association Between Variables&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

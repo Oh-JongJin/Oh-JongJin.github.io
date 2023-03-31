@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="LeetCode Problem: Top Interview Questions1. Reverse StringWrite a function that reverses a string. The input string is given as an array of characters char[]. Do not allocate extra space for another a">
+<meta name="keywords" content="algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Problem: Top Interview Questions">
+<meta property="og:url" content="http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="LeetCode Problem: Top Interview Questions1. Reverse StringWrite a function that reverses a string. The input string is given as an array of characters char[]. Do not allocate extra space for another a">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/reverse_string.png">
+<meta property="og:image" content="http://yoursite.com/image/leetcode_single_number.png">
+<meta property="og:image" content="http://yoursite.com/image/leetcode_single_number_2.png">
+<meta property="og:image" content="http://yoursite.com/image/majority_element.png">
+<meta property="og:updated_time" content="2020-06-08T11:14:10.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode Problem: Top Interview Questions">
+<meta name="twitter:description" content="LeetCode Problem: Top Interview Questions1. Reverse StringWrite a function that reverses a string. The input string is given as an array of characters char[]. Do not allocate extra space for another a">
+<meta name="twitter:image" content="http://yoursite.com/image/reverse_string.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>LeetCode Problem: Top Interview Questions</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/03/27/LeetCode-Problem-Dynamic-Programming-Topics/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/03/25/LeetCode-Problem-Search-Topics/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/&text=LeetCode Problem: Top Interview Questions"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/&title=LeetCode Problem: Top Interview Questions"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/&is_video=false&description=LeetCode Problem: Top Interview Questions"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=LeetCode Problem: Top Interview Questions&body=Check out this article: http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/&title=LeetCode Problem: Top Interview Questions"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/&title=LeetCode Problem: Top Interview Questions"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/&title=LeetCode Problem: Top Interview Questions"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/&title=LeetCode Problem: Top Interview Questions"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/&name=LeetCode Problem: Top Interview Questions&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LeetCode-Problem-Top-Interview-Questions"><span class="toc-number">1.</span> <span class="toc-text">LeetCode Problem: Top Interview Questions</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Reverse-String"><span class="toc-number">1.1.</span> <span class="toc-text">1. Reverse String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Single-Number"><span class="toc-number">1.2.</span> <span class="toc-text">2. Single Number</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Using-HashSet"><span class="toc-number">1.2.1.</span> <span class="toc-text">Using HashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Using-Bit-Manipulation"><span class="toc-number">1.2.2.</span> <span class="toc-text">Using Bit Manipulation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Move-Zeros"><span class="toc-number">1.3.</span> <span class="toc-text">3. Move Zeros</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Power-of-Two"><span class="toc-number">1.4.</span> <span class="toc-text">4. Power of Two</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Majority-Element"><span class="toc-number">1.5.</span> <span class="toc-text">5. Majority Element</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Roman-to-Integer"><span class="toc-number">1.6.</span> <span class="toc-text">6. Roman to Integer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Count-Primes"><span class="toc-number">1.7.</span> <span class="toc-text">7. Count Primes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-Sqrt-x"><span class="toc-number">1.8.</span> <span class="toc-text">8. Sqrt(x)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-Longest-Consecutive-Sequence"><span class="toc-number">1.9.</span> <span class="toc-text">9. Longest Consecutive Sequence</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-Best-Time-to-Buy-and-Sell-Stock"><span class="toc-number">1.10.</span> <span class="toc-text">10. Best Time to Buy and Sell Stock</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-LeetCode-Problem-Pascal’s-Triangle"><span class="toc-number">1.11.</span> <span class="toc-text">11.LeetCode Problem: Pascal’s Triangle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-Valid-Parentheses"><span class="toc-number">1.12.</span> <span class="toc-text">12. Valid Parentheses</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-Counting-Bits"><span class="toc-number">1.13.</span> <span class="toc-text">13. Counting Bits</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-Queue-Reconstruction-By-Height"><span class="toc-number">1.14.</span> <span class="toc-text">14. Queue Reconstruction By Height</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-Daily-Tempretures"><span class="toc-number">1.15.</span> <span class="toc-text">15. Daily Tempretures</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        LeetCode Problem: Top Interview Questions
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-03-26T09:44:02.000Z" itemprop="datePublished">2020-03-26</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/algorithm/">algorithm</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="LeetCode-Problem-Top-Interview-Questions"><a href="#LeetCode-Problem-Top-Interview-Questions" class="headerlink" title="LeetCode Problem: Top Interview Questions"></a>LeetCode Problem: Top Interview Questions</h1><h2 id="1-Reverse-String"><a href="#1-Reverse-String" class="headerlink" title="1. Reverse String"></a>1. Reverse String</h2><p>Write a function that reverses a string. The input string is given as an array of characters <code>char[]</code>. Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory. You may assume all the characters consist of printable ascii characters. For example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: [&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;]</span><br><span class="line">Output: [&quot;o&quot;,&quot;l&quot;,&quot;l&quot;,&quot;e&quot;,&quot;h&quot;]</span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line">Input: [&quot;H&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;h&quot;]</span><br><span class="line">Output: [&quot;h&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;H&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>To solve the problem, we need to use two pointers, the process is like this:</p>
+<p><img src="/image/reverse_string.png" alt="reverse_string" title="reverse_string"></p>
+<p>Here is the code of reverse string:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReverseString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverseString</span><span class="params">(<span class="keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> frontPointer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> backPointer = s.length - <span class="number">1</span>;<span class="comment">// Remember to minus 1!</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (frontPointer &lt; backPointer) &#123;<span class="comment">// There is no need to use "frontPointer &lt;= backPointer"!</span></span><br><span class="line">            <span class="keyword">char</span> temp = s[frontPointer];</span><br><span class="line">            s[frontPointer] = s[backPointer];</span><br><span class="line">            s[backPointer] = temp;</span><br><span class="line"></span><br><span class="line">            frontPointer++;</span><br><span class="line">            backPointer--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="2-Single-Number"><a href="#2-Single-Number" class="headerlink" title="2. Single Number"></a>2. Single Number</h2><p>Given a <strong>non-empty</strong> array of integers, every element appears twice except for one. Find that single one. For example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: [2,2,1]</span><br><span class="line">Output: 1</span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line">Input: [4,1,2,1,2]</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<p>Your algorithm should have a <strong>linear</strong> runtime complexity. Could you implement it <strong>without using extra memory</strong>?</p>
+<h3 id="Using-HashSet"><a href="#Using-HashSet" class="headerlink" title="Using HashSet"></a>Using HashSet</h3><p>The first way is to use <code>HashSet</code>, which uses hash table to implement <code>set</code>. The reason why we use HashSet is that, for the HashSet, the add and remove operations are all in <code>O(1)</code>. When we use <code>for</code> loop, the time complexity is <code>O(n)</code> in total. However, using <code>HashSet</code> takes extra memory. Take <code>[2, 2, 1, 3, 3]</code> as an example, the process is like this:</p>
+<ol>
+<li>We add the 1st element <code>2</code> into the set.</li>
+<li>The 2nd element  is <code>2</code>, as <code>2</code> is already in the set, we remove <code>2</code> from the set.</li>
+<li>We add the 3rd element <code>1</code> into the set.</li>
+<li>We add the 4th element <code>3</code> into the set.</li>
+<li>The 5th element is <code>3</code>, as <code>3</code> is already in the set, we remove <code>3</code> from the set.</li>
+<li>After traversing <code>[2, 2, 1, 3, 3]</code>, there is only <code>1</code> in the set, which is the single number.</li>
+</ol>
+<p>The code is like this:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleNumber</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span>(set.contains(i)) &#123;</span><br><span class="line">                set.remove(i);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                set.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i: set) &#123;</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Using-Bit-Manipulation"><a href="#Using-Bit-Manipulation" class="headerlink" title="Using Bit Manipulation"></a>Using Bit Manipulation</h3><p>A more clever way is to use Bitwise <code>XOR</code>, we know that:</p>
+<p><img src="/image/leetcode_single_number.png" alt="leetcode_single_number" title="leetcode_single_number"></p>
+<p>Take <code>[2, 2, 1, 3, 3]</code> as an example:</p>
+<p><code>1 XOR 2 XOR 2 = 1</code>, <code>1 XOR 3 XOR 3 = 1</code>, and then <code>1 XOR 0 = 1</code>, therefore our final result is 1, which is the single number. Here is the code:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleNumber</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i: nums) &#123;</span><br><span class="line">            result ^= i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>By the way, we can also use Bitwise <code>AND</code>(<code>&amp;</code>) to check whether a number is odd or even:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a &amp; <span class="number">1</span> == <span class="number">1</span>) &#123;</span><br><span class="line">    System.out.println(a+<span class="string">" is odd."</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123; <span class="comment">// a &amp; 1 == 0</span></span><br><span class="line">    System.out.println(a+<span class="string">" is even."</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/leetcode_single_number_2.png" alt="leetcode_single_number_2" title="leetcode_single_number_2"></p>
+<hr>
+<h2 id="3-Move-Zeros"><a href="#3-Move-Zeros" class="headerlink" title="3. Move Zeros"></a>3. Move Zeros</h2><p>Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">Input: [0,1,0,3,12]</span><br><span class="line">Output: [1,3,12,0,0]</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<p>You must do this in-place without making a copy of the array.<br>Minimize the total number of operations.</p>
+<p>This problem is easy to solve:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MoveZeros</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">moveZeroes</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;<span class="comment">// firstly place all non-zero values</span></span><br><span class="line">            <span class="keyword">if</span> (nums[i] != <span class="number">0</span>) &#123;</span><br><span class="line">                nums[index] = nums[i];</span><br><span class="line">                index++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = index; i &lt; nums.length; i++) &#123;<span class="comment">// then place 0s at the tail of the array</span></span><br><span class="line">            nums[index] = <span class="number">0</span>;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="4-Power-of-Two"><a href="#4-Power-of-Two" class="headerlink" title="4. Power of Two"></a>4. Power of Two</h2><p>Given an integer, write a function to determine if it is a power of two. Here is the code:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPowerOfTwo</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; n) &#123;</span><br><span class="line">        i *= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> i == n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="5-Majority-Element"><a href="#5-Majority-Element" class="headerlink" title="5. Majority Element"></a>5. Majority Element</h2><p><img src="/image/majority_element.png" alt="majority_element" title="majority_element"></p>
+<p>The easiest way to solve the problem is like this:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="comment">// As the majority element appears more than n/2 times,</span></span><br><span class="line">    <span class="comment">// if we sort the array, the element at index n/2 must </span></span><br><span class="line">    <span class="comment">// be the majority element.</span></span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    <span class="keyword">return</span> nums[nums.length /<span class="number">2</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The common way of solving this problem is using <code>HashMap</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MajorityElement</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// &lt;element, frequency&gt;</span></span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!map.containsKey(i)) &#123;</span><br><span class="line">                map.put(i, <span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                map.put(i, map.get(i) + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(map.get(i) &gt; nums.length /<span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="6-Roman-to-Integer"><a href="#6-Roman-to-Integer" class="headerlink" title="6. Roman to Integer"></a>6. Roman to Integer</h2><p>To solve this problem, we need to traverse the input string <strong>backward</strong>. And there are two cases, <code>addition</code> or <code>subtraction</code>.</p>
+<p>For example, if our input string is <code>VI</code>, and at the beginning our result is <code>0</code>. We traverse <code>I</code> first, and do the addition, our result becomes <code>0 + 1 = 1</code>. Then we traverse <code>V</code>, as <code>V</code> is larger than <code>I</code>, we do the addition again, and our result becomes <code>1 + 5 = 6</code>.</p>
+<p>If our input string is <code>IV</code>, at the beginning our result is <code>0</code>. We traverse <code>V</code> first, and do the addition, our result becomes <code>0 + 5 = 5</code>. Then we traverse <code>I</code>, as <code>I</code> is less than <code>V</code>, we do the subtraction, and our result becomes <code>5 - 1 = 4</code>.</p>
+<p>Here is the code to solve the problem:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Symbol       Value</span></span><br><span class="line"><span class="comment"> * I             1</span></span><br><span class="line"><span class="comment"> * V             5</span></span><br><span class="line"><span class="comment"> * X             10</span></span><br><span class="line"><span class="comment"> * L             50</span></span><br><span class="line"><span class="comment"> * C             100</span></span><br><span class="line"><span class="comment"> * D             500</span></span><br><span class="line"><span class="comment"> * M             1000</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RomanToInteger</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">'I'</span>, <span class="number">1</span>);</span><br><span class="line">        map.put(<span class="string">'V'</span>, <span class="number">5</span>);</span><br><span class="line">        map.put(<span class="string">'X'</span>, <span class="number">10</span>);</span><br><span class="line">        map.put(<span class="string">'L'</span>, <span class="number">50</span>);</span><br><span class="line">        map.put(<span class="string">'C'</span>, <span class="number">100</span>);</span><br><span class="line">        map.put(<span class="string">'D'</span>, <span class="number">500</span>);</span><br><span class="line">        map.put(<span class="string">'M'</span>, <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> result = map.get(s.charAt(s.length() - <span class="number">1</span>));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = s.length() - <span class="number">2</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span>(map.get(s.charAt(i + <span class="number">1</span>)) &lt;= map.get(s.charAt(i))) &#123;<span class="comment">// "VI", "II"</span></span><br><span class="line">                result += map.get(s.charAt(i));</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;<span class="comment">// "IV"</span></span><br><span class="line">                result -= map.get(s.charAt(i));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-Count-Primes"><a href="#7-Count-Primes" class="headerlink" title="7. Count Primes"></a>7. Count Primes</h2><p>Count the number of prime numbers less than a non-negative number, n.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">Input: 10</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.</span><br></pre></td></tr></table></figure>
+
+<p>For this problem, if we use brute force, it would be in <code>O(n^2)</code>. And the following code is a little efficient, which is in <code>O(n^1.5)</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountPrimes</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countPrimes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(isPrime(i)) &#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPrime</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= Math.sqrt(n); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(n % i == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>However, the above code is still too slow. A more efficient way is to use an algorithm called <code>Sieve of Eratoshenes</code>, which is in <code>O(nloglogn)</code>.</p>
+<iframe height="500" width="500" src="/iframe/sieve_of_eratosthenes.gif"></iframe>
+
+<p>As shown, the idea of <code>Sieve of Eratoshenes</code> is like this:</p>
+<ol>
+<li><p>For the first prime <code>2</code>, we rule out all its multiples, e.g., <code>2+2=4</code>, so we rule out <code>4</code>; <code>4+2=6</code>, so we rule out <code>6</code>; <code>6+2=8</code>, so we rule out <code>8</code>…</p>
+</li>
+<li><p>For the second prime <code>3</code>, we rule out all its multiples, e.g., <code>3+3=6</code>, so we rule out <code>6</code>; <code>6+3=9</code>, so we rule out <code>9</code>; <code>9+3=12</code>, so we rule out <code>12</code>…</p>
+</li>
+<li><p>For the third prime <code>5</code>, we rule out all its multiples, e.g., <code>5+5=10</code>, so we rule out <code>10</code>; <code>10+5=15</code>, so we rule out <code>15</code>; <code>15+5=20</code>, so we rule out <code>20</code>…</p>
+</li>
+<li><p>For the third prime <code>7</code>, we rule out all its multiples, e.g., <code>7+7=14</code>, so we rule out <code>14</code>; <code>14+7=21</code>, so we rule out <code>21</code>; <code>21+7=28</code>, so we rule out <code>28</code>…</p>
+</li>
+<li><p>Then, all the left numbers, including 2, 3, 5, 7, are prime numbers. </p>
+</li>
+</ol>
+<p>Given a number <code>N</code>, if we want to find all the primes in <code>range[2,N]</code>, all we need to do is:</p>
+<ol>
+<li>Find out all the primes in <code>range[2,sqrt(N)]</code>.</li>
+<li>For each prime in <code>range[2,sqrt(N)]</code>, rule out its multiples.</li>
+</ol>
+<p>Here is the code to implement this algorithm:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountPrimes</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countPrimes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// true: the number is *not* prime.</span></span><br><span class="line">        <span class="comment">// false: the number is prime.</span></span><br><span class="line">        <span class="keyword">boolean</span>[] isNotPrime = <span class="keyword">new</span> <span class="keyword">boolean</span>[n];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i*i &lt; isNotPrime.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!isNotPrime[i]) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = i + i; j &lt; isNotPrime.length; j+=i) &#123;</span><br><span class="line">                    isNotPrime[j] = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i&lt; isNotPrime.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!isNotPrime[i]) &#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="8-Sqrt-x"><a href="#8-Sqrt-x" class="headerlink" title="8. Sqrt(x)"></a>8. Sqrt(x)</h2><p>Implement <code>int sqrt(int x)</code>. Compute and return the square root of x, where x is guaranteed to be a non-negative integer. Since the return type is an integer, the decimal digits are truncated and only the integer part of the result is returned.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: 4</span><br><span class="line">Output: 2</span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line">Input: 8</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: The square root of 8 is 2.82842..., and since the decimal part is truncated, 2 is returned.</span><br></pre></td></tr></table></figure>
+
+<p>Note that we only consider the square root of <strong>integers</strong>（i.e., 1, 2, 3, …). The first method is brute force:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x == <span class="number">0</span> || x == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Why should we use long here? Suppose our input x is very large, say x = 2147395600,</span></span><br><span class="line">    <span class="comment">// then i would be also very large. If i is of type "int", i*i is also "int". When i is </span></span><br><span class="line">    <span class="comment">// very large, i*i would overflow. Therefore we should declare i as "long".  </span></span><br><span class="line">    <span class="keyword">long</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt; x; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(i*i &gt; x) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>)i - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>A more efficient way is to use <code>binary search</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x == <span class="number">0</span> || x == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> right = x; </span><br><span class="line">    <span class="keyword">while</span>(left &lt;= right) &#123;</span><br><span class="line">        <span class="keyword">long</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(mid * mid == x) &#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="keyword">int</span>)mid;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(mid * mid &gt; x) &#123;</span><br><span class="line">            right = (<span class="keyword">int</span>)mid - <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            left = (<span class="keyword">int</span>)mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The process of the above code is like this: <a href="https://www.youtube.com/watch?v=hBAz_bDvWGk" target="_blank" rel="noopener">https://www.youtube.com/watch?v=hBAz_bDvWGk</a></p>
+<hr>
+<h2 id="9-Longest-Consecutive-Sequence"><a href="#9-Longest-Consecutive-Sequence" class="headerlink" title="9. Longest Consecutive Sequence"></a>9. Longest Consecutive Sequence</h2><p>Given an unsorted array of integers, find the length of the longest consecutive elements sequence. Your algorithm should run in <code>O(n)</code> complexity.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">Input: [100, 4, 200, 1, 3, 2]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.</span><br></pre></td></tr></table></figure>
+
+<p>As our algorithm should be in <code>O(n)</code>, we can use <code>hashtable</code> to solve the problem:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LongestConsecutiveSequence</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestConsecutive</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            set.add(num);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            <span class="keyword">int</span> len = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (!set.contains(num - <span class="number">1</span>)) &#123;</span><br><span class="line">                <span class="keyword">int</span> lowerBound = num;</span><br><span class="line">                <span class="keyword">while</span> (set.contains(lowerBound + <span class="number">1</span>)) &#123;</span><br><span class="line">                    len++;</span><br><span class="line">                    lowerBound++;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                result = Math.max(len, result);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The process of the above code is like this: <a href="https://www.youtube.com/watch?v=iBcS_PBJTDE" target="_blank" rel="noopener">https://www.youtube.com/watch?v=iBcS_PBJTDE</a></p>
+<hr>
+<h2 id="10-Best-Time-to-Buy-and-Sell-Stock"><a href="#10-Best-Time-to-Buy-and-Sell-Stock" class="headerlink" title="10. Best Time to Buy and Sell Stock"></a>10. Best Time to Buy and Sell Stock</h2><p>Say you have an array for which the ith element is the price of a given stock on day <code>i</code>. If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit. Note that you cannot sell a stock before you buy one.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: [7,1,5,3,6,4]</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.</span><br><span class="line">             Not 7-1 = 6, as selling price needs to be larger than buying price.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line">Input: [7,6,4,3,1]</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: In this case, no transaction is done, i.e. max profit = 0.</span><br></pre></td></tr></table></figure>
+
+<p>Here is the code to solve the problem:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BestTime</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> profit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt; prices.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(prices[i] &lt; min) &#123;</span><br><span class="line">                min = prices[i]; </span><br><span class="line">            &#125;</span><br><span class="line">            profit = Math.max(profit, prices[i] - min);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> profit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">day</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">price</td>
+<td align="center">7</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">6</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>If we are on day <code>i</code>, we can ask ourselves:</p>
+<p><code>What is the maximum profit I can make today?</code> </p>
+<p>Firstly, we should check what is the minimum value <strong>before</strong> this day, then we subtract the minimum value using today’s price to get the maximum profit on day <code>i</code>. That’s why we should keep updating our <code>min</code>.</p>
+<p>We can make our code more efficient:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BestTime</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> profit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt; prices.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(prices[i] &lt; min) &#123;</span><br><span class="line">                min = prices[i]; </span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                profit = Math.max(profit, prices[i] - min);</span><br><span class="line">            &#125;         </span><br><span class="line">        &#125;       </span><br><span class="line">        <span class="keyword">return</span> profit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="11-LeetCode-Problem-Pascal’s-Triangle"><a href="#11-LeetCode-Problem-Pascal’s-Triangle" class="headerlink" title="11.LeetCode Problem: Pascal’s Triangle"></a>11.LeetCode Problem: Pascal’s Triangle</h2><p>In Pascal’s triangle, each number is the sum of the two numbers directly above it:</p>
+<iframe height="250" width="260" src="/iframe/pascal_triangle.gif"></iframe>
+
+<p>Given a non-negative integer numRows, generate the first numRows of Pascal’s triangle. For example, if <code>numRows = 5</code>, we get the following result:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">     [1],</span><br><span class="line">    [1,1],</span><br><span class="line">   [1,2,1],</span><br><span class="line">  [1,3,3,1],</span><br><span class="line"> [1,4,6,4,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>We can firstly observe the above result. We can easily find the following pattern for a particular row <code>i</code>:</p>
+<ol>
+<li>There are always <code>i</code> elements in row <code>i</code>.</li>
+<li>The first element and the last element are always <code>1</code>. </li>
+<li>The <code>j</code>th element in row <code>i</code> is the sum of <code>j-1</code>th element and <code>j</code>th element in row <code>i-1</code>.</li>
+</ol>
+<p>For example, for row <code>4</code>(i.e., <code>[1,3,3,1]</code>), we can find that:</p>
+<ol>
+<li>There are 4 elements in total.</li>
+<li>The first element and the last element are <code>1</code>.</li>
+<li>The 2nd element <code>3</code> is the sum of the 1st and 2nd element in row <code>3</code>, namely, <code>3 = 1 + 2</code>.</li>
+</ol>
+<p>Here is the code to solve the pascal’s triangle problem:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PascalTriangle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;List&lt;Integer&gt;&gt; generate(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Handle the case numRows = 0</span></span><br><span class="line">        <span class="keyword">if</span> (numRows == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Handle the case numRows = 1</span></span><br><span class="line">        List&lt;Integer&gt; row_1 = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        row_1.add(<span class="number">1</span>);</span><br><span class="line">        result.add(row_1);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Handle the case numRows &gt;= 2,</span></span><br><span class="line">        <span class="comment">// we start from the 2nd row.</span></span><br><span class="line">        List&lt;Integer&gt; pre_row = result.get(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= numRows; i++) &#123;</span><br><span class="line">            List&lt;Integer&gt; row_i = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            row_i.add(<span class="number">1</span>);<span class="comment">// The first element is always 1.</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">                row_i.add(j, pre_row.get(j - <span class="number">1</span>) + pre_row.get(j));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            row_i.add(<span class="number">1</span>);<span class="comment">// The last element is always 1.</span></span><br><span class="line">            result.add(row_i);</span><br><span class="line">            pre_row = row_i;<span class="comment">// Update the previous row</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// main method to test the generate method.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = generate(<span class="number">5</span>);</span><br><span class="line">        result.forEach(list -&gt; System.out.println(list));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="12-Valid-Parentheses"><a href="#12-Valid-Parentheses" class="headerlink" title="12. Valid Parentheses"></a>12. Valid Parentheses</h2><p>Given a string containing just the characters ‘(‘, ‘)’, ‘{‘, ‘}’, ‘[‘ and ‘]’, determine if the input string is valid. An input string is valid if:</p>
+<ul>
+<li>Open brackets must be closed by the same type of brackets.</li>
+<li>Open brackets must be closed in the correct order.</li>
+</ul>
+<p>Note that an empty string is also considered valid.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: &quot;()&quot;</span><br><span class="line">Output: true</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line">Input: &quot;()[]&#123;&#125;&quot;</span><br><span class="line">Output: true</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Example 3:</span><br><span class="line">Input: &quot;(]&quot;</span><br><span class="line">Output: false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Example 4:</span><br><span class="line">Input: &quot;([)]&quot;</span><br><span class="line">Output: false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Example 5:</span><br><span class="line">Input: &quot;&#123;[]&#125;&quot;</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<p>We can use a <code>stack</code> to solve this problem:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ValidParentheses</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">      Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">char</span> c : s.toCharArray()) &#123;</span><br><span class="line">          <span class="keyword">if</span>(c == <span class="string">'('</span> || c == <span class="string">'['</span> || c == <span class="string">'&#123;'</span>) &#123;</span><br><span class="line">              stack.push(c);</span><br><span class="line">          &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">')'</span> &amp;&amp; !stack.isEmpty() &amp;&amp; stack.peek() == <span class="string">'('</span>) &#123;</span><br><span class="line">              stack.pop();</span><br><span class="line">          &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">']'</span> &amp;&amp; !stack.isEmpty() &amp;&amp; stack.peek() == <span class="string">'['</span>) &#123;</span><br><span class="line">              stack.pop();</span><br><span class="line">          &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">'&#125;'</span> &amp;&amp; !stack.isEmpty() &amp;&amp; stack.peek() == <span class="string">'&#123;'</span>) &#123;</span><br><span class="line">              stack.pop();</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">return</span> stack.isEmpty();      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="13-Counting-Bits"><a href="#13-Counting-Bits" class="headerlink" title="13. Counting Bits"></a>13. Counting Bits</h2><p>Given a non negative integer number <code>num</code>. For every numbers <code>i</code> in the range <code>0 ≤ i ≤ num</code> calculate the number of 1’s in their binary representation and return them as an array.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: 2</span><br><span class="line">Output: [0,1,1]</span><br><span class="line"></span><br><span class="line">---------------------</span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line">Input: 5</span><br><span class="line">Output: [0,1,1,2,1,2]</span><br></pre></td></tr></table></figure>
+
+<p>Here is the code to solve this problem:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountingBits</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] countBits(<span class="keyword">int</span> num) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[num + <span class="number">1</span>];</span><br><span class="line">        </span><br><span class="line">        result[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;= num; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i % <span class="number">2</span> == <span class="number">0</span>) &#123; <span class="comment">// even number</span></span><br><span class="line">                result[i] = result[i/<span class="number">2</span>];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123; <span class="comment">// odd number</span></span><br><span class="line">                result[i] = result[i/<span class="number">2</span>] + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Here is the explanation of the above code:</p>
+<p>Given an even number, say <code>8</code>, which is <code>1000</code> in binary, if we divide <code>8</code> by <code>2</code>, all digits need to shift one place to the right:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">       8/2 ==&gt; 4</span><br><span class="line">1000 &gt;&gt; 1  ==&gt; 0100</span><br></pre></td></tr></table></figure>
+
+<p>As shown, since the last digit of an even number is always <code>0</code>, the number of 1’s in <code>8</code> is same as the number of 1’s in <code>8/2</code>.</p>
+<p>Given an odd number, say <code>7</code>, which is <code>0111</code> in binary, if we divide <code>7</code> by <code>2</code>, all digits need to shift one place to the right:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">       7/2 ==&gt; 3</span><br><span class="line">0111 &gt;&gt; 1  ==&gt; 0011</span><br></pre></td></tr></table></figure>
+
+<p>As shown, since the last digit of an odd number is always <code>1</code>, the number of 1’s in <code>7</code> is <strong>one more than</strong> the number of 1’s in <code>7/2</code>.</p>
+<hr>
+<h2 id="14-Queue-Reconstruction-By-Height"><a href="#14-Queue-Reconstruction-By-Height" class="headerlink" title="14. Queue Reconstruction By Height"></a>14. Queue Reconstruction By Height</h2><p>Suppose you have a random list of people standing in a queue. Each person is described by a pair of integers <code>(h, k)</code>, where <code>h</code> is the height of the person and <code>k</code> is the number of people in front of this person who have a height greater than or equal to <code>h</code>. Write an algorithm to reconstruct the queue. For example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">[[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">[[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]</span><br></pre></td></tr></table></figure>
+
+<p>Here is the code to solve this problem:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QueueReconstruction</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] reconstructQueue(<span class="keyword">int</span>[][] people) &#123;</span><br><span class="line">        <span class="keyword">if</span> (people.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> people;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        Arrays.sort(people, new Comparator&lt;int[]&gt;() &#123;</span></span><br><span class="line"><span class="comment">//            public int compare(int[] a, int[] b) &#123;</span></span><br><span class="line"><span class="comment">//                if (b[0] == a[0]) &#123;</span></span><br><span class="line"><span class="comment">//                    return a[1] - b[1];</span></span><br><span class="line"><span class="comment">//                &#125;</span></span><br><span class="line"><span class="comment">//                return b[0] - a[0];</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;);</span></span><br><span class="line">        Arrays.sort(people, (a, b) -&gt; (b[<span class="number">0</span>] == a[<span class="number">0</span>] ? a[<span class="number">1</span>] - b[<span class="number">1</span>] : b[<span class="number">0</span>] - a[<span class="number">0</span>]));</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;<span class="keyword">int</span>[]&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; people.length; i++)</span><br><span class="line">            list.add(people[i][<span class="number">1</span>], <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;people[i][<span class="number">0</span>], people[i][<span class="number">1</span>]&#125;);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[][] result = <span class="keyword">new</span> <span class="keyword">int</span>[people.length][<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] person : list) &#123;</span><br><span class="line">            result[i][<span class="number">0</span>] = person[<span class="number">0</span>];</span><br><span class="line">            result[i++][<span class="number">1</span>] = person[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The idea of the above code is shown in the following video: <a href="https://www.youtube.com/watch?v=z4FdQNfpyuM" target="_blank" rel="noopener">https://www.youtube.com/watch?v=z4FdQNfpyuM</a></p>
+<hr>
+<h2 id="15-Daily-Tempretures"><a href="#15-Daily-Tempretures" class="headerlink" title="15. Daily Tempretures"></a>15. Daily Tempretures</h2><p>Given a list of daily temperatures T, return a list such that, for each day in the input, tells you how many days you would have to wait until a warmer temperature. If there is no future day for which this is possible, put 0 instead.</p>
+<p>For example, given the list of temperatures <code>T = [73, 74, 75, 71, 69, 72, 76, 73]</code>, your output should be <code>[1, 1, 4, 2, 1, 1, 0, 0]</code>.</p>
+<p>An efficient way to solve this problem is to use <code>stack</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] dailyTemperatures(<span class="keyword">int</span>[] T) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] ans = <span class="keyword">new</span> <span class="keyword">int</span>[T.length];</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = T.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; T[i] &gt;= T[stack.peek()]) &#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            ans[i] = stack.isEmpty() ? <span class="number">0</span> : stack.peek() - i;</span><br><span class="line">            stack.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>And here is a good video explanation: <a href="https://www.youtube.com/watch?v=WGm4Kj3lhRI" target="_blank" rel="noopener">https://www.youtube.com/watch?v=WGm4Kj3lhRI</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LeetCode-Problem-Top-Interview-Questions"><span class="toc-number">1.</span> <span class="toc-text">LeetCode Problem: Top Interview Questions</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Reverse-String"><span class="toc-number">1.1.</span> <span class="toc-text">1. Reverse String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Single-Number"><span class="toc-number">1.2.</span> <span class="toc-text">2. Single Number</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Using-HashSet"><span class="toc-number">1.2.1.</span> <span class="toc-text">Using HashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Using-Bit-Manipulation"><span class="toc-number">1.2.2.</span> <span class="toc-text">Using Bit Manipulation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Move-Zeros"><span class="toc-number">1.3.</span> <span class="toc-text">3. Move Zeros</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Power-of-Two"><span class="toc-number">1.4.</span> <span class="toc-text">4. Power of Two</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Majority-Element"><span class="toc-number">1.5.</span> <span class="toc-text">5. Majority Element</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Roman-to-Integer"><span class="toc-number">1.6.</span> <span class="toc-text">6. Roman to Integer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Count-Primes"><span class="toc-number">1.7.</span> <span class="toc-text">7. Count Primes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-Sqrt-x"><span class="toc-number">1.8.</span> <span class="toc-text">8. Sqrt(x)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-Longest-Consecutive-Sequence"><span class="toc-number">1.9.</span> <span class="toc-text">9. Longest Consecutive Sequence</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-Best-Time-to-Buy-and-Sell-Stock"><span class="toc-number">1.10.</span> <span class="toc-text">10. Best Time to Buy and Sell Stock</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-LeetCode-Problem-Pascal’s-Triangle"><span class="toc-number">1.11.</span> <span class="toc-text">11.LeetCode Problem: Pascal’s Triangle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-Valid-Parentheses"><span class="toc-number">1.12.</span> <span class="toc-text">12. Valid Parentheses</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-Counting-Bits"><span class="toc-number">1.13.</span> <span class="toc-text">13. Counting Bits</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-Queue-Reconstruction-By-Height"><span class="toc-number">1.14.</span> <span class="toc-text">14. Queue Reconstruction By Height</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-Daily-Tempretures"><span class="toc-number">1.15.</span> <span class="toc-text">15. Daily Tempretures</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/&text=LeetCode Problem: Top Interview Questions"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/&title=LeetCode Problem: Top Interview Questions"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/&is_video=false&description=LeetCode Problem: Top Interview Questions"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=LeetCode Problem: Top Interview Questions&body=Check out this article: http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/&title=LeetCode Problem: Top Interview Questions"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/&title=LeetCode Problem: Top Interview Questions"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/&title=LeetCode Problem: Top Interview Questions"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/&title=LeetCode Problem: Top Interview Questions"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/03/26/LeetCode-Problem-Top-Interview-Questions/&name=LeetCode Problem: Top Interview Questions&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

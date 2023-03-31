@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Object-oriented Programming in PythonEverything is ObjectIn Python, everything is an object. Here is a classfication of Python objects:   We know that in Java there are 8 primitive types(int, boolean,">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Object-oriented Programming in Python">
+<meta property="og:url" content="http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="Object-oriented Programming in PythonEverything is ObjectIn Python, everything is an object. Here is a classfication of Python objects:   We know that in Java there are 8 primitive types(int, boolean,">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/python_object_type.png">
+<meta property="og:image" content="http://yoursite.com/image/python_int.png">
+<meta property="og:image" content="http://yoursite.com/image/python_int2.png">
+<meta property="og:image" content="http://yoursite.com/image/python_object.png">
+<meta property="og:image" content="http://yoursite.com/image/python_student.png">
+<meta property="og:image" content="http://yoursite.com/image/python_student2.png">
+<meta property="og:image" content="http://yoursite.com/image/invoke_order.png">
+<meta property="og:image" content="http://yoursite.com/image/python_encapsulation.png">
+<meta property="og:image" content="http://yoursite.com/image/python_encapsulation2.png">
+<meta property="og:image" content="http://yoursite.com/image/single_inheritance.png">
+<meta property="og:image" content="http://yoursite.com/image/multiple_inheritance.png">
+<meta property="og:image" content="http://yoursite.com/image/multiple_inheritance2.png">
+<meta property="og:image" content="http://yoursite.com/image/multiple_inheritance3.png">
+<meta property="og:image" content="http://yoursite.com/image/python_static.png">
+<meta property="og:image" content="http://yoursite.com/image/python_static2.png">
+<meta property="og:updated_time" content="2020-05-01T15:16:16.891Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Object-oriented Programming in Python">
+<meta name="twitter:description" content="Object-oriented Programming in PythonEverything is ObjectIn Python, everything is an object. Here is a classfication of Python objects:   We know that in Java there are 8 primitive types(int, boolean,">
+<meta name="twitter:image" content="http://yoursite.com/image/python_object_type.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Object-oriented Programming in Python</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/12/13/Understanding-SQL-Index/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/12/07/Symmetric-Cryptography-Data-Encrypton-Standard（DES/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/&text=Object-oriented Programming in Python"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/&title=Object-oriented Programming in Python"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/&is_video=false&description=Object-oriented Programming in Python"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Object-oriented Programming in Python&body=Check out this article: http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/&title=Object-oriented Programming in Python"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/&title=Object-oriented Programming in Python"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/&title=Object-oriented Programming in Python"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/&title=Object-oriented Programming in Python"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/&name=Object-oriented Programming in Python&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Object-oriented-Programming-in-Python"><span class="toc-number">1.</span> <span class="toc-text">Object-oriented Programming in Python</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Everything-is-Object"><span class="toc-number">1.1.</span> <span class="toc-text">Everything is Object</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Magic-Methods-in-Class"><span class="toc-number">1.2.</span> <span class="toc-text">Magic Methods in Class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Encapsulation"><span class="toc-number">1.3.</span> <span class="toc-text">Encapsulation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Inheritance"><span class="toc-number">1.4.</span> <span class="toc-text">Inheritance</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Single-Inheritance"><span class="toc-number">1.4.1.</span> <span class="toc-text">Single Inheritance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Multiple-Inheritance"><span class="toc-number">1.4.2.</span> <span class="toc-text">Multiple Inheritance</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Static-Variables-and-Methods"><span class="toc-number">1.5.</span> <span class="toc-text">Static Variables and Methods</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Object-oriented Programming in Python
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-12T13:22:48.000Z" itemprop="datePublished">2019-12-12</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/python/">python</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Object-oriented-Programming-in-Python"><a href="#Object-oriented-Programming-in-Python" class="headerlink" title="Object-oriented Programming in Python"></a>Object-oriented Programming in Python</h1><h2 id="Everything-is-Object"><a href="#Everything-is-Object" class="headerlink" title="Everything is Object"></a>Everything is Object</h2><p>In Python, everything is an object. Here is a classfication of Python objects: </p>
+<p><img src="/image/python_object_type.png" alt="python_object_type" title="python_object_type"></p>
+<p>We know that in Java there are 8 primitive types(int, boolean, char, etc), which are not object. However, even an integer in Python is an object. For example:</p>
+<p><img src="/image/python_int.png" alt="python_int" title="python_int"></p>
+<p>From the example we can know that <code>a</code> and <code>b</code> have the same reference. <code>a</code> and <code>b</code> are both object of <code>int</code>, and we can call them <strong>instance object</strong>. <code>int</code> is a type object, and we can interpret it as a <code>class</code> in Java(though it is a <strong>class object</strong>):</p>
+<p><img src="/image/python_int2.png" alt="python_int2" title="python_int2"></p>
+<p>There is a special type object named <code>object</code>, and we can interpret it as <code>Object</code> in Java, which means it is the base class:</p>
+<p><img src="/image/python_object.png" alt="python_object" title="python_object"></p>
+<p>We can also define our own class, which is also a type object:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">study</span><span class="params">(self)</span>:</span> <span class="comment"># "self" represents current instance object, which is similar to "this" in Java. And it cannot be omitted.</span></span><br><span class="line">        print(<span class="string">"Studying..."</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/python_student.png" alt="python_student" title="python_student"></p>
+<p>And we can add attributes to an instance object of Student directly. For example, we can add an attribute <code>name</code> to the instance object <code>student</code>:</p>
+<p><img src="/image/python_student2.png" alt="python_student2" title="python_student2"></p>
+<h2 id="Magic-Methods-in-Class"><a href="#Magic-Methods-in-Class" class="headerlink" title="Magic Methods in Class"></a>Magic Methods in Class</h2><p>There are four magic methods worth noting in a class:  </p>
+<ol>
+<li><code>__new__</code>: Create an instance object from a class object. </li>
+<li><code>__init__</code>: Initialize the attributes of the instance object. This method is invoked after the <code>__new__</code> method.</li>
+<li><code>__str__</code> : Similar to <code>toString</code> method in Java.</li>
+<li><code>__del__</code>: This method is invoked when an instance object is garbage collected, which happens at some point after all references to the object have been deleted.</li>
+</ol>
+<p>Firstly we can figure out the execution order of these methods:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span></span><br><span class="line">        print(<span class="string">"__init__ is invoked."</span>)</span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls, *args, **kwargs)</span>:</span></span><br><span class="line">        print(<span class="string">"__new__ is invoked."</span>)</span><br><span class="line">        <span class="keyword">return</span> object.__new__(cls)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"__str__ is invoked."</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"name:%s | age:%s"</span> % (self.name, self.age)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"__del__ is invoked."</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">student = Student(<span class="string">"Lily"</span>, <span class="number">16</span>)</span><br><span class="line">print(student)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/invoke_order.png" alt="invoke_order" title="invoke_order"></p>
+<h2 id="Encapsulation"><a href="#Encapsulation" class="headerlink" title="Encapsulation"></a>Encapsulation</h2><p>Just like Jave, now we want to have private attributes and their getters/setters:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span> </span><br><span class="line">        self.__name = name <span class="comment"># __name is a private attribute. </span></span><br><span class="line">        self.__age = age <span class="comment"># __age is a private attribute.</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_name</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__name</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_age</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__age</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_name</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.__name = name</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_age</span><span class="params">(self, age)</span>:</span></span><br><span class="line">        self.__age = age</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"name:%s | age:%s"</span> % (self.__name, self.__age)</span><br><span class="line">    </span><br><span class="line">student = Student(<span class="string">"Lily"</span>, <span class="number">16</span>)</span><br><span class="line">print(student.get_name())</span><br><span class="line">print(student.get_age())</span><br><span class="line"></span><br><span class="line">student.set_name(<span class="string">"Martin"</span>)</span><br><span class="line">student.set_age(<span class="number">18</span>)</span><br><span class="line">print(student.get_name())</span><br><span class="line">print(student.get_age())</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/python_encapsulation.png" alt="python_encapsulation" title="python_encapsulation"></p>
+<p>And we can also have some private methods:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span> </span><br><span class="line">        self.__name = name </span><br><span class="line">        self.__age = age</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__read_novels</span><span class="params">(self)</span>:</span> <span class="comment"># __read_novels is a private method.</span></span><br><span class="line">        print(<span class="string">"Reading novels..."</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">read</span><span class="params">(self)</span>:</span> <span class="comment"># read is a public method.</span></span><br><span class="line">        self.__read_novels()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_name</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__name</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_age</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__age</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_name</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.__name = name</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_age</span><span class="params">(self, age)</span>:</span></span><br><span class="line">        self.__age = age</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"name:%s | age:%s"</span> % (self.__name, self.__age)</span><br><span class="line">    </span><br><span class="line">student = Student(<span class="string">"Lily"</span>, <span class="number">16</span>)</span><br><span class="line">student.read()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/python_encapsulation2.png" alt="python_encapsulation2" title="python_encapsulation2"></p>
+<h2 id="Inheritance"><a href="#Inheritance" class="headerlink" title="Inheritance"></a>Inheritance</h2><h3 id="Single-Inheritance"><a href="#Single-Inheritance" class="headerlink" title="Single Inheritance"></a>Single Inheritance</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, brand, color)</span>:</span></span><br><span class="line">        self.__brand = brand</span><br><span class="line">        self.__color = color</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"%s is running."</span> % self.get_brand())</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_brand</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__brand</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_color</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__color</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_brand</span><span class="params">(self, brand)</span>:</span></span><br><span class="line">        self.__brand = brand</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_color</span><span class="params">(self, color)</span>:</span></span><br><span class="line">        self.__color = color</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"brand:%s | color:%s"</span> % (self.__brand, self.__color)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># SportsCar is a subclass of Car.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SportsCar</span><span class="params">(Car)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, brand, color, speed)</span>:</span></span><br><span class="line">        super().__init__(brand, color)</span><br><span class="line">        <span class="comment"># two other ways to invoke superclass's method:</span></span><br><span class="line">        <span class="comment"># Car.__init__(self, brand, color)</span></span><br><span class="line">        <span class="comment"># super(BMW, self).__init__(brand, color)</span></span><br><span class="line">        self.__speed = speed</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span> <span class="comment"># Override run method.</span></span><br><span class="line">        print(<span class="string">"%s is running at the speed of %.2f."</span> % (self.get_brand(), self.get_speed()))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_speed</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__speed</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_speed</span><span class="params">(self, speed)</span>:</span></span><br><span class="line">        self.__speed = speed</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span> <span class="comment"># Override __str__ method.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"brand:%s | color:%s | speed:%.2f"</span> % (self.get_brand(), self.get_color(), self.get_speed())</span><br><span class="line"></span><br><span class="line">bmw = SportsCar(<span class="string">"BMW"</span>, <span class="string">"Red"</span>, <span class="number">150</span>)</span><br><span class="line">bmw.run()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/single_inheritance.png" alt="single_inheritance" title="single_inheritance"></p>
+<h3 id="Multiple-Inheritance"><a href="#Multiple-Inheritance" class="headerlink" title="Multiple Inheritance"></a>Multiple Inheritance</h3><p>Python allows a class object to inherit from mupltiple classes, i.e., multiple inheritance. Here is a simple example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"foo from A"</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"foo from B"</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(A,B)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">c = C()</span><br><span class="line">c.foo()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/multiple_inheritance.png" alt="multiple_inheritance" title="multiple_inheritance"></p>
+<p>From the above example we can find that by default <code>c.foo()</code> invoke the <code>foo</code> method from superclass <code>A</code>. But why? To understand the reason, we can use <code>__mro__</code> (method resoultion order)<br>method, which returns a tuple:</p>
+<p><img src="/image/multiple_inheritance2.png" alt="multiple_inheritance2" title="multiple_inheritance2"></p>
+<p>In multiple inheritance, when we search for an attribute in a class that is involved, an order is followed. First, it is searched in the current class. If not found, the search moves to super classes. In the above case, the search order will be left-to-right, i.e. <code>C</code>, <code>A</code>, <code>B</code>, <code>object</code>.<br>Therefore, if we use <code>c.foo()</code>, the <code>foo</code> method in <code>A</code> will be used. </p>
+<p>If we want to invoke <code>B</code>‘s <code>foo</code> method when using <code>c.foo()</code>, we can override the <code>foo</code> method in <code>C</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"foo from A"</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"foo from B"</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(A,B)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self)</span>:</span></span><br><span class="line">        B.foo(self)</span><br><span class="line"></span><br><span class="line">c = C()</span><br><span class="line">c.foo()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/multiple_inheritance3.png" alt="multiple_inheritance3" title="multiple_inheritance3"></p>
+<h2 id="Static-Variables-and-Methods"><a href="#Static-Variables-and-Methods" class="headerlink" title="Static Variables and Methods"></a>Static Variables and Methods</h2><p>All variables defined on the class level in Python are considered static. For example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span></span><br><span class="line">    name = <span class="string">"Person"</span>  <span class="comment"># Belong to class object, which is similar to static vairable in Java.</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span></span><br><span class="line">        self.name = name  <span class="comment"># Belong to instance object.</span></span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">person = Person(<span class="string">"Nora"</span>, <span class="number">23</span>)</span><br><span class="line">print(person.name)</span><br><span class="line">print(Person.name)</span><br><span class="line">Person.name=<span class="string">"Someone"</span></span><br><span class="line">print(Person.name)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/python_static.png" alt="python_static" title="python_static"></p>
+<p>In Python, there are two ways of defining static methods within a class. One way is using <code>@classmethod</code>: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span></span><br><span class="line">    name = <span class="string">"Person"</span></span><br><span class="line"></span><br><span class="line">    <span class="string">""" </span></span><br><span class="line"><span class="string">    1. Similar to static method in Java, both instance object and class object can invoke this change_name method.</span></span><br><span class="line"><span class="string">    2. We can also use class method to modify class attribute, in this case, name.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">change_name</span><span class="params">(cls, name)</span>:</span> <span class="comment"># cls means this method is belong to class object.</span></span><br><span class="line">        cls.name = name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">person = Person()</span><br><span class="line">print(Person.name)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Both instance object and class object can invoke this change_name method:</span></span><br><span class="line">Person.change_name(<span class="string">"Someone"</span>)</span><br><span class="line">print(Person.name)</span><br><span class="line">person.change_name(<span class="string">"Person"</span>)</span><br><span class="line">print(Person.name)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/python_static2.png" alt="python_static2" title="python_static2"></p>
+<p>Another way of defining static methods is using <code>@staticmethod</code>, which cannot modify static varibles, and we can omit this argument <code>cls</code> in these methods:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span> </span><br><span class="line">    <span class="string">""" </span></span><br><span class="line"><span class="string">    1. Similar to static method in Java, both instance object and class object can invoke this eat method.</span></span><br><span class="line"><span class="string">    2. We cannot use this method to modify class attribute.</span></span><br><span class="line"><span class="string">    3. There is no mandatory argument "cls".</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span><span class="params">()</span>:</span></span><br><span class="line">        print(<span class="string">"Eating..."</span>)</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Object-oriented-Programming-in-Python"><span class="toc-number">1.</span> <span class="toc-text">Object-oriented Programming in Python</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Everything-is-Object"><span class="toc-number">1.1.</span> <span class="toc-text">Everything is Object</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Magic-Methods-in-Class"><span class="toc-number">1.2.</span> <span class="toc-text">Magic Methods in Class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Encapsulation"><span class="toc-number">1.3.</span> <span class="toc-text">Encapsulation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Inheritance"><span class="toc-number">1.4.</span> <span class="toc-text">Inheritance</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Single-Inheritance"><span class="toc-number">1.4.1.</span> <span class="toc-text">Single Inheritance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Multiple-Inheritance"><span class="toc-number">1.4.2.</span> <span class="toc-text">Multiple Inheritance</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Static-Variables-and-Methods"><span class="toc-number">1.5.</span> <span class="toc-text">Static Variables and Methods</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/&text=Object-oriented Programming in Python"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/&title=Object-oriented Programming in Python"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/&is_video=false&description=Object-oriented Programming in Python"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Object-oriented Programming in Python&body=Check out this article: http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/&title=Object-oriented Programming in Python"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/&title=Object-oriented Programming in Python"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/&title=Object-oriented Programming in Python"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/&title=Object-oriented Programming in Python"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/12/Object-oriented-Programming-in-Python/&name=Object-oriented Programming in Python&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

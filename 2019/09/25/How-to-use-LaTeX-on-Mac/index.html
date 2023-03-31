@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="LaTexLaTeX is pronounced Lah-tech or Lay-tech. Components to using LaTeXThe major components in using LaTeX:    1. a text editor: To create the TeX source document. TeXshop is quite common on Mac.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to use LaTeX on Mac">
+<meta property="og:url" content="http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="LaTexLaTeX is pronounced Lah-tech or Lay-tech. Components to using LaTeXThe major components in using LaTeX:    1. a text editor: To create the TeX source document. TeXshop is quite common on Mac.">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/LaTex_components.png">
+<meta property="og:image" content="http://yoursite.com/image/Typeset_Button.png">
+<meta property="og:image" content="http://yoursite.com/image/LaTeXDemo001.png">
+<meta property="og:updated_time" content="2019-10-02T14:58:17.701Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to use LaTeX on Mac">
+<meta name="twitter:description" content="LaTexLaTeX is pronounced Lah-tech or Lay-tech. Components to using LaTeXThe major components in using LaTeX:    1. a text editor: To create the TeX source document. TeXshop is quite common on Mac.">
+<meta name="twitter:image" content="http://yoursite.com/image/LaTex_components.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>How to use LaTeX on Mac</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/10/02/Random-Numbers-in-Java/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/09/18/New-Feature-of-JDK13/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/&text=How to use LaTeX on Mac"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/&title=How to use LaTeX on Mac"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/&is_video=false&description=How to use LaTeX on Mac"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to use LaTeX on Mac&body=Check out this article: http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/&title=How to use LaTeX on Mac"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/&title=How to use LaTeX on Mac"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/&title=How to use LaTeX on Mac"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/&title=How to use LaTeX on Mac"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/&name=How to use LaTeX on Mac&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LaTex"><span class="toc-number">1.</span> <span class="toc-text">LaTex</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Components-to-using-LaTeX"><span class="toc-number">1.1.</span> <span class="toc-text">Components to using LaTeX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-MacTex"><span class="toc-number">1.2.</span> <span class="toc-text">Install MacTex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Understanding-LaTex"><span class="toc-number">1.3.</span> <span class="toc-text">Understanding LaTex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LaTex-Demo"><span class="toc-number">1.4.</span> <span class="toc-text">LaTex Demo</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        How to use LaTeX on Mac
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-09-25T13:06:44.000Z" itemprop="datePublished">2019-09-25</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="LaTex"><a href="#LaTex" class="headerlink" title="LaTex"></a>LaTex</h1><p>LaTeX is pronounced <code>Lah-tech</code> or <code>Lay-tech</code>.</p>
+<h2 id="Components-to-using-LaTeX"><a href="#Components-to-using-LaTeX" class="headerlink" title="Components to using LaTeX"></a>Components to using LaTeX</h2><p>The major components in using LaTeX:<br>    1. a text editor: To create the TeX source document. TeXshop is quite common on Mac.<br>    2. a TeX Distribution: The distribution on the Mac is called MacTeX. Within Distribution there are numerous <strong>engines</strong> that can process your source file into a PDF file. Processing a source file with a particular engine is often referred to as <strong>compiling</strong> the document.<br>    3. a PDF previewer: To view PDF documents. TeXshop can also serves as PDF previewer.</p>
+<p><img src="/image/LaTex_components.png" alt="LaTex_components" title="LaTex_components"></p>
+<h2 id="Install-MacTex"><a href="#Install-MacTex" class="headerlink" title="Install MacTex"></a>Install MacTex</h2><p>Visit <a href="http://tug.org/mactex/" target="_blank" rel="noopener">http://tug.org/mactex/</a> and click on the MacTex Download link, the on the MacTeX.pkg link to download the installer (if prompted, click Keep). The file is quite large (~4 GB), so be prepared to wait a bit while it downloads. Besides, the <strong>MacTeX includes TeXShop</strong>, so there is no need to download TeXShop.</p>
+<h2 id="Understanding-LaTex"><a href="#Understanding-LaTex" class="headerlink" title="Understanding LaTex"></a>Understanding LaTex</h2><ul>
+<li><p>Preamble: Every document begins with a <code>\documentclass</code> command. The actual text of the document is enclosed with <code>\begin{document} ... \end{document}</code>. Everything between the <code>\documentclass</code> command and the <code>\begin{document}</code> is called the <strong>preamble</strong> of the document. This is the place where <strong>packages</strong> are loaded, and extra commands are defined or given values.</p>
+</li>
+<li><p>Packages: In LaTeX, many useful things are implemented as separate packages. Each package is loaded separately in the preamble of the document.</p>
+</li>
+<li><p>In LaTex, formatting is separated from content. </p>
+<ul>
+<li>For example: Suppose you want your section headings to be in 24 point Helvetica and coloured blue. In Microsoft Word, you may have just manually changed the font and the color of your headings manually. If the next day you decide that all the headings should really be 18 point and orange, you have to change each one manually. Instead, in LaTeX you can just change the definition of the formatting for \section and all sections will change automatically(which is like HTML and CSS).</li>
+</ul>
+</li>
+</ul>
+<h2 id="LaTex-Demo"><a href="#LaTex-Demo" class="headerlink" title="LaTex Demo"></a>LaTex Demo</h2><p>Once you install MacTeX, you can edit your document in TeXShop. Here’s a simple demo:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">\documentclass&#123;article&#125;</span><br><span class="line"> </span><br><span class="line"> % You can use packages here:</span><br><span class="line">\usepackage[margin=1in]&#123;geometry&#125;   </span><br><span class="line"></span><br><span class="line">\title&#123;Down By the Salley Gardens&#125;</span><br><span class="line">\author&#123;WILLIAM BUTLER YEATS&#125;</span><br><span class="line">\date&#123;Spring 1889&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line"></span><br><span class="line">\maketitle</span><br><span class="line"></span><br><span class="line">\begin&#123;center&#125;</span><br><span class="line"></span><br><span class="line">Down by the salley gardens</span><br><span class="line"></span><br><span class="line">my love and I did meet;</span><br><span class="line"></span><br><span class="line">She passed the salley gardens</span><br><span class="line"></span><br><span class="line">with little snow-white feet.</span><br><span class="line"></span><br><span class="line">She bid me take love easy,</span><br><span class="line"></span><br><span class="line">as the leaves grow on the tree;</span><br><span class="line"></span><br><span class="line">But I, being young and foolish,</span><br><span class="line"></span><br><span class="line">with her would not agree.</span><br><span class="line"></span><br><span class="line">\end&#123;center&#125;</span><br><span class="line"></span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/Typeset_Button.png" alt="Typeset_Button" title="Typeset_Button"></p>
+<p>Click “Typeset” button at the upper left, then you can see a PDF like this:</p>
+<p><img src="/image/LaTeXDemo001.png" alt="LaTeXDemo001" title="LaTeXDemo001"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LaTex"><span class="toc-number">1.</span> <span class="toc-text">LaTex</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Components-to-using-LaTeX"><span class="toc-number">1.1.</span> <span class="toc-text">Components to using LaTeX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-MacTex"><span class="toc-number">1.2.</span> <span class="toc-text">Install MacTex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Understanding-LaTex"><span class="toc-number">1.3.</span> <span class="toc-text">Understanding LaTex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LaTex-Demo"><span class="toc-number">1.4.</span> <span class="toc-text">LaTex Demo</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/&text=How to use LaTeX on Mac"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/&title=How to use LaTeX on Mac"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/&is_video=false&description=How to use LaTeX on Mac"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to use LaTeX on Mac&body=Check out this article: http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/&title=How to use LaTeX on Mac"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/&title=How to use LaTeX on Mac"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/&title=How to use LaTeX on Mac"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/&title=How to use LaTeX on Mac"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/09/25/How-to-use-LaTeX-on-Mac/&name=How to use LaTeX on Mac&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

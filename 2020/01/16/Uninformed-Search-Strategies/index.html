@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Uninformed Search StrategiesWhy We Need Search: Problem FormulationGiven initial state, the process of looking for a sequence of actions that reaches the goal state is called search: 12             a">
+<meta name="keywords" content="algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Uninformed Search Strategies">
+<meta property="og:url" content="http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="Uninformed Search StrategiesWhy We Need Search: Problem FormulationGiven initial state, the process of looking for a sequence of actions that reaches the goal state is called search: 12             a">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/breadth_first_1.png">
+<meta property="og:image" content="http://yoursite.com/image/breadth_first_2.png">
+<meta property="og:image" content="http://yoursite.com/image/breadth_first_3.png">
+<meta property="og:image" content="http://yoursite.com/image/breadth_first_4.png">
+<meta property="og:image" content="http://yoursite.com/image/breadth_first_5.png">
+<meta property="og:image" content="http://yoursite.com/image/breadth_first_6.png">
+<meta property="og:image" content="http://yoursite.com/image/depth_first_1.png">
+<meta property="og:image" content="http://yoursite.com/image/depth_first_2.png">
+<meta property="og:image" content="http://yoursite.com/image/depth_first_3.png">
+<meta property="og:image" content="http://yoursite.com/image/depth_first_4.png">
+<meta property="og:image" content="http://yoursite.com/image/uninformed_search.png">
+<meta property="og:updated_time" content="2020-04-27T13:51:20.562Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Uninformed Search Strategies">
+<meta name="twitter:description" content="Uninformed Search StrategiesWhy We Need Search: Problem FormulationGiven initial state, the process of looking for a sequence of actions that reaches the goal state is called search: 12             a">
+<meta name="twitter:image" content="http://yoursite.com/image/breadth_first_1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Uninformed Search Strategies</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/01/21/Recursion-Helper-Function/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/01/04/How-to-Learn-Songs-by-Ear-on-Guitar/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/&text=Uninformed Search Strategies"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/&title=Uninformed Search Strategies"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/&is_video=false&description=Uninformed Search Strategies"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Uninformed Search Strategies&body=Check out this article: http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/&title=Uninformed Search Strategies"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/&title=Uninformed Search Strategies"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/&title=Uninformed Search Strategies"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/&title=Uninformed Search Strategies"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/&name=Uninformed Search Strategies&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Uninformed-Search-Strategies"><span class="toc-number">1.</span> <span class="toc-text">Uninformed Search Strategies</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-We-Need-Search-Problem-Formulation"><span class="toc-number">1.1.</span> <span class="toc-text">Why We Need Search: Problem Formulation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-to-Uninformed-Search"><span class="toc-number">1.2.</span> <span class="toc-text">Introduction to Uninformed Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Breadth-first-Search"><span class="toc-number">1.3.</span> <span class="toc-text">Breadth-first Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Depth-first-Search"><span class="toc-number">1.4.</span> <span class="toc-text">Depth-first Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Depth-limited-Search"><span class="toc-number">1.5.</span> <span class="toc-text">Depth-limited Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">1.6.</span> <span class="toc-text">Conclusion</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Uninformed Search Strategies
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-01-16T12:01:06.000Z" itemprop="datePublished">2020-01-16</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/algorithm/">algorithm</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Uninformed-Search-Strategies"><a href="#Uninformed-Search-Strategies" class="headerlink" title="Uninformed Search Strategies"></a>Uninformed Search Strategies</h1><h2 id="Why-We-Need-Search-Problem-Formulation"><a href="#Why-We-Need-Search-Problem-Formulation" class="headerlink" title="Why We Need Search: Problem Formulation"></a>Why We Need Search: Problem Formulation</h2><p>Given initial state, the process of looking for <strong>a sequence of actions</strong> that reaches the goal state is called <strong>search</strong>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">             a sequence of actions</span><br><span class="line">intial state ====================&gt; goal state</span><br></pre></td></tr></table></figure>
+
+<p>Each action has a cost, and the sum of all the actions’ costs is the cost of the solution, i.e.,</p>
+<p><code>cost of the solution = sum of the costs of the actions</code></p>
+<p>In summary, search algorithms search for solutions to a given problem:</p>
+<ul>
+<li>Input: problem formulation</li>
+<li>Output: solution, i.e., a sequence of actions that minimize/maximize the cost</li>
+</ul>
+<h2 id="Introduction-to-Uninformed-Search"><a href="#Introduction-to-Uninformed-Search" class="headerlink" title="Introduction to Uninformed Search"></a>Introduction to Uninformed Search</h2><p><code>Uninformed search</code> is also called <code>blind search</code>. Uninformed search strategies/algorithms have no information about states beyond that provided in the problem definition. All they can do is to <strong>generate child nodes</strong> and <strong>distinguish a goal state from a non-goal state</strong>. </p>
+<p>According to <strong>which frontier node to visit first</strong>, we can divide uniformed search strategies into two types, i.e., <code>breadth-first search</code> and <code>depth-first search</code>. Breadth-first and depth-first search are techniques that can be used <strong>when the cost of each action is the same</strong>.</p>
+<h2 id="Breadth-first-Search"><a href="#Breadth-first-Search" class="headerlink" title="Breadth-first Search"></a>Breadth-first Search</h2><p>For breadth-first search, the root node is expanded first, then all child nodes of the root node are expanded next, then their child nodes, and so on. Breadth-first search is a level-by-level strategy, which means that all the nodes are expanded at a given depth in the search tree before any nodes at the next level are expanded.</p>
+<p>Let’s look at an example of breadth-first search:</p>
+<p><img src="/image/breadth_first_1.png" alt="breadth_first_1" title="breadth_first_1"></p>
+<p>In the above graph, we want to find the shortest path from the initial state to the goal state. The cost of each action is the same(<code>a1 = a2 = a3 = a4 = a5 = a6 = 1</code>). Now we build the search tree for this example, at the same time, we use a FIFO queue for the frontier:</p>
+<p><img src="/image/breadth_first_2.png" alt="breadth_first_2" title="breadth_first_2"></p>
+<p>From the above example, we can conclude the properties of breadth-first search:</p>
+<p><img src="/image/breadth_first_3.png" alt="breadth_first_3" title="breadth_first_3"></p>
+<p>The time complexity of breadth-first search is <code>O(b^d)</code>, where <code>b</code> is the branching factor and <code>d</code> is the depth of the shallowest goal state. Let’s look at a simple case:</p>
+<p><img src="/image/breadth_first_4.png" alt="breadth_first_4" title="breadth_first_4"></p>
+<p>Similarly, in the worst case, we need to build and maintain a tree with all the nodes, therefore the space complexity of breadth-first search is also <code>O(b^d)</code>.</p>
+<p>Another thing I want to point out is that <strong>breadth-first search is not optimal when different actions have different costs</strong>. For example, suppose we have a graph like this:</p>
+<p><img src="/image/breadth_first_5.png" alt="breadth_first_5" title="breadth_first_5"></p>
+<p>Now we want to go from A to E, if we use breadth-first search, the path would be:</p>
+<p><img src="/image/breadth_first_6.png" alt="breadth_first_6" title="breadth_first_6"></p>
+<p>However, the solution is not optimal, since we can find a path that costs less, i.e., <code>A -&gt; B -&gt; D -&gt; E</code>, the cost is 8.</p>
+<h2 id="Depth-first-Search"><a href="#Depth-first-Search" class="headerlink" title="Depth-first Search"></a>Depth-first Search</h2><p>Depth-first search always expands the <strong>deepest</strong> node in the current frontier of the search tree. And it uses a LIFO queue(i.e., stack). Suppose we have a graph like this:</p>
+<p><img src="/image/depth_first_1.png" alt="depth_first_1" title="depth_first_1"></p>
+<p>We can find the goal state like this:</p>
+<p><img src="/image/depth_first_2.png" alt="depth_first_2" title="depth_first_2"></p>
+<p>For the above example, we can conclude the properities of depth-first search:</p>
+<p><img src="/image/depth_first_3.png" alt="depth_first_3" title="depth_first_3"></p>
+<p>The time complexity and space complexity of breadth-first search are <code>O(size of state space)</code>(i.e., the size of the state space graph), since we need to put all the nodes onto the stack in the worst case. We must be careful here, since <code>O(size of state space)</code> basically means that the depth-first search algorithm grows <strong>linearlly</strong> with the size of the state space graph, but the state space graph itself can be potentially very large. The <code>size of state space</code> may go exponentially, just like the above example.</p>
+<p>Depth-first search is not optimal. For example, in the following picture, depth-first search will explore the entire left subtree even if node <code>C</code> is a goal node. If node <code>J</code> were <strong>also</strong> a goal node, then depth-first search would return it as a solution instead of <code>C</code>, which would be a better solution; hence, depth-first search is not optimal.</p>
+<p><img src="/image/depth_first_4.png" alt="depth_first_4" title="depth_first_4"></p>
+<p>By now, depth-first search seems to have no clear advantage over breadth-first search. Indeed, for a <strong>graph search</strong>, there is no advantage. However, for a depth-first <strong>tree search</strong>(we call this <code>tree-search version of depth-first search</code>), if we store only the nodes in the path from the root to the current node, we could save space. That is, as shown in the above picture, once a node has been expanded, it can be removed from memory as soon as all its descendants have been fully explored. For a state space with branching factor <code>b</code> and maximum depth <code>m</code>, depth-first search requires storage of only <code>O(bm)</code> nodes. In this case, <code>b = 2</code>, and as shown in the above picture, each level has <strong>at most 2 nodes</strong>. </p>
+<h2 id="Depth-limited-Search"><a href="#Depth-limited-Search" class="headerlink" title="Depth-limited Search"></a>Depth-limited Search</h2><p>To guarantee that the depth-first search will terminate (either in success or failure) <strong>in a reasonable amount of time</strong>, we can put a limit on the maximum search depth <code>l</code>. That is, nodes at depth <code>l</code> are treated as if they have no successors. This strategy is called <code>depth-limited search</code>.</p>
+<p>For <code>depth-limited search</code>, if we choose <code>l &lt; d</code>(<code>d</code> is goal’s depth), it would be incompete since the shallowest goal is beyond the depth limit. A search algorithm is complete if it is guaranteed to find a solution when at least one solution exists. In this case(<code>l &lt; d</code>), the search will always terminate in failure, therefore it is incompete. In addition, the depth-limited search will also be non-optimal if we choose <code>l &gt; d</code>. </p>
+<p>The time complexity of depth-limited search is <code>O(b^l)</code> and the space complexity is <code>O(bl)</code>. </p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><img src="/image/uninformed_search.png" alt="uninformed_search" title="uninformed_search"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Uninformed-Search-Strategies"><span class="toc-number">1.</span> <span class="toc-text">Uninformed Search Strategies</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-We-Need-Search-Problem-Formulation"><span class="toc-number">1.1.</span> <span class="toc-text">Why We Need Search: Problem Formulation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-to-Uninformed-Search"><span class="toc-number">1.2.</span> <span class="toc-text">Introduction to Uninformed Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Breadth-first-Search"><span class="toc-number">1.3.</span> <span class="toc-text">Breadth-first Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Depth-first-Search"><span class="toc-number">1.4.</span> <span class="toc-text">Depth-first Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Depth-limited-Search"><span class="toc-number">1.5.</span> <span class="toc-text">Depth-limited Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">1.6.</span> <span class="toc-text">Conclusion</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/&text=Uninformed Search Strategies"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/&title=Uninformed Search Strategies"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/&is_video=false&description=Uninformed Search Strategies"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Uninformed Search Strategies&body=Check out this article: http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/&title=Uninformed Search Strategies"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/&title=Uninformed Search Strategies"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/&title=Uninformed Search Strategies"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/&title=Uninformed Search Strategies"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/01/16/Uninformed-Search-Strategies/&name=Uninformed Search Strategies&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

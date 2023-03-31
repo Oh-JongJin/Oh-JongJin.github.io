@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="SQL: Window FunctionsIntroductionFirstly we excute the following SQL statements and create a table Payroll in Postgresql: 12345678910111213141516171819202122232425262728293031CREATE DATABASE WindowFun">
+<meta name="keywords" content="database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL: Window Functions">
+<meta property="og:url" content="http://yoursite.com/2020/05/09/SQL-Window-Functions/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="SQL: Window FunctionsIntroductionFirstly we excute the following SQL statements and create a table Payroll in Postgresql: 12345678910111213141516171819202122232425262728293031CREATE DATABASE WindowFun">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/window_function_1.png">
+<meta property="og:image" content="http://yoursite.com/image/window_function_2.png">
+<meta property="og:image" content="http://yoursite.com/image/window_function_3.png">
+<meta property="og:image" content="http://yoursite.com/image/window_function_4.png">
+<meta property="og:image" content="http://yoursite.com/image/window_function_5.png">
+<meta property="og:image" content="http://yoursite.com/image/window_function_6.png">
+<meta property="og:image" content="http://yoursite.com/image/window_function_7.png">
+<meta property="og:image" content="http://yoursite.com/image/window_function_8.png">
+<meta property="og:image" content="http://yoursite.com/image/window_function_9.png">
+<meta property="og:image" content="http://yoursite.com/image/window_function_10.png">
+<meta property="og:image" content="http://yoursite.com/image/window_function_11.png">
+<meta property="og:image" content="http://yoursite.com/image/window_function_12.png">
+<meta property="og:image" content="http://yoursite.com/image/window_function_13.png">
+<meta property="og:updated_time" content="2020-05-10T20:44:54.363Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL: Window Functions">
+<meta name="twitter:description" content="SQL: Window FunctionsIntroductionFirstly we excute the following SQL statements and create a table Payroll in Postgresql: 12345678910111213141516171819202122232425262728293031CREATE DATABASE WindowFun">
+<meta name="twitter:image" content="http://yoursite.com/image/window_function_1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>SQL: Window Functions</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/05/14/MapReduce-Word-Count-Example/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/05/07/Introduction-to-Hadoop-and-MapReduce/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/05/09/SQL-Window-Functions/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/05/09/SQL-Window-Functions/&text=SQL: Window Functions"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/05/09/SQL-Window-Functions/&title=SQL: Window Functions"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/05/09/SQL-Window-Functions/&is_video=false&description=SQL: Window Functions"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SQL: Window Functions&body=Check out this article: http://yoursite.com/2020/05/09/SQL-Window-Functions/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/05/09/SQL-Window-Functions/&title=SQL: Window Functions"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/05/09/SQL-Window-Functions/&title=SQL: Window Functions"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/05/09/SQL-Window-Functions/&title=SQL: Window Functions"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/05/09/SQL-Window-Functions/&title=SQL: Window Functions"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/05/09/SQL-Window-Functions/&name=SQL: Window Functions&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL-Window-Functions"><span class="toc-number">1.</span> <span class="toc-text">SQL: Window Functions</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-Syntax-of-Window-Functions"><span class="toc-number">1.2.</span> <span class="toc-text">Basic Syntax of Window Functions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Common-Window-Functions"><span class="toc-number">1.3.</span> <span class="toc-text">Common Window Functions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Aggregate-Functions"><span class="toc-number">1.3.1.</span> <span class="toc-text">Aggregate Functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ROW-NUMBER-amp-RANK-amp-DENSE-RANK"><span class="toc-number">1.3.2.</span> <span class="toc-text">ROW_NUMBER() &amp; RANK() &amp; DENSE_RANK()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ROW-NUMBER"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">ROW_NUMBER()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RANK-amp-DENSE-RANK"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">RANK() &amp; DENSE_RANK()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Statistical-Functions"><span class="toc-number">1.3.3.</span> <span class="toc-text">Statistical Functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Offset-Functions"><span class="toc-number">1.3.4.</span> <span class="toc-text">Offset Functions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FIRST-VALUE-amp-LAST-VALUE"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">FIRST_VALUE() &amp; LAST_VALUE()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LEAD-amp-LAG"><span class="toc-number">1.3.4.2.</span> <span class="toc-text">LEAD() &amp; LAG()</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        SQL: Window Functions
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-05-09T06:47:53.000Z" itemprop="datePublished">2020-05-09</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/database/">database</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="SQL-Window-Functions"><a href="#SQL-Window-Functions" class="headerlink" title="SQL: Window Functions"></a>SQL: Window Functions</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Firstly we excute the following SQL statements and create a table <code>Payroll</code> in <strong>Postgresql</strong>:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> WindowFunctions;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Payroll (</span><br><span class="line">    employee_id <span class="built_in">INTEGER</span>,</span><br><span class="line">    employee_name <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    department_name <span class="built_in">VARCHAR</span>(<span class="number">15</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    salary_amount <span class="built_in">DECIMAL</span> (<span class="number">8</span>,<span class="number">2</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">CHECK</span> (salary_amount &gt; <span class="number">0.00</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Payroll </span><br><span class="line">(employee_id, employee_name, department_name, salary_amount) </span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">1</span>, <span class="string">'Mark Stone'</span>, <span class="string">'Accounting'</span>, <span class="number">16000.00</span>),</span><br><span class="line">(<span class="number">2</span>, <span class="string">'Maria Stone'</span>, <span class="string">'Accounting'</span>, <span class="number">13000.00</span>),</span><br><span class="line">(<span class="number">3</span>, <span class="string">'Geetha Singh'</span>, <span class="string">'Accounting'</span>, <span class="number">13000.00</span>),</span><br><span class="line">(<span class="number">4</span>, <span class="string">'Richard Hathaway'</span>, <span class="string">'Accounting'</span>, <span class="number">14000.00</span>),</span><br><span class="line">(<span class="number">5</span>, <span class="string">'Joseph Bastion'</span>, <span class="string">'Accounting'</span>, <span class="number">14000.00</span>),</span><br><span class="line">(<span class="number">6</span>, <span class="string">'Arthur Prince'</span>, <span class="string">'Production'</span>,<span class="number">12000.00</span>),</span><br><span class="line">(<span class="number">7</span>, <span class="string">'Adele Morse'</span>, <span class="string">'Production'</span>, <span class="number">13000.00</span>),</span><br><span class="line">(<span class="number">8</span>, <span class="string">'Sheamus O Kelly'</span>, <span class="string">'Production'</span>, <span class="number">24000.00</span>),</span><br><span class="line">(<span class="number">9</span>, <span class="string">'Sheilah Flask'</span>, <span class="string">'Production'</span>, <span class="number">24000.00</span>),</span><br><span class="line">(<span class="number">10</span>, <span class="string">'Brian James'</span>, <span class="string">'Production'</span>, <span class="number">16000.00</span>),</span><br><span class="line">(<span class="number">11</span>, <span class="string">'Adam Scott'</span>, <span class="string">'Production'</span>, <span class="number">16000.00</span>),</span><br><span class="line">(<span class="number">12</span>, <span class="string">'Maurice Moss'</span>, <span class="string">'IT'</span>,<span class="number">12000.00</span>),</span><br><span class="line">(<span class="number">13</span>, <span class="string">'Roy'</span>, <span class="string">'IT'</span>, <span class="number">12001.00</span>),</span><br><span class="line">(<span class="number">14</span>, <span class="string">'Jen Barber'</span>, <span class="string">'IT'</span>, <span class="number">28000.00</span>),</span><br><span class="line">(<span class="number">15</span>, <span class="string">'Richard Hammond'</span>, <span class="string">'IT'</span>, <span class="number">10000.00</span>),</span><br><span class="line">(<span class="number">16</span>, <span class="string">'James May'</span>, <span class="string">'IT'</span>, <span class="number">10000.00</span>),</span><br><span class="line">(<span class="number">18</span>, <span class="string">'Jeremy Clarkson'</span>, <span class="string">'IT'</span>, <span class="number">10000.00</span>),</span><br><span class="line">(<span class="number">17</span>, <span class="string">'John Doe'</span>, <span class="string">'IT'</span>, <span class="number">100000.00</span>); <span class="comment">--Note how employee_id was switched around here</span></span><br></pre></td></tr></table></figure>
+
+<p>Now we have a table <code>payroll</code> in the database <code>windowfunctions</code>:</p>
+<p><img src="/image/window_function_1.png" alt="window_function_1" title="window_function_1"></p>
+<p>Then we can execute the following SQL:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">department_name,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> dept_employee_count,</span><br><span class="line"><span class="keyword">MIN</span>(salary_amount) <span class="keyword">AS</span> min_dept_salary,</span><br><span class="line"><span class="keyword">MAX</span>(salary_amount) <span class="keyword">AS</span> max_dept_salary,</span><br><span class="line"><span class="keyword">AVG</span>(salary_amount)::<span class="built_in">DECIMAL</span>(<span class="number">8</span>,<span class="number">2</span>) <span class="keyword">AS</span> average_dept_salary,</span><br><span class="line"><span class="keyword">SUM</span>(salary_amount) <span class="keyword">AS</span> total_dept_salaries</span><br><span class="line"><span class="keyword">FROM</span> Payroll</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> department_name</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> department_name;</span><br></pre></td></tr></table></figure>
+
+<p>And the output is:</p>
+<p><img src="/image/window_function_2.png" alt="window_function_2" title="window_function_2"></p>
+<p>Now we want to “combine” the result of the above SQL and <code>SELECT * FROM Payroll</code>, to get the following table:</p>
+<p><img src="/image/window_function_3.png" alt="window_function_3" title="window_function_3"></p>
+<p>The traditional way is to use <code>JOIN</code>:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">p.*,</span><br><span class="line">t.dept_employee_count,</span><br><span class="line">t.min_dept_salary,</span><br><span class="line">t.max_dept_salary,</span><br><span class="line">t.average_dept_salary,</span><br><span class="line">t.total_dept_salaries</span><br><span class="line"><span class="keyword">FROM</span> Payroll p</span><br><span class="line"><span class="keyword">JOIN</span> </span><br><span class="line">(</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">department_name,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> dept_employee_count,</span><br><span class="line"><span class="keyword">MIN</span>(salary_amount) <span class="keyword">AS</span> min_dept_salary,</span><br><span class="line"><span class="keyword">MAX</span>(salary_amount) <span class="keyword">AS</span> max_dept_salary,</span><br><span class="line"><span class="keyword">AVG</span>(salary_amount)::<span class="built_in">DECIMAL</span>(<span class="number">8</span>,<span class="number">2</span>) <span class="keyword">AS</span> average_dept_salary,</span><br><span class="line"><span class="keyword">SUM</span>(salary_amount) <span class="keyword">AS</span> total_dept_salaries</span><br><span class="line"><span class="keyword">FROM</span> Payroll</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> department_name</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> department_name</span><br><span class="line">) t</span><br><span class="line"><span class="keyword">ON</span> (p.department_name = t.department_name)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> p.department_name;</span><br></pre></td></tr></table></figure>
+
+<p>And a more simple way is to use <code>window functions</code>:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">*,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_name) <span class="keyword">AS</span> dept_employee_count,</span><br><span class="line"><span class="keyword">MIN</span>(salary_amount) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_name) <span class="keyword">AS</span> min_dept_salary,</span><br><span class="line"><span class="keyword">MAX</span>(salary_amount) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_name) <span class="keyword">AS</span> max_dept_salary, </span><br><span class="line"><span class="keyword">AVG</span>(salary_amount) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_name)::<span class="built_in">DECIMAL</span>(<span class="number">8</span>,<span class="number">2</span>) <span class="keyword">AS</span> avg_dept_sal, </span><br><span class="line"><span class="keyword">SUM</span>(salary_amount) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_name) <span class="keyword">AS</span> total_dept_salaries</span><br><span class="line"><span class="keyword">FROM</span> Payroll</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> department_name;</span><br></pre></td></tr></table></figure>
+
+<p>That is why we use window functions, which can simplify our SQL statements.</p>
+<h2 id="Basic-Syntax-of-Window-Functions"><a href="#Basic-Syntax-of-Window-Functions" class="headerlink" title="Basic Syntax of Window Functions"></a>Basic Syntax of Window Functions</h2><p>We use an <code>OVER</code> clause to open the windows, and <code>( )</code> is the window, i.e., <strong>a set of rows</strong>. That is, if a function is followed by <code>OVER()</code>, we can treat it as a window function: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">window_function() OVER() --&gt; () is the window</span><br><span class="line">                ⬇</span><br><span class="line">window_function() OVER(PARTITION BY ...) --&gt;  PARTITION BY divides the rows into groups</span><br><span class="line">                ⬇</span><br><span class="line">window_function() OVER(PARTITION BY ... ORDER BY ...) --&gt; ORDER BY controls the order in which rows are processed by window functions</span><br></pre></td></tr></table></figure>
+
+<h2 id="Common-Window-Functions"><a href="#Common-Window-Functions" class="headerlink" title="Common Window Functions"></a>Common Window Functions</h2><h3 id="Aggregate-Functions"><a href="#Aggregate-Functions" class="headerlink" title="Aggregate Functions"></a>Aggregate Functions</h3><p>Aggregate functions, i.e., COUNT, SUM, MIN, MAX and AVG, can be used as window functions. For example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">*, </span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">OVER</span> () <span class="keyword">AS</span> total_employee_count,</span><br><span class="line"><span class="keyword">AVG</span>(salary_amount) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_name)::<span class="built_in">DECIMAL</span>(<span class="number">8</span>,<span class="number">2</span>) <span class="keyword">AS</span> avg_dept_salary</span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">Payroll</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> employee_id;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/window_function_4.png" alt="window_function_4" title="window_function_4"></p>
+<p>One thing worth noting is that windows are affected by the <code>WHERE</code> clause, that is, windows cannot work outside our base data set. For example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">*,</span><br><span class="line"><span class="keyword">COUNT</span>(*) <span class="keyword">OVER</span> () <span class="keyword">AS</span> total_employee_count,</span><br><span class="line"><span class="keyword">AVG</span>(salary_amount) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_name)::<span class="built_in">DECIMAL</span>(<span class="number">8</span>,<span class="number">2</span>) <span class="keyword">AS</span> avg_dept_salary</span><br><span class="line"><span class="keyword">FROM</span> Payroll</span><br><span class="line"><span class="keyword">WHERE</span> department_name = <span class="string">'IT'</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> employee_id;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/window_function_5.png" alt="window_function_5" title="window_function_5"></p>
+<p>As shown, the <code>total_employee_count</code> is 7 rather than 18, which means that we firstly execute the statement <code>SELECT * FROM Payroll WHERE department_name = &#39;IT&#39;</code>, then open the windows, then <code>ORDER BY employee_id</code>.</p>
+<h3 id="ROW-NUMBER-amp-RANK-amp-DENSE-RANK"><a href="#ROW-NUMBER-amp-RANK-amp-DENSE-RANK" class="headerlink" title="ROW_NUMBER() &amp; RANK() &amp; DENSE_RANK()"></a>ROW_NUMBER() &amp; RANK() &amp; DENSE_RANK()</h3><p><code>ROW_NUMBER()</code>, <code>RANK()</code>, and <code>DENSE_RANK()</code> functions <strong>assign an integer to each row</strong> based on its order in its result set. </p>
+<h4 id="ROW-NUMBER"><a href="#ROW-NUMBER" class="headerlink" title="ROW_NUMBER()"></a>ROW_NUMBER()</h4><p>Here is the the first example of <code>ROW_NUMBER()</code>:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">*,</span><br><span class="line">ROW_NUMBER() <span class="keyword">OVER</span> () <span class="keyword">AS</span> <span class="string">"Base Row No"</span></span><br><span class="line"><span class="keyword">FROM</span> Payroll</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> employee_id;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/window_function_6.png" alt="window_function_6" title="window_function_6"></p>
+<p>We can break the above statement into 3 steps:</p>
+<ol>
+<li><code>SELECT * FROM Payroll</code></li>
+<li>Open the window, i.e., <code>ROW_NUMBER() OVER () AS &quot;Base Row No&quot;</code></li>
+<li><code>ORDER BY employee_id</code></li>
+</ol>
+<p><img src="/image/window_function_7.png" alt="window_function_7" title="window_function_7"></p>
+<p>Understanding the above executing procedures, we can see another <code>ROW_NUMBER()</code> example, which following the similar procedures:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">*,</span><br><span class="line"><span class="comment">-- Order each partition first, then assign row numbers.</span></span><br><span class="line">ROW_NUMBER() <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_name <span class="keyword">ORDER</span> <span class="keyword">BY</span> salary_amount) <span class="keyword">AS</span> <span class="string">"Dept,Salary Row No"</span>	</span><br><span class="line"><span class="keyword">FROM</span> Payroll</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> employee_id;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/window_function_8.png" alt="window_function_8" title="window_function_8"></p>
+<h4 id="RANK-amp-DENSE-RANK"><a href="#RANK-amp-DENSE-RANK" class="headerlink" title="RANK() &amp; DENSE_RANK()"></a>RANK() &amp; DENSE_RANK()</h4><p>For <code>RANK()</code>, duplicated values are assigned the same rank, <strong>skipping the next numebr in line</strong>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1                            1</span><br><span class="line">2   suppose line 2,3         2</span><br><span class="line">3   have the same value      2        </span><br><span class="line">4   ====================&gt;    4  (here we skipped 3)                          </span><br><span class="line">5                            5</span><br></pre></td></tr></table></figure>
+
+<p>While for <code>DENSE_RANK()</code>, duplicated values are assigned the same rank, and <strong>no values are skipped</strong>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1                            1</span><br><span class="line">2   suppose line 2,3         2</span><br><span class="line">3   have the same value      2        </span><br><span class="line">4   ====================&gt;    3 (here we did not skip 3)                          </span><br><span class="line">5                            4</span><br></pre></td></tr></table></figure>
+
+<p>For example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">*,</span><br><span class="line"><span class="comment">-- Ranks --&gt; Equal values are ranked the same, creating gaps in numbering</span></span><br><span class="line"><span class="keyword">RANK</span>() <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_name <span class="keyword">ORDER</span> <span class="keyword">BY</span> salary_amount <span class="keyword">DESC</span>),</span><br><span class="line"><span class="comment">-- Dense_Ranks --&gt; Equal values are ranked the same, without gaps in numbering</span></span><br><span class="line"><span class="keyword">DENSE_RANK</span>() <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_name <span class="keyword">ORDER</span> <span class="keyword">BY</span> salary_amount <span class="keyword">DESC</span>)</span><br><span class="line"><span class="keyword">FROM</span> Payroll;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/window_function_9.png" alt="window_function_9" title="window_function_9"></p>
+<p>There is one thing that we should notice, if we execute the following statement:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">*,</span><br><span class="line"><span class="keyword">RANK</span>() <span class="keyword">OVER</span> (), <span class="comment">-- Ranks are useless without an ORDER BY</span></span><br><span class="line"><span class="keyword">DENSE_RANK</span>() <span class="keyword">OVER</span> (), <span class="comment">-- Ranks are useless without an ORDER BY</span></span><br><span class="line"><span class="keyword">RANK</span>() <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> salary_amount <span class="keyword">DESC</span>),</span><br><span class="line"><span class="keyword">DENSE_RANK</span>() <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> salary_amount <span class="keyword">DESC</span>)</span><br><span class="line"><span class="keyword">FROM</span> Payroll;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/window_function_10.png" alt="window_function_10" title="window_function_10"></p>
+<p>As shown, we must use <code>ORDER BY</code> for ranks, otherwise each row’s rank would be 1.</p>
+<h3 id="Statistical-Functions"><a href="#Statistical-Functions" class="headerlink" title="Statistical Functions"></a>Statistical Functions</h3><ul>
+<li><p>percent_rank(): Relative rank of the current row, i.e., <code>(rank-1)/(total rows - 1)</code></p>
+</li>
+<li><p>cume_dist(): Relative rank of the current row, i.e., <code>(rank)/(total rows)</code></p>
+</li>
+<li><p>ntile(num_buckets integer): Returns integer ranging from 1 to the argument value, dividing the partition as equally as possible</p>
+</li>
+</ul>
+<p>For example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 	*,</span><br><span class="line"><span class="keyword">RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> series),</span><br><span class="line">(<span class="keyword">PERCENT_RANK</span>() <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> series))::<span class="built_in">DEC</span>(<span class="number">8</span>,<span class="number">2</span>), <span class="comment">-- (rank-1)/(total rows - 1)</span></span><br><span class="line">(<span class="keyword">CUME_DIST</span>() <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> series))::<span class="built_in">DEC</span>(<span class="number">8</span>,<span class="number">2</span>), <span class="comment">-- (rank)/(total rows)</span></span><br><span class="line">NTILE(<span class="number">2</span>) <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> series), <span class="comment">-- Split dataset into 2 parts</span></span><br><span class="line">NTILE(<span class="number">3</span>) <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> series) <span class="comment">-- Split dataset into 3 parts</span></span><br><span class="line"><span class="keyword">FROM</span> </span><br><span class="line">(</span><br><span class="line"><span class="keyword">SELECT</span> generate_series(<span class="number">1</span>,<span class="number">10</span>) <span class="keyword">AS</span> series</span><br><span class="line">) dataset</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> series;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/window_function_11.png" alt="window_function_11" title="window_function_11"></p>
+<h3 id="Offset-Functions"><a href="#Offset-Functions" class="headerlink" title="Offset Functions"></a>Offset Functions</h3><p>Offset functions includes <code>FIRST_VALUE()</code>, <code>LAST_VALUE()</code>, <code>LEAD()</code> and <code>LAG()</code>.</p>
+<h4 id="FIRST-VALUE-amp-LAST-VALUE"><a href="#FIRST-VALUE-amp-LAST-VALUE" class="headerlink" title="FIRST_VALUE() &amp; LAST_VALUE()"></a>FIRST_VALUE() &amp; LAST_VALUE()</h4><p>For example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">*,</span><br><span class="line"><span class="keyword">FIRST_VALUE</span>(employee_name) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_name <span class="keyword">ORDER</span> <span class="keyword">BY</span> salary_amount <span class="keyword">DESC</span>) <span class="keyword">AS</span> <span class="string">"Higest Earner"</span>,</span><br><span class="line"><span class="keyword">LAST_VALUE</span>(employee_name) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_name <span class="keyword">ORDER</span> <span class="keyword">BY</span> salary_amount <span class="keyword">DESC</span>) <span class="keyword">AS</span> <span class="string">"Lowest Earner"</span>  </span><br><span class="line"><span class="keyword">FROM</span> Payroll</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> employee_id;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/window_function_12.png" alt="window_function_12" title="window_function_12"></p>
+<h4 id="LEAD-amp-LAG"><a href="#LEAD-amp-LAG" class="headerlink" title="LEAD() &amp; LAG()"></a>LEAD() &amp; LAG()</h4><p>For example:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">employee_id,</span><br><span class="line">employee_name,</span><br><span class="line">department_name,</span><br><span class="line">LAG(employee_name) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_name <span class="keyword">ORDER</span> <span class="keyword">BY</span> employee_id) <span class="keyword">AS</span> <span class="string">"Previous Employee"</span>,</span><br><span class="line"><span class="keyword">LEAD</span>(employee_name) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_name <span class="keyword">ORDER</span> <span class="keyword">BY</span> employee_id) <span class="keyword">AS</span> <span class="string">"Next Employee"</span>,</span><br><span class="line">LAG(employee_name, <span class="number">2</span>) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_name <span class="keyword">ORDER</span> <span class="keyword">BY</span> employee_id) <span class="keyword">AS</span> <span class="string">"Previous Offset 2"</span>,</span><br><span class="line">LAG(employee_name, <span class="number">2</span>, <span class="string">'none'</span>) <span class="keyword">OVER</span> (<span class="keyword">PARTITION</span> <span class="keyword">BY</span> department_name <span class="keyword">ORDER</span> <span class="keyword">BY</span> employee_id) <span class="keyword">AS</span> <span class="string">"Previous Offset 2 with Defaults"</span></span><br><span class="line"><span class="keyword">FROM</span> Payroll</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> employee_id;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/window_function_13.png" alt="window_function_13" title="window_function_13"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL-Window-Functions"><span class="toc-number">1.</span> <span class="toc-text">SQL: Window Functions</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-Syntax-of-Window-Functions"><span class="toc-number">1.2.</span> <span class="toc-text">Basic Syntax of Window Functions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Common-Window-Functions"><span class="toc-number">1.3.</span> <span class="toc-text">Common Window Functions</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Aggregate-Functions"><span class="toc-number">1.3.1.</span> <span class="toc-text">Aggregate Functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ROW-NUMBER-amp-RANK-amp-DENSE-RANK"><span class="toc-number">1.3.2.</span> <span class="toc-text">ROW_NUMBER() &amp; RANK() &amp; DENSE_RANK()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ROW-NUMBER"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">ROW_NUMBER()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RANK-amp-DENSE-RANK"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">RANK() &amp; DENSE_RANK()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Statistical-Functions"><span class="toc-number">1.3.3.</span> <span class="toc-text">Statistical Functions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Offset-Functions"><span class="toc-number">1.3.4.</span> <span class="toc-text">Offset Functions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FIRST-VALUE-amp-LAST-VALUE"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">FIRST_VALUE() &amp; LAST_VALUE()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LEAD-amp-LAG"><span class="toc-number">1.3.4.2.</span> <span class="toc-text">LEAD() &amp; LAG()</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/05/09/SQL-Window-Functions/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/05/09/SQL-Window-Functions/&text=SQL: Window Functions"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/05/09/SQL-Window-Functions/&title=SQL: Window Functions"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/05/09/SQL-Window-Functions/&is_video=false&description=SQL: Window Functions"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SQL: Window Functions&body=Check out this article: http://yoursite.com/2020/05/09/SQL-Window-Functions/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/05/09/SQL-Window-Functions/&title=SQL: Window Functions"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/05/09/SQL-Window-Functions/&title=SQL: Window Functions"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/05/09/SQL-Window-Functions/&title=SQL: Window Functions"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/05/09/SQL-Window-Functions/&title=SQL: Window Functions"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/05/09/SQL-Window-Functions/&name=SQL: Window Functions&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

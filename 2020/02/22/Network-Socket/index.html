@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Network SocketCreate Network Connection via SocketIn network programming, a server is a program that keeps listening to messages from clients. And a client is a program that uses a server. If two prog">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Network Socket">
+<meta property="og:url" content="http://yoursite.com/2020/02/22/Network-Socket/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="Network SocketCreate Network Connection via SocketIn network programming, a server is a program that keeps listening to messages from clients. And a client is a program that uses a server. If two prog">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/network_socket_1.png">
+<meta property="og:image" content="http://yoursite.com/image/network_socket_2.png">
+<meta property="og:updated_time" content="2020-05-01T15:12:13.564Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Network Socket">
+<meta name="twitter:description" content="Network SocketCreate Network Connection via SocketIn network programming, a server is a program that keeps listening to messages from clients. And a client is a program that uses a server. If two prog">
+<meta name="twitter:image" content="http://yoursite.com/image/network_socket_1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Network Socket</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/02/27/Basic-Logic-Gates/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/02/20/Finalize-Method-in-Java/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/02/22/Network-Socket/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/02/22/Network-Socket/&text=Network Socket"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/02/22/Network-Socket/&title=Network Socket"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/02/22/Network-Socket/&is_video=false&description=Network Socket"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Network Socket&body=Check out this article: http://yoursite.com/2020/02/22/Network-Socket/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/02/22/Network-Socket/&title=Network Socket"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/02/22/Network-Socket/&title=Network Socket"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/02/22/Network-Socket/&title=Network Socket"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/02/22/Network-Socket/&title=Network Socket"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/02/22/Network-Socket/&name=Network Socket&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Network-Socket"><span class="toc-number">1.</span> <span class="toc-text">Network Socket</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-Network-Connection-via-Socket"><span class="toc-number">1.1.</span> <span class="toc-text">Create Network Connection via Socket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Communication-via-Socket"><span class="toc-number">1.2.</span> <span class="toc-text">Communication via Socket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Network-Input-Output"><span class="toc-number">1.3.</span> <span class="toc-text">Network Input/Output</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Simple-Server-amp-Client-Demo"><span class="toc-number">1.4.</span> <span class="toc-text">Simple Server&amp;Client Demo</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Network Socket
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-02-22T02:10:42.000Z" itemprop="datePublished">2020-02-22</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Network-Socket"><a href="#Network-Socket" class="headerlink" title="Network Socket"></a>Network Socket</h1><h2 id="Create-Network-Connection-via-Socket"><a href="#Create-Network-Connection-via-Socket" class="headerlink" title="Create Network Connection via Socket"></a>Create Network Connection via Socket</h2><p>In network programming, a <code>server</code> is a <strong>program</strong> that keeps listening to messages from clients. And a <code>client</code> is a <strong>program</strong> that uses a server.</p>
+<p>If two programs want to create a network connection, one of them should act as the server, and the other should be the client. The server creates a server socket, attaches it to a particular port on its own computer(i.e., attach the socket to an IP address and port number), and then listens for incoming connections:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ServerSocket serverSocket = <span class="keyword">new</span> ServerSocket(<span class="number">9527</span>); <span class="comment">// In Java, the server creates a ServerSocket, listening to the 9527 port.</span></span><br></pre></td></tr></table></figure>
+
+<p>As for the client, it creates an ordinary socket, and uses it to make a connection request:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Socket socket = <span class="keyword">new</span> Socket(<span class="string">"localhost"</span>, <span class="number">9527</span>); <span class="comment">// In Java, the client creates a Socket, using the IP address and port number to connect the ServerSocket. Note that "localhost" is the server's IP address.</span></span><br></pre></td></tr></table></figure>
+
+<p>If everything goes well, the server will accept the connection. In Java, the <code>ServerSocket</code> uses the <code>accept</code> method to accept a connection request from a client. Then it creates a dedicated ordinary <code>Socket</code> for talking to this client:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Socket newClientSocket = serverSocket.accept();</span><br></pre></td></tr></table></figure>
+
+<p>After the connection, the server and the client can communicate via <code>socket</code>(owned by the client) and <code>newClientSocket</code>(owned by the server).</p>
+<p><img src="/image/network_socket_1.png" alt="network_socket_1" title="network_socket_1"></p>
+<h2 id="Communication-via-Socket"><a href="#Communication-via-Socket" class="headerlink" title="Communication via Socket"></a>Communication via Socket</h2><p>In Java,<code>java.net.Socket</code>has the following methods:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Socket(String hostname, <span class="keyword">int</span> port) <span class="comment">// a constrcutor that creates a new Socket to talk to hostname at port</span></span><br><span class="line"><span class="function">OutputStream <span class="title">getOutputStream</span><span class="params">()</span> <span class="comment">// send messages to the other program</span></span></span><br><span class="line"><span class="function">InputStream <span class="title">getInputStream</span><span class="params">()</span> <span class="comment">// receive messages from the other program</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="comment">// close a socket, which means ending the connection</span></span></span><br></pre></td></tr></table></figure>
+
+<p>And <code>java.net.ServerSocket</code> has the following methods:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ServerSocket(<span class="keyword">int</span> port) <span class="comment">// a constructor that creates a new ServerSocket that listens at port</span></span><br><span class="line"><span class="function">OutputStream <span class="title">getOutputStream</span> <span class="params">()</span> <span class="comment">// send messages to the other program</span></span></span><br><span class="line"><span class="function">InputStream <span class="title">getInputStream</span> <span class="params">()</span> <span class="comment">// receive messages from the other program</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">close</span> <span class="params">()</span> <span class="comment">// close a socket, which means ending the connection</span></span></span><br><span class="line"><span class="function">Socket <span class="title">accept</span> <span class="params">()</span><span class="comment">// accept a connection request from a client and create a dedicated ordinary Socket for talking to this client</span></span></span><br></pre></td></tr></table></figure>
+
+<p>Therefore, in the view of a client, the communication via socket would like this:</p>
+<ol>
+<li>Create a Socket to talk to a server.</li>
+<li>Use the Socket’s OutputStream to send messages to the server.</li>
+<li>Use the Socket’s InputStream to receive messages from the server.</li>
+<li>Keep doing this(sending&amp;receiving message) as long as the protocol requires.</li>
+<li>Close the connection.</li>
+</ol>
+<p>In the view of a single-thread server, the communication would like this:</p>
+<ol>
+<li>Create a ServerSocket on a port.</li>
+<li>Accept connection request from a client, creating a dedicated Socket.</li>
+<li>Use the dedicated Socket’s InputStream to receive messages.</li>
+<li>Use the Socket’s OutputStream to send messages.</li>
+<li>Keep doing this as long as the protocol requires.</li>
+<li>Close the dedicated Socket.</li>
+<li>Go back to receive connection requests.</li>
+</ol>
+<p>You might have noticed that <strong>a single-thread server can only service one client at a time</strong>. For this reason, we normally use multi-threaded server, which creates a separate thread to service each client. And a multi-thread server can be available at all times.</p>
+<h2 id="Network-Input-Output"><a href="#Network-Input-Output" class="headerlink" title="Network Input/Output"></a>Network Input/Output</h2><p>For network I/O, we can use <code>DataInputStream/DataOutputStream</code> and <code>ObjectInputStream/ObjectOutputStream</code>.</p>
+<p><code>DataInputStream/DataOutputStream</code> are <strong>sequences of basic data values</strong>, such as integers, floats, characters, etc. We can use them to send/recieve data like this:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Socket socket = <span class="keyword">new</span> Socket(<span class="string">"localhost"</span>, <span class="number">9527</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>(DataOutputStream out = DataOutputStream(socket.getOutputStream);</span><br><span class="line">	DataInputStream in = DataInputStream(socket.getInputStream);) &#123;</span><br><span class="line">	</span><br><span class="line">	out.writeInt(<span class="number">25</span>);<span class="comment">// send integer 25 to the server</span></span><br><span class="line">	<span class="keyword">int</span> response = in.readInt();<span class="comment">// receive response(which is an integer) from the server</span></span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">	<span class="comment">// handle exception here</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>ObjectInputStream/ObjectOutputStream</code> are <strong>sequences of objects</strong>, and these objects are so-called <code>serialized objects</code>, which are represented as <strong>sequences of bytes</strong>. Suppose we have a class <code>Person</code> which implements the interface <code>Serializable</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">People</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>We can use <code>ObjectInputStream/ObjectOutputStream</code> to send/recieve <code>Person</code> object:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Person person = <span class="keyword">new</span> Person();</span><br><span class="line">Socket socket = <span class="keyword">new</span> Socket(<span class="string">"localhost"</span>, <span class="number">9527</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>(ObjectOutputStream out = ObjectOutputStream(socket.getOutputStream);</span><br><span class="line">	ObjectInputStream in = ObjectInputStream(socket.getInputStream);) &#123;</span><br><span class="line">	</span><br><span class="line">	out.writeObject(person);<span class="comment">// send object 'person' to the server</span></span><br><span class="line">	Person newPerson = in.readObject();<span class="comment">// receive response(which is a Person object) from the server</span></span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">	<span class="comment">// handle exception here</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Simple-Server-amp-Client-Demo"><a href="#Simple-Server-amp-Client-Demo" class="headerlink" title="Simple Server&amp;Client Demo"></a>Simple Server&amp;Client Demo</h2><p>In Java, a simple server is like this:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.ServerSocket;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ExecutorService;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Executors;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A simple multi-threaded server implementation</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleServer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_THREADS = <span class="number">10</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Constructor for the SimpleServer class</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> port port number to listen on</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SimpleServer</span><span class="params">(<span class="keyword">int</span> port)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// initialise ServerSocket object that will be used to accept new clients</span></span><br><span class="line">		<span class="keyword">try</span> (ServerSocket serverSocket = <span class="keyword">new</span> ServerSocket(port)) &#123;</span><br><span class="line">			</span><br><span class="line">			System.out.println(<span class="string">"Creating server listening "</span></span><br><span class="line">					+ <span class="string">"to port "</span> + port);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// initialise a fixed size thread pool that can allow up to MAX_THREADS concurrent threads</span></span><br><span class="line">			ExecutorService threadPool = </span><br><span class="line">					Executors.newFixedThreadPool(MAX_THREADS);	</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// an infinite loop to accept clients indefinitely (on the main thread)</span></span><br><span class="line">			<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">				System.out.println(<span class="string">"Waiting for client to connect"</span>);</span><br><span class="line">				<span class="comment">// call .accept to wait for a new client to connect </span></span><br><span class="line">				<span class="comment">// a new socket object is returned by .accept when the </span></span><br><span class="line">				<span class="comment">// new client connects successfully</span></span><br><span class="line">				Socket newClientSocket = serverSocket.accept();</span><br><span class="line">				<span class="comment">// pass the socket created for the new client to a separate</span></span><br><span class="line">				<span class="comment">// ClientHandlerThread object and execute it on the thread pool</span></span><br><span class="line">				threadPool.execute(</span><br><span class="line">						<span class="keyword">new</span> ClientHandlerThread(newClientSocket));</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Inner class to represent a dedicated task that handles a particular client</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientHandlerThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">private</span> Socket clientSocket;</span><br><span class="line"></span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * Simple constructor that takes </span></span><br><span class="line"><span class="comment">		 * the socket created by the ServerSocket.accept()</span></span><br><span class="line"><span class="comment">		 * method</span></span><br><span class="line"><span class="comment">		 * </span></span><br><span class="line"><span class="comment">		 * <span class="doctag">@param</span> clientSocket the socket created </span></span><br><span class="line"><span class="comment">		 * by serverSocket.accept() that</span></span><br><span class="line"><span class="comment">		 * communicates to a specific client</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">ClientHandlerThread</span><span class="params">(Socket clientSocket)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.clientSocket = clientSocket;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		 * every thing that happens inside the run method </span></span><br><span class="line"><span class="comment">		 * will execute on a new thread</span></span><br><span class="line"><span class="comment">		 * (put as much work in here as you can)</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			System.out.println(<span class="string">"Connected to client"</span>);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">try</span> (ObjectOutputStream clientOut = </span><br><span class="line">		<span class="keyword">new</span> ObjectOutputStream(clientSocket.getOutputStream());</span><br><span class="line">				ObjectInputStream clientIn = </span><br><span class="line">		<span class="keyword">new</span> ObjectInputStream(clientSocket.getInputStream());) &#123;</span><br><span class="line">				</span><br><span class="line">				<span class="comment">// Since I am sending String objects, </span></span><br><span class="line">				<span class="comment">// I can safely downcast to String here</span></span><br><span class="line">				String request = (String) clientIn.readObject();</span><br><span class="line">				System.out.println(<span class="string">"received request: "</span> </span><br><span class="line">						+ request);</span><br><span class="line"></span><br><span class="line">				String response = request; <span class="comment">// echo server</span></span><br><span class="line">				</span><br><span class="line">				System.out.println(<span class="string">"sending response: "</span> </span><br><span class="line">						+ response);</span><br><span class="line">				clientOut.writeObject(response);</span><br><span class="line"></span><br><span class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				System.out.println(<span class="string">"Connection with client lost."</span>);</span><br><span class="line">			&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> port = <span class="number">9527</span>;</span><br><span class="line">		<span class="keyword">new</span> SimpleServer(port);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>And a simple client is like this:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"><span class="keyword">import</span> java.net.UnknownHostException;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A simple client class implementation </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleClient</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> Scanner in;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Constructor for client </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> host IP address of host </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> port port number that server </span></span><br><span class="line"><span class="comment">	 * is listening to</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SimpleClient</span><span class="params">(String host, <span class="keyword">int</span> port)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// socket created on client side with BOTH host IP address and port </span></span><br><span class="line">		<span class="keyword">try</span> (Socket socket = <span class="keyword">new</span> Socket(host, port);</span><br><span class="line">			<span class="comment">// wrap input/output streams in object input/output streams</span></span><br><span class="line">			ObjectInputStream serverIn = </span><br><span class="line">				<span class="keyword">new</span> ObjectInputStream(socket.getInputStream());</span><br><span class="line">			ObjectOutputStream serverOut = </span><br><span class="line">				<span class="keyword">new</span> ObjectOutputStream(socket.getOutputStream());) &#123;</span><br><span class="line">			</span><br><span class="line">			System.out.println(<span class="string">"Connected: "</span> + socket);</span><br><span class="line">			</span><br><span class="line">			in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// take input from terminal and send it to server</span></span><br><span class="line">			System.out.println(<span class="string">"Enter the message to "</span></span><br><span class="line">					+ <span class="string">"be sent to the server:"</span>);</span><br><span class="line">			String request = in.nextLine();</span><br><span class="line">			</span><br><span class="line">			System.out.println(<span class="string">"sending request: "</span> + request);</span><br><span class="line">			serverOut.writeObject(request);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// hang here until server replies</span></span><br><span class="line">			String response = </span><br><span class="line">					(String) serverIn.readObject();</span><br><span class="line">			</span><br><span class="line">			System.out.println(<span class="string">"received response from server: "</span> </span><br><span class="line">					+ response);</span><br><span class="line">			</span><br><span class="line">		&#125; <span class="keyword">catch</span> (UnknownHostException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			System.out.println(<span class="string">"connection with server lost"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; </span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		String host = <span class="string">"localhost"</span>;</span><br><span class="line">		<span class="keyword">int</span> port = <span class="number">9527</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">new</span> SimpleClient(host, port);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>We can use terminal to run the above server and client seperately, and use them to communicate with each other:</p>
+<p><img src="/image/network_socket_2.png" alt="network_socket_2" title="network_socket_2"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Network-Socket"><span class="toc-number">1.</span> <span class="toc-text">Network Socket</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-Network-Connection-via-Socket"><span class="toc-number">1.1.</span> <span class="toc-text">Create Network Connection via Socket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Communication-via-Socket"><span class="toc-number">1.2.</span> <span class="toc-text">Communication via Socket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Network-Input-Output"><span class="toc-number">1.3.</span> <span class="toc-text">Network Input/Output</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Simple-Server-amp-Client-Demo"><span class="toc-number">1.4.</span> <span class="toc-text">Simple Server&amp;Client Demo</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/02/22/Network-Socket/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/02/22/Network-Socket/&text=Network Socket"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/02/22/Network-Socket/&title=Network Socket"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/02/22/Network-Socket/&is_video=false&description=Network Socket"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Network Socket&body=Check out this article: http://yoursite.com/2020/02/22/Network-Socket/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/02/22/Network-Socket/&title=Network Socket"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/02/22/Network-Socket/&title=Network Socket"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/02/22/Network-Socket/&title=Network Socket"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/02/22/Network-Socket/&title=Network Socket"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/02/22/Network-Socket/&name=Network Socket&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

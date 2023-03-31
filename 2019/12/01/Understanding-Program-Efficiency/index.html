@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Understanding Program EfficiencyTime complexityHere is a piece of code: 123456sum(array):    sum=0;    n=array.length;    for i=0;i&amp;lt;n;i++:        sum+=array[i];    return sum;  How do we measure th">
+<meta name="keywords" content="algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Understanding Program Efficiency">
+<meta property="og:url" content="http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="Understanding Program EfficiencyTime complexityHere is a piece of code: 123456sum(array):    sum=0;    n=array.length;    for i=0;i&amp;lt;n;i++:        sum+=array[i];    return sum;  How do we measure th">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/count_operation.png">
+<meta property="og:image" content="http://yoursite.com/image/complexity_class.png">
+<meta property="og:image" content="http://yoursite.com/image/logarithmic_complexity.png">
+<meta property="og:image" content="http://yoursite.com/image/tower_of_hanoi.png">
+<meta property="og:updated_time" content="2020-04-27T13:47:30.710Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Understanding Program Efficiency">
+<meta name="twitter:description" content="Understanding Program EfficiencyTime complexityHere is a piece of code: 123456sum(array):    sum=0;    n=array.length;    for i=0;i&amp;lt;n;i++:        sum+=array[i];    return sum;  How do we measure th">
+<meta name="twitter:image" content="http://yoursite.com/image/count_operation.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Understanding Program Efficiency</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/12/04/Symmetric-Crptography-Three-Simple-Ciphers/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/11/27/Realize-Largest-Remainder-Method-Using-Java/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/&text=Understanding Program Efficiency"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/&title=Understanding Program Efficiency"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/&is_video=false&description=Understanding Program Efficiency"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Understanding Program Efficiency&body=Check out this article: http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/&title=Understanding Program Efficiency"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/&title=Understanding Program Efficiency"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/&title=Understanding Program Efficiency"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/&title=Understanding Program Efficiency"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/&name=Understanding Program Efficiency&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Understanding-Program-Efficiency"><span class="toc-number">1.</span> <span class="toc-text">Understanding Program Efficiency</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Time-complexity"><span class="toc-number">1.1.</span> <span class="toc-text">Time complexity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Complexity-Classes"><span class="toc-number">1.2.</span> <span class="toc-text">Complexity Classes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linear-Complexity"><span class="toc-number">1.2.1.</span> <span class="toc-text">Linear Complexity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Polynomial-Complexity"><span class="toc-number">1.2.2.</span> <span class="toc-text">Polynomial Complexity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Logarithmic-Complexity"><span class="toc-number">1.2.3.</span> <span class="toc-text">Logarithmic Complexity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Log-linear-Complexity"><span class="toc-number">1.2.4.</span> <span class="toc-text">Log-linear Complexity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exponential-Complexity"><span class="toc-number">1.2.5.</span> <span class="toc-text">Exponential Complexity</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Algorithm-Complexity-VS-Problem-Complexity"><span class="toc-number">1.3.</span> <span class="toc-text">Algorithm Complexity VS Problem Complexity</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Understanding Program Efficiency
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-12-01T07:55:56.000Z" itemprop="datePublished">2019-12-01</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/algorithm/">algorithm</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Understanding-Program-Efficiency"><a href="#Understanding-Program-Efficiency" class="headerlink" title="Understanding Program Efficiency"></a>Understanding Program Efficiency</h1><h2 id="Time-complexity"><a href="#Time-complexity" class="headerlink" title="Time complexity"></a>Time complexity</h2><p>Here is a piece of code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sum(array):</span><br><span class="line">    sum=0;</span><br><span class="line">    n=array.length;</span><br><span class="line">    for i=0;i&lt;n;i++:</span><br><span class="line">        sum+=array[i];</span><br><span class="line">    return sum;</span><br></pre></td></tr></table></figure>
+
+<p>How do we measure the time efficiency of the above code? Assume these operations take <strong>constant time</strong>:</p>
+<ul>
+<li>mathematical operations</li>
+<li>comparisons</li>
+<li>assignments</li>
+<li>accessing objects in memory</li>
+</ul>
+<p>Now we can count the operations in the above code:</p>
+<p><img src="/image/count_operation.png" alt="count_operation" title="count_operation"></p>
+<p>Here is another piece of code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">search(array,target):</span><br><span class="line">    n = array.length;</span><br><span class="line">    for int i = 0; i&lt;n;i++:</span><br><span class="line">        if array[i] == target:</span><br><span class="line">            return true;</span><br><span class="line">    return false;</span><br></pre></td></tr></table></figure>
+
+<p>For this code, it is a little complicated to count the operations:</p>
+<ul>
+<li>In the best case, i.e., target is the first element in the array, it takes 5 operations to search the target.</li>
+<li>In the worst case, i.e., target is not in the array, it takes <code>3n+4</code> operations.</li>
+<li>In the average case, i.e., target is in the middle of the array, it takes <code>3n/2+4</code> operations.</li>
+</ul>
+<p>From the above examples we can see that the count normally depends on the size of the inputs, therefore, we try to come up with a relationship between the size of the input and the count. We focus on what happens when the input is arbitrarily large, and only consider the worst case behavior(the upper bound). </p>
+<p>In the first code, there are <code>4n+5</code> operations, which is linear. And if n is extremely large, the constant part 5 and the coefficient 4 become insignificant. Therefore, we use <code>O(n)</code> (big O notation) to represent the efficiency of this code, which is also called <code>time complexity</code>.</p>
+<p>In the second code, by considering the worst case, there are <code>3n+4</code> operations. And by ignoring the insignificant part, we use <code>O(n)</code> to represent its time complexity.</p>
+<h2 id="Complexity-Classes"><a href="#Complexity-Classes" class="headerlink" title="Complexity Classes"></a>Complexity Classes</h2><p>Here is a comparison of different complexity classes:</p>
+<p><img src="/image/complexity_class.png" alt="complexity_class" title="complexity_class"></p>
+<p>Now I am going to talk about some examples of these complexity classes.</p>
+<h3 id="Linear-Complexity"><a href="#Linear-Complexity" class="headerlink" title="Linear Complexity"></a>Linear Complexity</h3><p>From the examples in the beginning, we can see that simple iterative loop algorithms are typically linear in complexity.    Some simple recursive algorithms are also linear, for example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fact(n):</span><br><span class="line">    if n &lt;= 1:</span><br><span class="line">        return 1</span><br><span class="line">    else:</span><br><span class="line">        return n*fact(n – 1)</span><br></pre></td></tr></table></figure>
+
+<p>The time complexity of above code can be computed in this way:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">T(n) = T(n - 1) + O(1) </span><br><span class="line">     = T(n - 2) + O(1) + O(1) </span><br><span class="line">     = T(n - 3) + O(1) + O(1)+ O(1) </span><br><span class="line">     = ... </span><br><span class="line">     = O(1) + ... + O(1) +O(1) + O(1) </span><br><span class="line">     = n * O(1) </span><br><span class="line">     = O(n)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Polynomial-Complexity"><a href="#Polynomial-Complexity" class="headerlink" title="Polynomial Complexity"></a>Polynomial Complexity</h3><p>Nested loops are typically polynomial in complexity. Most common polynomial    algorithms are quadratic, for example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for i = 0; i &lt; n; i++:</span><br><span class="line">     for j = 0; j &lt; 3n; j++:</span><br><span class="line">         print i, j;</span><br></pre></td></tr></table></figure>
+
+<p>The inner loop goes 3n times and the outer loop goes n times. Therefore the time complexity of the above code is <code>O(n)*O(3n) = O(n^2)</code>.</p>
+<p>Some nested recursive algorithms are also polynomial.</p>
+<h3 id="Logarithmic-Complexity"><a href="#Logarithmic-Complexity" class="headerlink" title="Logarithmic Complexity"></a>Logarithmic Complexity</h3><p>Binary search alogrithm is logarithmic in complexity. In binary search, we keep breaking a list into halves till there is only one element.</p>
+<p><img src="/image/logarithmic_complexity.png" alt="logarithmic_complexity " title="logarithmic_complexity"></p>
+<p>A while loop can also be logarithmic in complexity:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">i = 1;</span><br><span class="line">while (i &lt; n):</span><br><span class="line">   i = i * 2;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Log-linear-Complexity"><a href="#Log-linear-Complexity" class="headerlink" title="Log-linear Complexity"></a>Log-linear Complexity</h3><p>Merge sort alogrithm is log-linear in complexity. And here is a simple example which makes use of a for loop and a while loop:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for(int m = 1; m &lt; n; m++)&#123;</span><br><span class="line">   i = 1;</span><br><span class="line">   while(i &lt; n)&#123;</span><br><span class="line">      i = i * 2;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Exponential-Complexity"><a href="#Exponential-Complexity" class="headerlink" title="Exponential Complexity"></a>Exponential Complexity</h3><p>Tower of Hanoi Problem is exponential in complexity. </p>
+<p><img src="/image/tower_of_hanoi.png" alt="tower_of_hanoi " title="tower_of_hanoi"></p>
+<h2 id="Algorithm-Complexity-VS-Problem-Complexity"><a href="#Algorithm-Complexity-VS-Problem-Complexity" class="headerlink" title="Algorithm Complexity VS Problem Complexity"></a>Algorithm Complexity VS Problem Complexity</h2><p>What we talked above is <code>Algorithm Complexity</code>, which refers to the upper bound of a specific alogrithm, such as binary search and merge sort, etc.</p>
+<p>There is another conception called <code>Problem Complexity</code>, which refers to <strong>the upper bound of the best solution</strong> of a specific problem. For example, the best solution of searching problem is binary search, therefore the problem complexity of searching is <code>O(logn)</code>. And (one of) the best solution of sorting problem is merge sort, therefore the problem complexity of sorting is <code>O(nlogn)</code>.</p>
+<p>Now I want to briefly introduce <code>P problems</code> and <code>NP problems</code>. <code>P problems</code> is a class of problems that can be solved in polynomial time. While for <code>NP problems</code>, <code>NP</code> means <code>Non-deterministic Polynomial</code>. <code>NP problems</code> are hard to solve, but if we can “guess” a solution of a <code>NP problem</code>, we can check the solution in polynomial time. For example, a 100x100 Sudoku puzzle can take a long time to solve, but if I give you a solved Sudoku grid, we can check it quickly.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Understanding-Program-Efficiency"><span class="toc-number">1.</span> <span class="toc-text">Understanding Program Efficiency</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Time-complexity"><span class="toc-number">1.1.</span> <span class="toc-text">Time complexity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Complexity-Classes"><span class="toc-number">1.2.</span> <span class="toc-text">Complexity Classes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linear-Complexity"><span class="toc-number">1.2.1.</span> <span class="toc-text">Linear Complexity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Polynomial-Complexity"><span class="toc-number">1.2.2.</span> <span class="toc-text">Polynomial Complexity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Logarithmic-Complexity"><span class="toc-number">1.2.3.</span> <span class="toc-text">Logarithmic Complexity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Log-linear-Complexity"><span class="toc-number">1.2.4.</span> <span class="toc-text">Log-linear Complexity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exponential-Complexity"><span class="toc-number">1.2.5.</span> <span class="toc-text">Exponential Complexity</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Algorithm-Complexity-VS-Problem-Complexity"><span class="toc-number">1.3.</span> <span class="toc-text">Algorithm Complexity VS Problem Complexity</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/&text=Understanding Program Efficiency"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/&title=Understanding Program Efficiency"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/&is_video=false&description=Understanding Program Efficiency"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Understanding Program Efficiency&body=Check out this article: http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/&title=Understanding Program Efficiency"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/&title=Understanding Program Efficiency"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/&title=Understanding Program Efficiency"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/&title=Understanding Program Efficiency"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/01/Understanding-Program-Efficiency/&name=Understanding Program Efficiency&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

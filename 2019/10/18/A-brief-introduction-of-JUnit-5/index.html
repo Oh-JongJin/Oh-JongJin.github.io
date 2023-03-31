@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="A brief introduction of JUnit 5JUnit is a testing framework. JUnit 5 Architecture  Jupiter: JUnit APIs that runs new junit tests. Vintage: Another set of APIs, which runs older junit tests.  How to wr">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A brief introduction of JUnit 5">
+<meta property="og:url" content="http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="A brief introduction of JUnit 5JUnit is a testing framework. JUnit 5 Architecture  Jupiter: JUnit APIs that runs new junit tests. Vintage: Another set of APIs, which runs older junit tests.  How to wr">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/junit5_architecture.png">
+<meta property="og:image" content="http://yoursite.com/image/test_lifecycle.png">
+<meta property="og:updated_time" content="2020-05-01T15:13:17.446Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A brief introduction of JUnit 5">
+<meta name="twitter:description" content="A brief introduction of JUnit 5JUnit is a testing framework. JUnit 5 Architecture  Jupiter: JUnit APIs that runs new junit tests. Vintage: Another set of APIs, which runs older junit tests.  How to wr">
+<meta name="twitter:image" content="http://yoursite.com/image/junit5_architecture.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>A brief introduction of JUnit 5</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/10/26/ArrayList-in-Java/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/10/18/How-to-represent-fractions-in-computers/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/&text=A brief introduction of JUnit 5"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/&title=A brief introduction of JUnit 5"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/&is_video=false&description=A brief introduction of JUnit 5"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=A brief introduction of JUnit 5&body=Check out this article: http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/&title=A brief introduction of JUnit 5"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/&title=A brief introduction of JUnit 5"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/&title=A brief introduction of JUnit 5"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/&title=A brief introduction of JUnit 5"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/&name=A brief introduction of JUnit 5&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#A-brief-introduction-of-JUnit-5"><span class="toc-number">1.</span> <span class="toc-text">A brief introduction of JUnit 5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JUnit-5-Architecture"><span class="toc-number">1.1.</span> <span class="toc-text">JUnit 5 Architecture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-write-JUnit-test"><span class="toc-number">1.2.</span> <span class="toc-text">How to write JUnit test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Test-life-cycle"><span class="toc-number">1.3.</span> <span class="toc-text">Test life cycle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JUnit-test-demo"><span class="toc-number">1.4.</span> <span class="toc-text">JUnit test demo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Build-Maven-project"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. Build Maven project</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-MathUtils-java"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. MathUtils.java</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-MathUtilsTest-java"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. MathUtilsTest.java</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Limitation-of-Unit-Test"><span class="toc-number">1.5.</span> <span class="toc-text">Limitation of Unit Test</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        A brief introduction of JUnit 5
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-10-18T14:05:44.000Z" itemprop="datePublished">2019-10-18</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="A-brief-introduction-of-JUnit-5"><a href="#A-brief-introduction-of-JUnit-5" class="headerlink" title="A brief introduction of JUnit 5"></a>A brief introduction of JUnit 5</h1><p>JUnit is a testing framework.</p>
+<h2 id="JUnit-5-Architecture"><a href="#JUnit-5-Architecture" class="headerlink" title="JUnit 5 Architecture"></a>JUnit 5 Architecture</h2><p><img src="/image/junit5_architecture.png" alt="junit5_architecture" title="junit5_architecture"></p>
+<ul>
+<li>Jupiter: JUnit APIs that runs new junit tests.</li>
+<li>Vintage: Another set of APIs, which runs older junit tests.</li>
+</ul>
+<h2 id="How-to-write-JUnit-test"><a href="#How-to-write-JUnit-test" class="headerlink" title="How to write JUnit test"></a>How to write JUnit test</h2><ol>
+<li>Create an instance of the class under test</li>
+<li>Set up inputs</li>
+<li>Execute the code you want to test</li>
+<li>Verify the result is what you expect</li>
+</ol>
+<h2 id="Test-life-cycle"><a href="#Test-life-cycle" class="headerlink" title="Test life cycle"></a>Test life cycle</h2><p><img src="/image/test_lifecycle.png" alt="test_lifecycle" title="test_lifecycle"></p>
+<p>JUnit 5 provides many lifecycle hooks, and you can use them by adding annotations:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@BeforeAll</span></span><br><span class="line"><span class="meta">@BeforeEach</span></span><br><span class="line"><span class="meta">@AfterAll</span></span><br><span class="line"><span class="meta">@AfterEach</span></span><br></pre></td></tr></table></figure>
+
+<p>Note: Methods with annotation @BeforeAll and @AfterAll must be <strong>static</strong> so that they do not need to rely on any instance.</p>
+<h2 id="JUnit-test-demo"><a href="#JUnit-test-demo" class="headerlink" title="JUnit test demo"></a>JUnit test demo</h2><h3 id="1-Build-Maven-project"><a href="#1-Build-Maven-project" class="headerlink" title="1. Build Maven project"></a>1. Build Maven project</h3><p>Basically, if you want to build a project using Maven, you should add two dependencies in <code>pom.xml</code>:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- junit-jupiter-engine:</span></span><br><span class="line"><span class="comment">        Implementation of the TestEngine API for JUnit Jupiter.--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-engine<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.5.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- junit-jupiter-api:</span></span><br><span class="line"><span class="comment">        API for writing tests using JUnit Jupiter.--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.5.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>You should also add <code>maven-compiler-plugin</code> to specify your JDK version(in this case we use JDK 11):</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.mavenplugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-pugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">source</span>&gt;</span>11<span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">target</span>&gt;</span>11<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-MathUtils-java"><a href="#2-MathUtils-java" class="headerlink" title="2. MathUtils.java"></a>2. MathUtils.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MathUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subtract</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a - b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">multiply</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a * b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a / b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">computeCircleArea</span><span class="params">(<span class="keyword">double</span> radius)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Math.PI * radius * radius;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-MathUtilsTest-java"><a href="#3-MathUtilsTest-java" class="headerlink" title="3. MathUtilsTest.java"></a>3. MathUtilsTest.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.jupiter.api.Assertions.*;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.jupiter.api.Assumptions.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">// To enable JUnit Jupiter execute all test methods on the same test instance(in this case, instance of MathUtilsTest).</span></span><br><span class="line"><span class="comment">// The default mode of @TestInstance is PER_METHOD, which means that JUnit would create an instance of MathUtilsTest for each method.</span></span><br><span class="line"><span class="meta">@TestInstance</span>(TestInstance.Lifecycle.PER_CLASS)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MathUtilsTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// We should declare mathUtils outside all methods so that each method can share it.</span></span><br><span class="line">    MathUtils mathUtils;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeAll</span></span><br><span class="line">    <span class="comment">// Methods with annotation @BeforeAll and @AfterAll must be static so that they do not need to rely on any instance.</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">beforeAllInit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"This needs to run before all."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeEach</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mathUtils = <span class="keyword">new</span> MathUtils();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterEach</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">cleanup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Cleaning up..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// @Test: Informs the JUnit engine what methods need to run.</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testAdd</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> expected = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> actual = mathUtils.add(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        assertEquals(expected, actual);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testSubtract</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        assumeTrue(mathUtils.subtract(<span class="number">2</span>, <span class="number">1</span>) == <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="meta">@Disabled</span> <span class="comment">// Skip this test.</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testDivide</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        assertThrows(ArithmeticException.class, () -&gt; mathUtils.divide(<span class="number">1</span>, <span class="number">0</span>), <span class="string">"Divide by zero should throw."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testMultiply</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// use lambda in assertAll</span></span><br><span class="line">        assertAll(</span><br><span class="line">                () -&gt; assertEquals(<span class="number">4</span>, mathUtils.multiply(<span class="number">2</span>, <span class="number">2</span>), <span class="string">"Should return the right product."</span>),</span><br><span class="line">                () -&gt; assertEquals(<span class="number">0</span>, mathUtils.multiply(<span class="number">0</span>, <span class="number">2</span>)),</span><br><span class="line">                () -&gt; assertEquals(-<span class="number">2</span>, mathUtils.multiply(<span class="number">2</span>, -<span class="number">1</span>))</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="meta">@DisplayName</span>(<span class="string">"Testing computeCircleArea."</span>)</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testComputeCircleArea</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        assertEquals(<span class="number">314.1592653589793</span>, mathUtils.computeCircleArea(<span class="number">10</span>), <span class="string">"Should return right circle area."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nested</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">AddTest</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Test</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">testAddPositive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> expected = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> actual = mathUtils.add(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">            <span class="comment">// lambda: messageSupplier</span></span><br><span class="line">            assertEquals(expected, actual, () -&gt; <span class="string">"Should return "</span> + expected + <span class="string">", but return "</span> + actual);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Test</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">testAddNegative</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            assertEquals(-<span class="number">2</span>, mathUtils.add(-<span class="number">1</span>, -<span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Limitation-of-Unit-Test"><a href="#Limitation-of-Unit-Test" class="headerlink" title="Limitation of Unit Test"></a>Limitation of Unit Test</h2><p>Unit tests can only show the presence of errors; it cannot show the absence of errors. In another word, tests can only test the cases that you can think of, but they cannot test the cases that you cannot imagine.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#A-brief-introduction-of-JUnit-5"><span class="toc-number">1.</span> <span class="toc-text">A brief introduction of JUnit 5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JUnit-5-Architecture"><span class="toc-number">1.1.</span> <span class="toc-text">JUnit 5 Architecture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-write-JUnit-test"><span class="toc-number">1.2.</span> <span class="toc-text">How to write JUnit test</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Test-life-cycle"><span class="toc-number">1.3.</span> <span class="toc-text">Test life cycle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JUnit-test-demo"><span class="toc-number">1.4.</span> <span class="toc-text">JUnit test demo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Build-Maven-project"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. Build Maven project</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-MathUtils-java"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. MathUtils.java</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-MathUtilsTest-java"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. MathUtilsTest.java</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Limitation-of-Unit-Test"><span class="toc-number">1.5.</span> <span class="toc-text">Limitation of Unit Test</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/&text=A brief introduction of JUnit 5"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/&title=A brief introduction of JUnit 5"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/&is_video=false&description=A brief introduction of JUnit 5"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=A brief introduction of JUnit 5&body=Check out this article: http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/&title=A brief introduction of JUnit 5"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/&title=A brief introduction of JUnit 5"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/&title=A brief introduction of JUnit 5"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/&title=A brief introduction of JUnit 5"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/10/18/A-brief-introduction-of-JUnit-5/&name=A brief introduction of JUnit 5&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

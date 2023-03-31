@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Java Virtual Machine ArchitectureWhen we run a Java program, typical steps are as follows:  Edit HelloWorld.java file javac HelloWorld.java, i.e., compile .java file into bytecode(class file). java He">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Virtual Machine Architecture">
+<meta property="og:url" content="http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/index.html">
+<meta property="og:site_name" content="Leslie&#39;s Blog">
+<meta property="og:description" content="Java Virtual Machine ArchitectureWhen we run a Java program, typical steps are as follows:  Edit HelloWorld.java file javac HelloWorld.java, i.e., compile .java file into bytecode(class file). java He">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/image/jvm_architecture.png">
+<meta property="og:image" content="http://yoursite.com/image/stack_frame.png">
+<meta property="og:image" content="http://yoursite.com/image/operand_stack_javap.png">
+<meta property="og:image" content="http://yoursite.com/image/operand_stack_step_1.png">
+<meta property="og:image" content="http://yoursite.com/image/operand_stack_step_2.png">
+<meta property="og:image" content="http://yoursite.com/image/operand_stack_step_3.png">
+<meta property="og:image" content="http://yoursite.com/image/operand_stack_step_4.png">
+<meta property="og:image" content="http://yoursite.com/image/operand_stack_step_5.png">
+<meta property="og:image" content="http://yoursite.com/image/operand_stack_step_6.png">
+<meta property="og:image" content="http://yoursite.com/image/operand_stack_step_7.png">
+<meta property="og:image" content="http://yoursite.com/image/operand_stack_step_8.png">
+<meta property="og:updated_time" content="2020-05-01T15:15:16.655Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java Virtual Machine Architecture">
+<meta name="twitter:description" content="Java Virtual Machine ArchitectureWhen we run a Java program, typical steps are as follows:  Edit HelloWorld.java file javac HelloWorld.java, i.e., compile .java file into bytecode(class file). java He">
+<meta name="twitter:image" content="http://yoursite.com/image/jvm_architecture.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Java Virtual Machine Architecture</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/11/22/Reverse-Polish-Notation/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/11/16/A-Brief-Introduction-of-Sony-A6000/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/&text=Java Virtual Machine Architecture"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/&title=Java Virtual Machine Architecture"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/&is_video=false&description=Java Virtual Machine Architecture"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java Virtual Machine Architecture&body=Check out this article: http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/&title=Java Virtual Machine Architecture"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/&title=Java Virtual Machine Architecture"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/&title=Java Virtual Machine Architecture"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/&title=Java Virtual Machine Architecture"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/&name=Java Virtual Machine Architecture&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-Virtual-Machine-Architecture"><span class="toc-number">1.</span> <span class="toc-text">Java Virtual Machine Architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Class-Loader"><span class="toc-number">1.1.</span> <span class="toc-text">Class Loader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Runtime-Date-Areas"><span class="toc-number">1.2.</span> <span class="toc-text">Runtime Date Areas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Frame"><span class="toc-number">1.3.</span> <span class="toc-text">Frame</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Operand-Stack"><span class="toc-number">1.3.1.</span> <span class="toc-text">Operand Stack</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Java Virtual Machine Architecture
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Leslie's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-11-19T13:30:11.000Z" itemprop="datePublished">2019-11-19</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Java-Virtual-Machine-Architecture"><a href="#Java-Virtual-Machine-Architecture" class="headerlink" title="Java Virtual Machine Architecture"></a>Java Virtual Machine Architecture</h1><p>When we run a Java program, typical steps are as follows:</p>
+<ol>
+<li>Edit <code>HelloWorld.java</code> file</li>
+<li><code>javac HelloWorld.java</code>, i.e., compile <code>.java</code> file into bytecode(class file).</li>
+<li><code>java HelloWorld</code>, i.e., create a JVM instance execute the bytecode(class file).</li>
+</ol>
+<p>Now I am going to talk about how does a JVM instance load and execute a class file, which involves with the JVM architecture. The Java Virtual Machine(JVM) is an abstract computing machine, which has an instruction set and manipulates various memory areas at run time(i.e., <code>runtime data areas</code>). The structure of JVM is shown as follows:</p>
+<p><img src="/image/jvm_architecture.png" alt="jvm_architecture" title="jvm_architecture"></p>
+<h2 id="Class-Loader"><a href="#Class-Loader" class="headerlink" title="Class Loader"></a>Class Loader</h2><p>JVM knows nothing of the Java programming language, only of a particular binary format, the <code>class</code> file format. That is why languages which can be expressed in terms of a valid <code>class</code> file (such as <strong>Scala</strong> and <strong>Kotlin</strong>) can run on JVM. To run a Java program, the class loaders should firstly load the class files. A class file contains Java Virtual Machine instructions (bytecodes) and a symbol table, as well as other ancillary information.</p>
+<h2 id="Runtime-Date-Areas"><a href="#Runtime-Date-Areas" class="headerlink" title="Runtime Date Areas"></a>Runtime Date Areas</h2><p>JVM uses various <code>run time data areas</code> during execute of class files. Some of these data areas are created on JVM start-up and are destroyed only when the JVM exits, so that threads can share these areas. Other data areas are per thread. Per-thread data areas are created when a thread is created and destroyed when the thread exits.</p>
+<ol>
+<li><p><strong>PC(Program Counter) Registers</strong>: Each JVM thread has its own pc register. At any point, each thread is executing the code of a single method, namely the current method for that thread. If that method is not <code>native</code>, the pc register contains the address of the Java Virtual Machine instruction currently being executed. If the method currently being executed by the thread is <code>native</code>, the value of the Java Virtual Machine’s pc register is undefined. </p>
+</li>
+<li><p><strong>JVM Stack</strong>: Each JVM thread has a private JVM stack, created at the same time as the thread. A Java Virtual Machine stack stores frames. </p>
+</li>
+<li><p><strong>Heap</strong>: The heap is created on JVM start-up and shared among all threads. It is the run-time data area from which memory for all <strong>class instances</strong> and <strong>arrays</strong> is allocated. Heap storage for objects is reclaimed by a <code>garbage collector</code>.</p>
+</li>
+<li><p><strong>Method Area(Metaspace)</strong>: The method area is created on JVM start-up and shared among all threads. And the method area is analogous to the storage area for compiled code of a conventional language or analogous to the “text” segment in an operating system process (which we will talk later). The method area stores:</p>
+<ul>
+<li>class structures (fields and methods data, super class name, interfaces names, version, …)</li>
+<li>a runtime constant pool per class loaded</li>
+<li>the bytecode of methods and constructors</li>
+</ul>
+</li>
+<li><p><strong>Native Method Stack</strong>: Native method stack is used to execute native methods. A native method is a method that is linked to a native library. Native libraries are linked to a java program through JNI (Java Native Interface). A native method looks like <code>public native void method();</code>. It’s just a declaration, because the method implementation is done in the native library.</p>
+</li>
+</ol>
+<h2 id="Frame"><a href="#Frame" class="headerlink" title="Frame"></a>Frame</h2><p>JVM is a stack-based machine. Each thread has its own stack, and each stack has its own stack of frames. A new frame is created each time a method is invoked. A frame is destroyed when its method invocation completes, whether that completion is normal or abrupt (it throws an uncaught exception).  </p>
+<p><img src="/image/stack_frame.png" alt="stack_frame" title="stack_frame"></p>
+<p>Each frame has its own array of local variables, its own operand stack, and a reference to the run-time constant pool of the class of the method. The frame for the executing method is called <strong>current frame</strong>, and its method is known as the <strong>current method</strong>. The class in which the current method is defined is the <strong>current class</strong>. When the current method returns, the current frame passes back the result to the previous frame. The current frame is then discarded as the previous frame becomes the current one.</p>
+<h3 id="Operand-Stack"><a href="#Operand-Stack" class="headerlink" title="Operand Stack"></a>Operand Stack</h3><p>The operand stack is empty when the frame that contains it is created. The Java Virtual Machine supplies instructions to load constants or values from local variables(from local variable array) or fields onto the operand stack. Other Java Virtual Machine instructions take operands from the operand stack, operate on them, and push the result back onto the operand stack. The operand stack is also used to prepare parameters to be passed to methods and to receive method results.</p>
+<p>For example, here is a Java file <code>OperandStackDemo.java</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OperandStackDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> k = i + j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>We compile this file into class file and then disassemble the class file using <code>javap -c OperandStackDemo.class</code>:</p>
+<p><img src="/image/operand_stack_javap.png" alt="operand_stack_javap" title="operand_stack_javap"></p>
+<p>Now we start to analyse the instructions(opcode) in the main method:</p>
+<ol>
+<li>iconst_1: Push the int constant <code>1</code> (from the constant pool) onto the operand stack.</li>
+</ol>
+<p><img src="/image/operand_stack_step_1.png" alt="operand_stack_step_1" title="operand_stack_step_1"></p>
+<ol start="2">
+<li>istore_1: Pop the top(which is int value <code>1</code>) of the operand stack, and store it into the local variable array at index <strong>1</strong>.(Note that in the local variable array, the value at index <strong>0</strong> is the argument of the main method, i.e., <code>args</code>).</li>
+</ol>
+<p><img src="/image/operand_stack_step_2.png" alt="operand_stack_step_2" title="operand_stack_step_2"></p>
+<ol start="3">
+<li>iconst_2: Push the int constant <code>2</code> onto the operand stack.</li>
+</ol>
+<p><img src="/image/operand_stack_step_3.png" alt="operand_stack_step_3" title="operand_stack_step_3"></p>
+<ol start="4">
+<li>istore_2: Pop the top(which is int value <code>2</code>) of the operand stack, and store it into the local variable array at index <strong>2</strong>.</li>
+</ol>
+<p><img src="/image/operand_stack_step_4.png" alt="operand_stack_step_4" title="operand_stack_step_4"></p>
+<ol start="5">
+<li>iload_1: Push the value of the local variable at index <strong>1</strong> (which is <code>1</code>) onto the operand stack.</li>
+</ol>
+<p><img src="/image/operand_stack_step_5.png" alt="operand_stack_step_5" title="operand_stack_step_5"></p>
+<ol start="6">
+<li>iload_2: Push the value of the local variable at index <strong>2</strong> (which is <code>2</code>) onto the operand stack.</li>
+</ol>
+<p><img src="/image/operand_stack_step_6.png" alt="operand_stack_step_6" title="operand_stack_step_6"></p>
+<ol start="7">
+<li>iadd: Pop the top two int values(which is <code>2</code> and <code>1</code>) from the operand stack, add these two values and push the result (which is <code>2+1 = 3</code>) onto the operand stack.</li>
+</ol>
+<p><img src="/image/operand_stack_step_7.png" alt="operand_stack_step_7" title="operand_stack_step_7"></p>
+<ol start="8">
+<li>istore_3: Pop the top(which is int value <code>3</code>) of the operand stack, and store it into the local variable array at index <strong>3</strong>.</li>
+</ol>
+<p><img src="/image/operand_stack_step_8.png" alt="operand_stack_step_8" title="operand_stack_step_8"></p>
+<ol start="9">
+<li>return: Return <code>void</code> from method.</li>
+</ol>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java-Virtual-Machine-Architecture"><span class="toc-number">1.</span> <span class="toc-text">Java Virtual Machine Architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Class-Loader"><span class="toc-number">1.1.</span> <span class="toc-text">Class Loader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Runtime-Date-Areas"><span class="toc-number">1.2.</span> <span class="toc-text">Runtime Date Areas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Frame"><span class="toc-number">1.3.</span> <span class="toc-text">Frame</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Operand-Stack"><span class="toc-number">1.3.1.</span> <span class="toc-text">Operand Stack</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/&text=Java Virtual Machine Architecture"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/&title=Java Virtual Machine Architecture"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/&is_video=false&description=Java Virtual Machine Architecture"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java Virtual Machine Architecture&body=Check out this article: http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/&title=Java Virtual Machine Architecture"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/&title=Java Virtual Machine Architecture"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/&title=Java Virtual Machine Architecture"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/&title=Java Virtual Machine Architecture"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/11/19/Java-Virtual-Machine-Architecture/&name=Java Virtual Machine Architecture&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 LeslieTang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/LeslieTj">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
