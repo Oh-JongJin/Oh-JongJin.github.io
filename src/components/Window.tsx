@@ -33,19 +33,35 @@ export const Window: React.FC<WindowProps> = ({
   onFocus,
   children,
 }) => {
+  // 모바일 화면 자동 감지 및 반응형 크기/위치 초기화
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 640 : false;
+  const responsiveWidth = isMobile
+    ? typeof window !== 'undefined'
+      ? Math.min(window.innerWidth - 16, initialWidth)
+      : initialWidth
+    : initialWidth;
+  const responsiveHeight = isMobile
+    ? typeof window !== 'undefined'
+      ? Math.min(window.innerHeight - 95, initialHeight)
+      : initialHeight
+    : initialHeight;
+
+  const defaultX = isMobile ? 8 : initialX;
+  const defaultY = isMobile ? 34 : initialY;
+
   const [isMaximized, setIsMaximized] = useState(false);
-  const [size, setSize] = useState({ width: initialWidth, height: initialHeight });
+  const [size, setSize] = useState({ width: responsiveWidth, height: responsiveHeight });
 
   // 창의 x, y 위치 모션 값
-  const x = useMotionValue(initialX);
-  const y = useMotionValue(initialY);
+  const x = useMotionValue(defaultX);
+  const y = useMotionValue(defaultY);
 
   // 최대화 이전 크기/위치 복원용 ref
   const prevBounds = useRef({
-    x: initialX,
-    y: initialY,
-    width: initialWidth,
-    height: initialHeight,
+    x: defaultX,
+    y: defaultY,
+    width: responsiveWidth,
+    height: responsiveHeight,
   });
 
   // 상단 타이틀바만 드래그 가능하게 하는 dragControls

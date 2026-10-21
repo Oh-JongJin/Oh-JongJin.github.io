@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import wallpaperLight from './assets/wallpaper-light.jpg';
 import wallpaperDark from './assets/wallpaper-dark.jpg';
+import { useBattery } from './hooks/useBattery';
 import { MenuBar } from './components/MenuBar';
 import { Desktop } from './components/Desktop';
 import { Dock, DockAppItem } from './components/Dock';
@@ -10,6 +11,7 @@ import { AboutMeApp } from './apps/AboutMeApp';
 import { ProjectsApp } from './apps/ProjectsApp';
 import { PhotoApp } from './apps/PhotoApp';
 import { TerminalApp } from './apps/TerminalApp';
+import { SettingsApp } from './apps/SettingsApp';
 
 // 실제 사용자의 Mac Dock 정품 아이콘들
 import finderIcon from './assets/dock/finder.png';
@@ -37,6 +39,9 @@ interface WindowState {
 export const App: React.FC = () => {
   const [topZIndex, setTopZIndex] = useState(10);
   const [activeAppTitle, setActiveAppTitle] = useState('Finder');
+
+  // 실제 기기 배터리 API 및 에어팟/마우스 배터리 훅
+  const battery = useBattery();
 
   // 오후 6시(18:00) ~ 익일 오전 6시(05:59): 다크모드
   // 오전 6시(06:00) ~ 오후 6시(17:59): 라이트모드
@@ -105,6 +110,16 @@ export const App: React.FC = () => {
       height: 380,
       component: <TerminalApp />,
     },
+    settings: {
+      id: 'settings',
+      title: '시스템 설정',
+      isOpen: false,
+      isMinimized: false,
+      zIndex: 10,
+      width: 700,
+      height: 480,
+      component: null, // 아래 렌더링 시 최신 상태와 함께 주입
+    },
   });
 
   const focusWindow = (id: string, title?: string) => {
@@ -172,19 +187,16 @@ export const App: React.FC = () => {
     const handleKeyDown = (e: KeyboardEvent) => {
       const isCmdOrCtrl = e.metaKey || e.ctrlKey;
 
-      // 1. Cmd + W: 창 닫기 (PWA, 전체화면 등 지원 환경)
       if (isCmdOrCtrl && e.key.toLowerCase() === 'w') {
         e.preventDefault();
         closeActiveWindow();
       }
 
-      // 2. Cmd + M: 창 최소화 (Dock으로 빨려 들어감)
       if (isCmdOrCtrl && e.key.toLowerCase() === 'm') {
         e.preventDefault();
         minimizeActiveWindow();
       }
 
-      // 3. Escape: 웹 브라우저에서도 100% 안전하게 동작하는 창 닫기 단축키
       if (e.key === 'Escape') {
         closeActiveWindow();
       }
@@ -264,10 +276,10 @@ export const App: React.FC = () => {
       id: 'settings',
       title: '시스템 설정',
       iconSrc: settingsIcon,
-      isOpen: false,
-      onClick: () => setActiveAppTitle('시스템 설정'),
+      isOpen: windows.settings.isOpen,
+      onClick: () => toggleDockApp('settings'),
     },
-    // 구분선 뒤: Projects 폴더 및 휴지통
+    // 구분선 뒤: 다운로드 및 휴지통
     {
       id: 'downloads',
       title: 'Projects',
@@ -312,7 +324,7 @@ export const App: React.FC = () => {
         }}
       />
 
-      {/* 은은한 오버레이로 위젯 및 윈도우 가독성 확보 */}
+      {/* 은은한 오버레이로 가독성 확보 */}
       <div
         className="absolute inset-0 pointer-events-none transition-colors duration-1000"
         style={{
@@ -320,39 +332,68 @@ export const App: React.FC = () => {
         }}
       />
 
-      {/* 상단 메뉴바 (다크/라이트 모드 수동 전환 버튼 포함) */}
+      {/* 상단 메뉴바 (실제 기기 배터리 및 충전 상태 연동) */}
       <MenuBar
         activeAppTitle={activeAppTitle}
         isDarkMode={isDarkMode}
         onToggleDarkMode={handleToggleDarkMode}
+        batteryPercent={battery.macbook}
+        isCharging={battery.isCharging}
       />
 
-      {/* 사용자 맥북 실제 배터리 위젯 (격자 스냅 정렬 시스템) */}
-      <BatteryWidget />
+      {/* 배터리 위젯 (상단바와 동기화 + 에어팟/마우스 랜덤값 + 격자 스냅) */}
+      <BatteryWidget
+        macbookPercent={battery.macbook}
+        isCharging={battery.isCharging}
+        airpodsPercent={battery.airpods}
+        mousePercent={battery.mouse}
+      />
 
-      {/* 바탕화면 아이콘 (Projects 폴더 & GitHub) */}
+      {/* 바탕화면 아이콘 (모바일 반응형 크기 적용) */}
       <Desktop onOpenApp={(appId) => focusWindow(appId)} />
 
       {/* 윈도우 창들 */}
-      {Object.values(windows).map((win) => (
-        <Window
-          key={win.id}
-          id={win.id}
-          title={win.title}
-          isOpen={win.isOpen}
-          isMinimized={win.isMinimized}
-          zIndex={win.zIndex}
-          initialWidth={win.width}
-          initialHeight={win.height}
-          onClose={() => closeWindow(win.id)}
-          onMinimize={() => minimizeWindow(win.id)}
-          onFocus={() => focusWindow(win.id, win.title)}
-        >
-          {win.component}
-        </Window>
-      ))}
+      {Object.values(windows).map((win) => {
+        // 시스템 설정 창 컴포넌트 실시간 바인딩
+        const content =
+          win.id === 'settings' ? (
+            <SettingsApp
+              isDarkMode={isDarkMode}
+              onToggleDarkMode={handleToggleDarkMode}
+              isManualOverride={isManualOverride}
+              onResetAutoMode={() => {
+                setIsManualOverride(false);
+                setIsDarkMode(isNightTime());
+              }}
+              batteryPercent={battery.macbook}
+              isCharging={battery.isCharging}
+              airpodsPercent={battery.airpods}
+              mousePercent={battery.mouse}
+            />
+          ) : (
+            win.component
+          );
 
-      {/* 실제 사용자 맥북 순정 앱 아이콘들로 구성된 하단 독 (Dock) */}
+        return (
+          <Window
+            key={win.id}
+            id={win.id}
+            title={win.title}
+            isOpen={win.isOpen}
+            isMinimized={win.isMinimized}
+            zIndex={win.zIndex}
+            initialWidth={win.width}
+            initialHeight={win.height}
+            onClose={() => closeWindow(win.id)}
+            onMinimize={() => minimizeWindow(win.id)}
+            onFocus={() => focusWindow(win.id, win.title)}
+          >
+            {content}
+          </Window>
+        );
+      })}
+
+      {/* 하단 독 (모바일 반응형 슬림화 & 가로 스크롤 대응) */}
       <Dock apps={dockApps} />
     </div>
   );
