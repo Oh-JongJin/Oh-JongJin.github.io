@@ -1,0 +1,50 @@
+[
+  {
+    "id": "224444146830",
+    "title": "작업 표시줄 퀵 런처 Groupa [1]",
+    "link": "https://blog.naver.com/oricori/224444146830?fromRss=true&trackingCode=rss",
+    "pubDate": "Fri, 16 Oct 2026 22:12:26 +0900",
+    "summary": "컴퓨타 만지작거리는 직업인지라 작업 표시줄에 뭘 많이 넣고 있는데 점점 많아지다보니 뭔가 지저분해져서 AI로 간단한 프로그램 하나 만들어 보았는데, https://github.com/Oh-JongJin/Groupa 윈도우 환경에서만 동작. 그냥 exe 파일을 작업 표시줄에 넣어서 바로 실행 가능 기본적으로 메모장, 계산기, 윈도우 탐색기가 등록되어 있고, 클릭하면 그룹 설정에서 추가/삭제가 가능. TODO: macOS 호환 현재 WPF(Windows Presentation Foundation) 로 작성되어, 특히 DirectX 의존성이 강해 윈도우 환경에서만 실행이 가능하다. 그래서 Linux..는 굳이 필요한가?? 쨌든 macOS에서 동작하려면 크로스 플랫폼 프레임워크로 다시 작성해야하는데, 조.......",
+    "thumbnail": "https://blogthumb.pstatic.net/MjAyNjEwMDhfMTY4/MDAxNzkxNDM4NjczNjI5.8_GWoZWmdsE4N5rCqx83pfd6cD6mguOCCQ07i3QQFQ8g._UqcFYS7V25JfqrImnpiodR8dU_W8bs-LaDypX4tMAgg.PNG/%BD%BA%C5%A9%B8%B0%BC%A6_2026-09-30_154705.png?type=s3"
+  },
+  {
+    "id": "224417843708",
+    "title": "안양 파티오벨라 웨딩홀 계약 후기",
+    "link": "https://blog.naver.com/oricori/224417843708?fromRss=true&trackingCode=rss",
+    "pubDate": "Sun, 20 Sep 2026 17:31:07 +0900",
+    "summary": "안녕하세요 슬슬 결혼에 관련하여 여러 이야기들을 나누고, 알아보기도 하면서 웨딩홀을 알아보기로 했습니다. 대략 3곳 정도 후보지가 있었는데, 저희가 뽑은 가장 중요한 요소(주차장, 위치, 식장 내 분위기, 뷔페 음식 퀄리티)를 기준으로 고민한 결과, 범계역 바로 옆에 있는 파티오벨라로 정하게 되었습니다. 저희가 정한 기준 중에서 먼저 위치적 측면에서는 범계역 출구로부터 걸어서 대략 3분 거리였고, 식장 바로 옆에 공원도 있고, 단독홀이라서 쾌적한 분위기에 끌렸습니다. 일단 상담해주신 직원분께서 되게 열정적이셨고, 뭔가 식장에 대해 자부심이 엄청 느껴졌고 사실 저희가 살아생전 처음으로 웨딩홀을 계약하는 거라서 긴장한.......",
+    "thumbnail": "https://blogthumb.pstatic.net/MjAyNjA5MjBfMjYz/MDAxNzg5ODkxMTIzODY5.JCBZCmXaFnFLhLrti2qHl5R5mE0SSn9ZNx6jcOnoekkg.EMDEF_v6fDOPiAtffZH1IxORZdA6WQdsB2BfptnMg_Ug.JPEG/74B0469B-78BA-4746-937A-3BDA03BF3598.JPG?type=s3"
+  },
+  {
+    "id": "224398857691",
+    "title": "2026년 8월 일기 - 1",
+    "link": "https://blog.naver.com/oricori/224398857691?fromRss=true&trackingCode=rss",
+    "pubDate": "Wed, 02 Sep 2026 19:57:40 +0900",
+    "summary": "",
+    "thumbnail": "https://blogthumb.pstatic.net/MjAyNjA5MDJfMjk4/MDAxNzg4MzMyOTcwNTE1.BQqbjjZFApIfy-vuemiZyQwi-F93m0959s3E26ZUsdQg.YKnllhFjPKSxOq9UtQ11Z_N_mOrAROsdmuhLmEL-eRwg.JPEG/A44B064D-FFAF-4403-AAA0-0BB1E105737A_1_105_c.jpeg?type=s3"
+  },
+  {
+    "id": "224381304882",
+    "title": "2026년 7월 일기 - 2",
+    "link": "https://blog.naver.com/oricori/224381304882?fromRss=true&trackingCode=rss",
+    "pubDate": "Mon, 17 Aug 2026 17:59:44 +0900",
+    "summary": "",
+    "thumbnail": "https://blogthumb.pstatic.net/MjAyNjA4MTdfMTkg/MDAxNzg2OTUzNjEwMDc0.QenwbNLmvovaPk6E0pU9WUD3WvDjBv-iPVWX_Yaq32Yg.E53uUEw9Vazi9vO2zH43yOA9SFDyruZwLFtaHS5t_Zcg.JPEG/DBD93227-C325-4322-A85C-992B8AB01E4B_1_105_c.jpeg?type=s3"
+  },
+  {
+    "id": "224368528817",
+    "title": "2026년 7월 일기 - 1",
+    "link": "https://blog.naver.com/oricori/224368528817?fromRss=true&trackingCode=rss",
+    "pubDate": "Wed, 05 Aug 2026 08:32:21 +0900",
+    "summary": "",
+    "thumbnail": "https://blogthumb.pstatic.net/MjAyNjA4MDFfMjc2/MDAxNzg1NTc5NDkwMDM4.VCbSghuNQVhj-hIg2Md83W3Xa2vXMsIgUkzDh84bOUYg.c77hS3jmtVnUXDi2_PBXg1q_QIb22ZkF49ffRtiIlMcg.JPEG/C685CB1A-D1B0-4048-A440-7E576E079DA1_1_105_c.jpeg?type=s3"
+  },
+  {
+    "id": "224358534284",
+    "title": "2026년 6월 일기",
+    "link": "https://blog.naver.com/oricori/224358534284?fromRss=true&trackingCode=rss",
+    "pubDate": "Sun, 26 Jul 2026 19:22:42 +0900",
+    "summary": "",
+    "thumbnail": "https://blogthumb.pstatic.net/MjAyNjA4MDFfMjY1/MDAxNzg1NTY2MzM4MDU3.ZqpPSR3XlU00Ed6DAjmR9gqCZU4_0quCZ3mxGI-Kicog.EWrEoqVbKR5Gfpj_UpawCeVepNA6vrT7551cizVQsg4g.JPEG/0FD8EBA5-F73F-4FE3-AF91-8A6BFB9D59A6.JPG?type=s3"
+  }
+]

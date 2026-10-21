@@ -12,6 +12,7 @@ export interface WindowProps {
   initialY?: number;
   initialWidth?: number;
   initialHeight?: number;
+  hideTitleBar?: boolean;
   onClose: () => void;
   onMinimize: () => void;
   onFocus: () => void;
@@ -28,6 +29,7 @@ export const Window: React.FC<WindowProps> = ({
   initialY = 70,
   initialWidth = 680,
   initialHeight = 460,
+  hideTitleBar = false,
   onClose,
   onMinimize,
   onFocus,
@@ -161,14 +163,6 @@ export const Window: React.FC<WindowProps> = ({
       dragControls={dragControls}
       dragMomentum={false}
       onMouseDown={onFocus}
-      style={{
-        x,
-        y,
-        width: isMaximized ? '100vw' : size.width,
-        height: isMaximized ? 'calc(100vh - 28px)' : size.height,
-        zIndex,
-        pointerEvents: isMinimized ? 'none' : 'auto',
-      }}
       initial={{ scale: 0.85, opacity: 0 }}
       animate={
         isMinimized
@@ -184,74 +178,106 @@ export const Window: React.FC<WindowProps> = ({
               scaleX: 1,
               scaleY: 1,
               opacity: 1,
-              borderRadius: isMaximized ? 0 : 12,
+              borderRadius: isMaximized ? 0 : 18,
               transition: { duration: 0.2 },
             }
       }
       className={`absolute flex flex-col overflow-hidden mac-glass-dark text-white/90 mac-shadow border border-white/20 select-text ${
-        isMaximized ? 'rounded-none' : 'rounded-xl'
+        isMaximized ? 'rounded-none' : 'rounded-[18px]'
       }`}
+      style={{
+        x,
+        y,
+        width: isMaximized ? '100vw' : size.width,
+        height: isMaximized ? 'calc(100vh - 28px)' : size.height,
+        zIndex,
+        pointerEvents: isMinimized ? 'none' : 'auto',
+        WebkitMaskImage: isMaximized ? undefined : '-webkit-radial-gradient(white, black)',
+      }}
     >
-      {/* 1. 상단 타이틀 바 (여기만 마우스로 잡고 이동 가능) */}
-      <div
-        onPointerDown={(e) => {
-          onFocus();
-          dragControls.start(e);
-        }}
-        onDoubleClick={handleToggleMaximize}
-        className="h-10 bg-white/10 border-b border-white/10 flex items-center justify-between px-4 cursor-grab active:cursor-grabbing select-none relative z-10"
-      >
-        {/* 신호등 트래픽 라이트 버튼 */}
-        <div className="flex items-center space-x-2 group">
-          {/* 빨강: 닫기 */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onClose();
-            }}
-            title="닫기"
-            className="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center hover:opacity-90"
-          >
-            <X className="w-2 h-2 text-black/60 opacity-0 group-hover:opacity-100" />
-          </button>
+      {/* 1. 상단 타이틀 바 (hideTitleBar가 아닐 때만 렌더링) */}
+      {!hideTitleBar && (
+        <div
+          onPointerDown={(e) => {
+            const target = e.target as HTMLElement;
+            if (target.closest('button')) return;
+            onFocus();
+            dragControls.start(e);
+          }}
+          onDoubleClick={(e) => {
+            const target = e.target as HTMLElement;
+            if (target.closest('button')) return;
+            handleToggleMaximize();
+          }}
+          className={`h-9 border-b flex items-center justify-between px-3.5 cursor-grab active:cursor-grabbing select-none relative z-10 ${
+            _id === 'settings'
+              ? 'bg-[#1c1c1e] border-white/5'
+              : 'bg-white/10 border-white/10'
+          }`}
+        >
+          {/* 신호등 트래픽 라이트 버튼 */}
+          <div className="flex items-center space-x-2 group">
+            {/* 빨강: 닫기 */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onClose();
+              }}
+              title="닫기"
+              className="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center hover:opacity-90"
+            >
+              <X className="w-2 h-2 text-black/60 opacity-0 group-hover:opacity-100" />
+            </button>
 
-          {/* 노랑: 하단 Dock으로 최소화 (지니 효과) */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onMinimize();
-            }}
-            title="최소화"
-            className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center hover:opacity-90"
-          >
-            <Minus className="w-2 h-2 text-black/60 opacity-0 group-hover:opacity-100" />
-          </button>
+            {/* 노랑: 하단 Dock으로 최소화 (지니 효과) */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onMinimize();
+              }}
+              title="최소화"
+              className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center hover:opacity-90"
+            >
+              <Minus className="w-2 h-2 text-black/60 opacity-0 group-hover:opacity-100" />
+            </button>
 
-          {/* 초록: 전체화면 토글 */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              handleToggleMaximize();
-            }}
-            title="전체화면"
-            className="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center hover:opacity-90"
-          >
-            <Maximize2 className="w-2 h-2 text-black/60 opacity-0 group-hover:opacity-100" />
-          </button>
+            {/* 초록: 전체화면 토글 */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleToggleMaximize();
+              }}
+              title="전체화면"
+              className="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center hover:opacity-90"
+            >
+              <Maximize2 className="w-2 h-2 text-black/60 opacity-0 group-hover:opacity-100" />
+            </button>
+          </div>
+
+          {/* 타이틀 텍스트 (시스템 설정 창일 때는 macOS 순정처럼 미표시) */}
+          {_id !== 'settings' && (
+            <span className="text-xs font-semibold text-white/80 tracking-wide pointer-events-none drop-shadow">
+              {title}
+            </span>
+          )}
+
+          {/* 좌우 균형 맞춤용 빈 박스 */}
+          <div className="w-12" />
         </div>
+      )}
 
-        {/* 타이틀 텍스트 */}
-        <span className="text-xs font-semibold text-white/80 tracking-wide pointer-events-none drop-shadow">
-          {title}
-        </span>
-
-        {/* 좌우 균형 맞춤용 빈 박스 */}
-        <div className="w-12" />
-      </div>
-
-      {/* 2. 창 내부 본문 (스크롤 및 텍스트 선택 가능, 드래그해도 창이 이동되지 않음) */}
-      <div className="flex-1 overflow-auto bg-neutral-900/60 backdrop-blur-xl relative z-0">
-        {children}
+      {/* 2. 창 내부 본문 (스크롤 및 텍스트 선택 가능) */}
+      <div className="flex-1 overflow-auto bg-neutral-900/60 backdrop-blur-xl relative z-0 flex flex-col">
+        {React.isValidElement(children)
+          ? React.cloneElement(children as React.ReactElement<any>, {
+              onClose,
+              onMinimize,
+              onMaximize: handleToggleMaximize,
+              isMaximized,
+              dragControls,
+              onFocus,
+            })
+          : children}
       </div>
 
       {/* 3. 창 가장자리 리사이즈 핸들 (실제 macOS처럼 완전 투명) */}

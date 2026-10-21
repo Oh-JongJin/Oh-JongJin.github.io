@@ -12,11 +12,13 @@ import { ProjectsApp } from './apps/ProjectsApp';
 import { PhotoApp } from './apps/PhotoApp';
 import { TerminalApp } from './apps/TerminalApp';
 import { SettingsApp } from './apps/SettingsApp';
+import { NotesApp } from './apps/NotesApp';
 
 // 실제 사용자의 Mac Dock 정품 아이콘들
 import finderIcon from './assets/dock/finder.png';
 import safariIcon from './assets/dock/safari.png';
 import whaleIcon from './assets/dock/whale.png';
+import notesIcon from './assets/dock/notes.png';
 import photosIcon from './assets/dock/photos.png';
 import musicIcon from './assets/dock/music.png';
 import appstoreIcon from './assets/dock/appstore.png';
@@ -116,9 +118,19 @@ export const App: React.FC = () => {
       isOpen: false,
       isMinimized: false,
       zIndex: 10,
-      width: 700,
-      height: 480,
+      width: 780,
+      height: 560,
       component: null, // 아래 렌더링 시 최신 상태와 함께 주입
+    },
+    notes: {
+      id: 'notes',
+      title: '메모',
+      isOpen: false,
+      isMinimized: false,
+      zIndex: 10,
+      width: 860,
+      height: 540,
+      component: <NotesApp />,
     },
   });
 
@@ -243,6 +255,13 @@ export const App: React.FC = () => {
       iconSrc: whaleIcon,
       isOpen: false,
       onClick: () => window.open('https://whale.naver.com', '_blank'),
+    },
+    {
+      id: 'notes',
+      title: '메모',
+      iconSrc: notesIcon,
+      isOpen: windows.notes.isOpen,
+      onClick: () => toggleDockApp('notes'),
     },
     {
       id: 'photos',
@@ -384,6 +403,7 @@ export const App: React.FC = () => {
             zIndex={win.zIndex}
             initialWidth={win.width}
             initialHeight={win.height}
+            hideTitleBar={win.id === 'notes'}
             onClose={() => closeWindow(win.id)}
             onMinimize={() => minimizeWindow(win.id)}
             onFocus={() => focusWindow(win.id, win.title)}
