@@ -13,10 +13,12 @@ import { PhotoApp } from './apps/PhotoApp';
 import { TerminalApp } from './apps/TerminalApp';
 import { SettingsApp } from './apps/SettingsApp';
 import { NotesApp } from './apps/NotesApp';
+import { MessagesApp } from './apps/MessagesApp';
 
 // 실제 사용자의 Mac Dock 정품 아이콘들
 import finderIcon from './assets/dock/finder.png';
 import safariIcon from './assets/dock/safari.png';
+import messagesIcon from './assets/dock/messages.png';
 import whaleIcon from './assets/dock/whale.png';
 import notesIcon from './assets/dock/notes.png';
 import photosIcon from './assets/dock/photos.png';
@@ -131,6 +133,16 @@ export const App: React.FC = () => {
       width: 860,
       height: 540,
       component: <NotesApp />,
+    },
+    messages: {
+      id: 'messages',
+      title: '메시지',
+      isOpen: false,
+      isMinimized: false,
+      zIndex: 10,
+      width: 780,
+      height: 520,
+      component: <MessagesApp />,
     },
   });
 
@@ -248,6 +260,13 @@ export const App: React.FC = () => {
       iconSrc: safariIcon,
       isOpen: false,
       onClick: () => window.open('https://www.apple.com/kr/safari/', '_blank'),
+    },
+    {
+      id: 'messages',
+      title: '메시지',
+      iconSrc: messagesIcon,
+      isOpen: windows.messages.isOpen,
+      onClick: () => toggleDockApp('messages'),
     },
     {
       id: 'whale',
@@ -403,7 +422,7 @@ export const App: React.FC = () => {
             zIndex={win.zIndex}
             initialWidth={win.width}
             initialHeight={win.height}
-            hideTitleBar={win.id === 'notes'}
+            hideTitleBar={win.id === 'notes' || win.id === 'messages'}
             onClose={() => closeWindow(win.id)}
             onMinimize={() => minimizeWindow(win.id)}
             onFocus={() => focusWindow(win.id, win.title)}

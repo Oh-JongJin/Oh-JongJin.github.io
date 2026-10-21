@@ -30,7 +30,7 @@ export const ProjectsApp: React.FC = () => {
   ];
 
   return (
-    <div className="p-6 space-y-4">
+    <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
       <div className="flex items-center justify-between pb-3 border-b border-white/10">
         <h2 className="text-base font-semibold text-white flex items-center gap-2">
           <FolderGit2 className="w-5 h-5 text-sky-400" />

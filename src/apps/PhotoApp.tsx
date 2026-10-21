@@ -28,36 +28,36 @@ export const PhotoApp: React.FC = () => {
   const [selectedPhoto, setSelectedPhoto] = useState(photos[0]);
 
   return (
-    <div className="flex h-full">
-      {/* 사진 썸네일 사이드바 */}
-      <div className="w-48 border-r border-white/10 p-3 overflow-y-auto space-y-2 bg-black/20">
-        <div className="text-xs font-semibold text-neutral-400 px-2 py-1 flex items-center gap-1.5">
+    <div className="flex flex-col-reverse sm:flex-row h-full">
+      {/* 사진 썸네일 바 (모바일에서는 하단 가로 스크롤, 데스크톱은 좌측 사이드바) */}
+      <div className="w-full sm:w-48 border-t sm:border-t-0 sm:border-r border-white/10 p-2 sm:p-3 overflow-x-auto sm:overflow-y-auto flex sm:flex-col gap-1.5 sm:gap-2 bg-black/20 flex-shrink-0 no-scrollbar">
+        <div className="hidden sm:flex text-xs font-semibold text-neutral-400 px-2 py-1 items-center gap-1.5">
           <ImageIcon className="w-3.5 h-3.5" /> Photos
         </div>
         {photos.map((p) => (
           <button
             key={p.id}
             onClick={() => setSelectedPhoto(p)}
-            className={`w-full flex items-center gap-2 p-1.5 rounded-lg text-xs text-left transition-all ${
+            className={`flex-shrink-0 sm:w-full flex items-center gap-2 p-1.5 rounded-lg text-xs text-left transition-all ${
               selectedPhoto.id === p.id
                 ? 'bg-blue-600 text-white'
                 : 'text-neutral-300 hover:bg-white/10'
             }`}
           >
             <img src={p.url} alt={p.title} className="w-8 h-8 rounded object-cover" />
-            <span className="truncate">{p.title}</span>
+            <span className="hidden sm:inline truncate">{p.title}</span>
           </button>
         ))}
       </div>
 
       {/* 사진 상세 프리뷰 */}
-      <div className="flex-1 flex flex-col items-center justify-center p-6 bg-black/40">
+      <div className="flex-1 flex flex-col items-center justify-center p-3 sm:p-6 bg-black/40 overflow-hidden">
         <img
           src={selectedPhoto.url}
           alt={selectedPhoto.title}
-          className="max-h-[320px] rounded-xl shadow-2xl object-contain border border-white/10"
+          className="max-h-[240px] sm:max-h-[320px] rounded-xl shadow-2xl object-contain border border-white/10"
         />
-        <span className="mt-3 text-xs text-neutral-400">{selectedPhoto.title}</span>
+        <span className="mt-2 text-xs text-neutral-400 font-medium">{selectedPhoto.title}</span>
       </div>
     </div>
   );

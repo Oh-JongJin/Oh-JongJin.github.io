@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useDragControls, useMotionValue } from 'framer-motion';
 import { X, Minus, Maximize2 } from 'lucide-react';
+import { useDevice } from '../hooks/useDevice';
 
 export interface WindowProps {
   id: string;
@@ -35,35 +36,50 @@ export const Window: React.FC<WindowProps> = ({
   onFocus,
   children,
 }) => {
-  // 모바일 화면 자동 감지 및 반응형 크기/위치 초기화
-  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 640 : false;
-  const responsiveWidth = isMobile
-    ? typeof window !== 'undefined'
-      ? Math.min(window.innerWidth - 16, initialWidth)
-      : initialWidth
-    : initialWidth;
-  const responsiveHeight = isMobile
-    ? typeof window !== 'undefined'
-      ? Math.min(window.innerHeight - 95, initialHeight)
-      : initialHeight
-    : initialHeight;
+  // 모바일 환경 실시간 감지 (스마트폰 최적화)
+  const { isMobile, screenWidth, screenHeight } = useDevice();
 
-  const defaultX = isMobile ? 8 : initialX;
-  const defaultY = isMobile ? 34 : initialY;
+  const getResponsiveWidth = () => {
+    if (isMobile) {
+      return typeof window !== 'undefined' ? window.innerWidth - 12 : 360;
+    }
+    return initialWidth;
+  };
+
+  const getResponsiveHeight = () => {
+    if (isMobile) {
+      return typeof window !== 'undefined' ? Math.min(window.innerHeight - 105, 620) : 520;
+    }
+    return initialHeight;
+  };
+
+  const defaultX = isMobile ? 6 : initialX;
+  const defaultY = isMobile ? 32 : initialY;
 
   const [isMaximized, setIsMaximized] = useState(false);
-  const [size, setSize] = useState({ width: responsiveWidth, height: responsiveHeight });
+  const [size, setSize] = useState({ width: getResponsiveWidth(), height: getResponsiveHeight() });
 
   // 창의 x, y 위치 모션 값
   const x = useMotionValue(defaultX);
   const y = useMotionValue(defaultY);
 
+  // 모바일 화면 크기 변경 시 위치/크기 동기화
+  useEffect(() => {
+    if (isMobile) {
+      const rw = getResponsiveWidth();
+      const rh = getResponsiveHeight();
+      setSize({ width: rw, height: rh });
+      x.set(6);
+      y.set(32);
+    }
+  }, [isMobile, screenWidth, screenHeight]);
+
   // 최대화 이전 크기/위치 복원용 ref
   const prevBounds = useRef({
     x: defaultX,
     y: defaultY,
-    width: responsiveWidth,
-    height: responsiveHeight,
+    width: getResponsiveWidth(),
+    height: getResponsiveHeight(),
   });
 
   // 상단 타이틀바만 드래그 가능하게 하는 dragControls
@@ -274,6 +290,7 @@ export const Window: React.FC<WindowProps> = ({
               onMinimize,
               onMaximize: handleToggleMaximize,
               isMaximized,
+              isMobile,
               dragControls,
               onFocus,
             })

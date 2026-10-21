@@ -24,6 +24,7 @@ import {
   Eye,
   Check,
 } from 'lucide-react';
+import { useDevice } from '../hooks/useDevice';
 
 interface SettingsAppProps {
   isDarkMode: boolean;
@@ -51,12 +52,27 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
   // '일반' 탭 내부의 서브페이지 ('main' | 'about' | 'update' | 'storage')
   const [generalSubpage, setGeneralSubpage] = useState<string>('main');
 
+  const { isMobile } = useDevice();
+  const [mobileView, setMobileView] = useState<'menu' | 'detail'>('menu');
+
   const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSelectMenu = (menu: string) => {
+    setSelectedMenu(menu);
+    setGeneralSubpage('main');
+    if (isMobile) {
+      setMobileView('detail');
+    }
+  };
 
   return (
     <div className="flex h-full w-full bg-[#161618] text-[#e0e0e0] font-sans select-none overflow-hidden text-[13px]">
-      {/* ===================== 왼쪽 사이드바 (스크린샷 100% 재현) ===================== */}
-      <div className="w-[240px] flex-shrink-0 bg-[#1c1c1e]/95 backdrop-blur-2xl border-r border-white/10 flex flex-col h-full">
+      {/* ===================== 왼쪽 사이드바 (스크린샷 100% 재현, 모바일 반응형) ===================== */}
+      <div
+        className={`${
+          isMobile && mobileView !== 'menu' ? 'hidden' : 'flex'
+        } ${isMobile ? 'w-full' : 'w-[240px] flex-shrink-0'} bg-[#1c1c1e]/95 backdrop-blur-2xl border-r border-white/10 flex-col h-full`}
+      >
         {/* 상단 검색창 */}
         <div className="pt-2 px-3 pb-2">
           <div className="relative flex items-center">
@@ -99,7 +115,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
           {/* 2. 네트워크 및 연결 그룹 */}
           <div className="space-y-0.5 pt-1 border-t border-white/5">
             <button
-              onClick={() => { setSelectedMenu('wifi'); setGeneralSubpage('main'); }}
+              onClick={() => handleSelectMenu('wifi')}
               className={`w-full flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 selectedMenu === 'wifi' ? 'bg-[#007AFF] text-white' : 'hover:bg-white/5 text-neutral-200'
               }`}
@@ -111,7 +127,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
             </button>
 
             <button
-              onClick={() => { setSelectedMenu('bluetooth'); setGeneralSubpage('main'); }}
+              onClick={() => handleSelectMenu('bluetooth')}
               className={`w-full flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 selectedMenu === 'bluetooth' ? 'bg-[#007AFF] text-white' : 'hover:bg-white/5 text-neutral-200'
               }`}
@@ -123,7 +139,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
             </button>
 
             <button
-              onClick={() => { setSelectedMenu('network'); setGeneralSubpage('main'); }}
+              onClick={() => handleSelectMenu('network')}
               className={`w-full flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 selectedMenu === 'network' ? 'bg-[#007AFF] text-white' : 'hover:bg-white/5 text-neutral-200'
               }`}
@@ -135,7 +151,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
             </button>
 
             <button
-              onClick={() => { setSelectedMenu('vpn'); setGeneralSubpage('main'); }}
+              onClick={() => handleSelectMenu('vpn')}
               className={`w-full flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 selectedMenu === 'vpn' ? 'bg-[#007AFF] text-white' : 'hover:bg-white/5 text-neutral-200'
               }`}
@@ -147,7 +163,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
             </button>
 
             <button
-              onClick={() => { setSelectedMenu('battery'); setGeneralSubpage('main'); }}
+              onClick={() => handleSelectMenu('battery')}
               className={`w-full flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 selectedMenu === 'battery' ? 'bg-[#007AFF] text-white' : 'hover:bg-white/5 text-neutral-200'
               }`}
@@ -163,7 +179,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
           <div className="space-y-0.5 pt-1 border-t border-white/5">
             {/* 일반 (기본 활성 선택 상태) */}
             <button
-              onClick={() => { setSelectedMenu('general'); setGeneralSubpage('main'); }}
+              onClick={() => handleSelectMenu('general')}
               className={`w-full flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 selectedMenu === 'general' ? 'bg-[#007AFF] text-white' : 'hover:bg-white/5 text-neutral-200'
               }`}
@@ -175,7 +191,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
             </button>
 
             <button
-              onClick={() => { setSelectedMenu('desktop'); setGeneralSubpage('main'); }}
+              onClick={() => handleSelectMenu('desktop')}
               className={`w-full flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 selectedMenu === 'desktop' ? 'bg-[#007AFF] text-white' : 'hover:bg-white/5 text-neutral-200'
               }`}
@@ -187,7 +203,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
             </button>
 
             <button
-              onClick={() => { setSelectedMenu('display'); setGeneralSubpage('main'); }}
+              onClick={() => handleSelectMenu('display')}
               className={`w-full flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 selectedMenu === 'display' ? 'bg-[#007AFF] text-white' : 'hover:bg-white/5 text-neutral-200'
               }`}
@@ -199,7 +215,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
             </button>
 
             <button
-              onClick={() => { setSelectedMenu('menubar'); setGeneralSubpage('main'); }}
+              onClick={() => handleSelectMenu('menubar')}
               className={`w-full flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 selectedMenu === 'menubar' ? 'bg-[#007AFF] text-white' : 'hover:bg-white/5 text-neutral-200'
               }`}
@@ -211,7 +227,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
             </button>
 
             <button
-              onClick={() => { setSelectedMenu('wallpaper'); setGeneralSubpage('main'); }}
+              onClick={() => handleSelectMenu('wallpaper')}
               className={`w-full flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 selectedMenu === 'wallpaper' ? 'bg-[#007AFF] text-white' : 'hover:bg-white/5 text-neutral-200'
               }`}
@@ -223,7 +239,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
             </button>
 
             <button
-              onClick={() => { setSelectedMenu('accessibility'); setGeneralSubpage('main'); }}
+              onClick={() => handleSelectMenu('accessibility')}
               className={`w-full flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 selectedMenu === 'accessibility' ? 'bg-[#007AFF] text-white' : 'hover:bg-white/5 text-neutral-200'
               }`}
@@ -236,7 +252,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
 
             {/* 화면 모드 (다크/라이트 전환 연동) */}
             <button
-              onClick={() => { setSelectedMenu('appearance'); setGeneralSubpage('main'); }}
+              onClick={() => handleSelectMenu('appearance')}
               className={`w-full flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 selectedMenu === 'appearance' ? 'bg-[#007AFF] text-white' : 'hover:bg-white/5 text-neutral-200'
               }`}
@@ -248,7 +264,7 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
             </button>
 
             <button
-              onClick={() => { setSelectedMenu('apple_intelligence'); setGeneralSubpage('main'); }}
+              onClick={() => handleSelectMenu('apple_intelligence')}
               className={`w-full flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 selectedMenu === 'apple_intelligence' ? 'bg-[#007AFF] text-white' : 'hover:bg-white/5 text-neutral-200'
               }`}
@@ -262,30 +278,44 @@ export const SettingsApp: React.FC<SettingsAppProps> = ({
         </div>
       </div>
 
-      {/* ===================== 오른쪽 메인 패널 ===================== */}
-      <div className="flex-1 flex flex-col h-full bg-[#161618] overflow-hidden">
-        {/* 상단 네비게이션 바 (< > 버튼) */}
-        <div className="h-10 px-6 flex items-center border-b border-white/5 bg-[#161618]/50">
-          <div className="flex items-center rounded-md border border-white/10 bg-[#28282a]/60 p-0.5">
+      {/* ===================== 오른쪽 메인 패널 (모바일 반응형 지원) ===================== */}
+      <div
+        className={`${
+          isMobile && mobileView !== 'detail' ? 'hidden' : 'flex'
+        } flex-1 flex-col h-full bg-[#161618] overflow-hidden`}
+      >
+        {/* 상단 네비게이션 바 (< > 버튼 또는 모바일 뒤로가기) */}
+        <div className="h-10 px-4 sm:px-6 flex items-center justify-between border-b border-white/5 bg-[#161618]/50 flex-shrink-0">
+          {isMobile ? (
             <button
-              onClick={() => setGeneralSubpage('main')}
-              disabled={generalSubpage === 'main'}
-              className="p-1 rounded text-neutral-400 hover:text-white disabled:opacity-30 disabled:hover:text-neutral-400 transition-colors"
+              onClick={() => setMobileView('menu')}
+              className="flex items-center gap-1 text-[#007AFF] font-medium text-xs py-1 hover:opacity-80 transition-opacity"
             >
-              <ChevronLeft className="w-3.5 h-3.5" />
+              <ChevronLeft className="w-4 h-4" />
+              <span>설정 목록</span>
             </button>
-            <div className="w-[1px] h-3 bg-white/10" />
-            <button
-              disabled
-              className="p-1 rounded text-neutral-400 disabled:opacity-30 transition-colors"
-            >
-              <ChevronRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
+          ) : (
+            <div className="flex items-center rounded-md border border-white/10 bg-[#28282a]/60 p-0.5">
+              <button
+                onClick={() => setGeneralSubpage('main')}
+                disabled={generalSubpage === 'main'}
+                className="p-1 rounded text-neutral-400 hover:text-white disabled:opacity-30 disabled:hover:text-neutral-400 transition-colors"
+              >
+                <ChevronLeft className="w-3.5 h-3.5" />
+              </button>
+              <div className="w-[1px] h-3 bg-white/10" />
+              <button
+                disabled
+                className="p-1 rounded text-neutral-400 disabled:opacity-30 transition-colors"
+              >
+                <ChevronRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          )}
         </div>
 
         {/* 메인 스크롤 콘텐츠 */}
-        <div className="flex-1 overflow-y-auto px-6 py-5 space-y-4">
+        <div className="flex-1 overflow-y-auto px-4 py-4 sm:px-6 sm:py-5 space-y-4">
           {/* ================= 1. '일반' 탭 (스크린샷 상태와 100% 동일) ================= */}
           {selectedMenu === 'general' && generalSubpage === 'main' && (
             <div className="max-w-2xl mx-auto space-y-4">
