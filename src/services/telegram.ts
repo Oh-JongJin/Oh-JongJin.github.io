@@ -9,18 +9,33 @@ export interface TelegramConfig {
 
 const STORAGE_KEY = 'macos_portfolio_telegram_config';
 
-// 기본 설정 가져오기 (localStorage 또는 빈 값)
+// 💡 배포 후 웹사이트에 접속한 모든 방문자가 종진님의 텔레그램으로 알림을 보낼 수 있게 설정된 기본 인증 정보
+export const DEFAULT_BOT_TOKEN = '8666579940:AAFTetHxaE8S6BuVGBlxXtLfIu582nANBmY';
+export const DEFAULT_CHAT_ID = '8989845854';
+
+// 기본 설정 가져오기 (localStorage 또는 기본 상수값)
 export const getTelegramConfig = (): TelegramConfig => {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
-      return JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      if (parsed.botToken && parsed.chatId) {
+        return parsed;
+      }
     }
   } catch (e) {
     console.error('Failed to load telegram config from localStorage:', e);
   }
 
-  // 기본값 (사용자가 UI 또는 스크립트에서 입력 가능)
+  // 코드 내 기본 상수가 설정되어 있다면 모든 방문자에게 자동 적용
+  if (DEFAULT_BOT_TOKEN && DEFAULT_CHAT_ID) {
+    return {
+      botToken: DEFAULT_BOT_TOKEN,
+      chatId: DEFAULT_CHAT_ID,
+      isEnabled: true,
+    };
+  }
+
   return {
     botToken: '',
     chatId: '',
