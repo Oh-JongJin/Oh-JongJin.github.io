@@ -48,13 +48,13 @@ export const Window: React.FC<WindowProps> = ({
 
   const getResponsiveHeight = () => {
     if (isMobile) {
-      return typeof window !== 'undefined' ? Math.min(window.innerHeight - 105, 620) : 520;
+      return typeof window !== 'undefined' ? Math.min(window.innerHeight - 110, 620) : 520;
     }
     return initialHeight;
   };
 
   const defaultX = isMobile ? 6 : initialX;
-  const defaultY = isMobile ? 32 : initialY;
+  const defaultY = isMobile ? 36 : initialY;
 
   const [isMaximized, setIsMaximized] = useState(false);
   const [size, setSize] = useState({ width: getResponsiveWidth(), height: getResponsiveHeight() });
@@ -70,7 +70,7 @@ export const Window: React.FC<WindowProps> = ({
       const rh = getResponsiveHeight();
       setSize({ width: rw, height: rh });
       x.set(6);
-      y.set(32);
+      y.set(36);
     }
   }, [isMobile, screenWidth, screenHeight]);
 

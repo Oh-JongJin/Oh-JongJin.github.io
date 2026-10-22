@@ -14,6 +14,7 @@ import { TerminalApp } from './apps/TerminalApp';
 import { SettingsApp } from './apps/SettingsApp';
 import { NotesApp } from './apps/NotesApp';
 import { MessagesApp } from './apps/MessagesApp';
+import { SubwayGameApp } from './apps/SubwayGameApp';
 
 // 실제 사용자의 Mac Dock 정품 아이콘들
 import finderIcon from './assets/dock/finder.png';
@@ -26,6 +27,7 @@ import musicIcon from './assets/dock/music.png';
 import appstoreIcon from './assets/dock/appstore.png';
 import terminalIcon from './assets/dock/terminal.png';
 import settingsIcon from './assets/dock/settings.png';
+import gameIcon from './assets/dock/retro-game.png';
 import downloadsIcon from './assets/dock/downloads.png';
 import trashIcon from './assets/dock/trash.png';
 
@@ -143,6 +145,16 @@ export const App: React.FC = () => {
       width: 780,
       height: 520,
       component: <MessagesApp />,
+    },
+    game: {
+      id: 'game',
+      title: '안녕',
+      isOpen: false,
+      isMinimized: false,
+      zIndex: 10,
+      width: 760,
+      height: 530,
+      component: <SubwayGameApp />,
     },
   });
 
@@ -311,6 +323,13 @@ export const App: React.FC = () => {
       onClick: () => toggleDockApp('terminal'),
     },
     {
+      id: 'game',
+      title: '안녕',
+      iconSrc: gameIcon,
+      isOpen: windows.game.isOpen,
+      onClick: () => toggleDockApp('game'),
+    },
+    {
       id: 'settings',
       title: '시스템 설정',
       iconSrc: settingsIcon,
@@ -335,9 +354,20 @@ export const App: React.FC = () => {
     },
   ];
 
+  // 모바일 브라우저에서 window 스크롤(오버스크롤/바운스) 원천 차단
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY !== 0 || window.scrollX !== 0) {
+        window.scrollTo(0, 0);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div
-      className="relative w-screen h-screen overflow-hidden select-none bg-black"
+      className="fixed inset-0 w-full h-full h-[100dvh] overflow-hidden select-none bg-black"
       onClick={(e) => {
         if (e.target === e.currentTarget) {
           setActiveAppTitle('Finder');
@@ -392,9 +422,10 @@ export const App: React.FC = () => {
 
       {/* 윈도우 창들 */}
       {Object.values(windows).map((win) => {
-        // 시스템 설정 창 컴포넌트 실시간 바인딩
-        const content =
-          win.id === 'settings' ? (
+        // 시스템 설정 창 및 프로젝트 창 실시간 바인딩
+        let content = win.component;
+        if (win.id === 'settings') {
+          content = (
             <SettingsApp
               isDarkMode={isDarkMode}
               onToggleDarkMode={handleToggleDarkMode}
@@ -408,9 +439,10 @@ export const App: React.FC = () => {
               airpodsPercent={battery.airpods}
               mousePercent={battery.mouse}
             />
-          ) : (
-            win.component
           );
+        } else if (win.id === 'projects') {
+          content = <ProjectsApp onOpenGame={() => focusWindow('game')} />;
+        }
 
         return (
           <Window

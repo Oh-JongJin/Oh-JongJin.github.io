@@ -146,14 +146,20 @@ export const MessagesApp: React.FC<MessagesAppProps> = ({
   const [testStatus, setTestStatus] = useState<{ loading: boolean; message: string; success?: boolean } | null>(null);
 
   const { isMobile } = useDevice();
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const lastUpdateIdRef = useRef<number>(0);
   const isComposingRef = useRef<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // 메시지 스크롤 자동 이동
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  // 메시지 스크롤 자동 이동 (window 전체 스크롤을 유발하는 scrollIntoView 대신 컨테이너의 scrollTop 직접 제어)
+  const scrollToBottom = (smooth = true) => {
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTo({
+        top: messagesContainerRef.current.scrollHeight,
+        behavior: smooth ? 'smooth' : 'auto',
+      });
+    }
   };
 
   useEffect(() => {
@@ -531,7 +537,7 @@ export const MessagesApp: React.FC<MessagesAppProps> = ({
           )}
 
           {/* ======================= 메시지 스크롤 영역 ======================= */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3 no-scrollbar select-text">
+          <div ref={messagesContainerRef} className="flex-1 overflow-y-auto p-4 space-y-3 no-scrollbar select-text">
             {/* 날짜 배너 */}
             <div className="flex flex-col items-center justify-center my-2 text-center">
               <span className="text-[11px] font-medium text-[#8e8e93]">

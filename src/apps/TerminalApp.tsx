@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useDevice } from '../hooks/useDevice';
 
 interface HistoryItem {
   command: string;
@@ -6,6 +7,7 @@ interface HistoryItem {
 }
 
 export const TerminalApp: React.FC = () => {
+  const { isMobile } = useDevice();
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<HistoryItem[]>([
     {
@@ -21,10 +23,13 @@ export const TerminalApp: React.FC = () => {
     },
   ]);
 
+  const terminalContainerRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (terminalContainerRef.current) {
+      terminalContainerRef.current.scrollTop = terminalContainerRef.current.scrollHeight;
+    }
   }, [history]);
 
   const handleCommand = (e: React.FormEvent) => {
@@ -83,7 +88,7 @@ export const TerminalApp: React.FC = () => {
 
   return (
     <div className="p-4 font-mono text-sm h-full flex flex-col bg-neutral-950/90 text-neutral-200">
-      <div className="flex-1 overflow-y-auto space-y-3">
+      <div ref={terminalContainerRef} className="flex-1 overflow-y-auto space-y-3">
         {history.map((item, index) => (
           <div key={index} className="space-y-1">
             <div className="flex items-center gap-2 text-xs">
@@ -108,7 +113,7 @@ export const TerminalApp: React.FC = () => {
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          autoFocus
+          autoFocus={!isMobile}
           className="flex-1 bg-transparent border-none outline-none text-white font-mono"
           placeholder="Type 'help'..."
         />

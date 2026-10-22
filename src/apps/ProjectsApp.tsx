@@ -1,14 +1,20 @@
 import React from 'react';
-import { ExternalLink, FolderGit2 } from 'lucide-react';
+import { ExternalLink, FolderGit2, Gamepad2 } from 'lucide-react';
 
 interface Project {
   title: string;
   description: string;
   tags: string[];
   link?: string;
+  actionText?: string;
+  onAction?: () => void;
 }
 
-export const ProjectsApp: React.FC = () => {
+interface ProjectsAppProps {
+  onOpenGame?: () => void;
+}
+
+export const ProjectsApp: React.FC<ProjectsAppProps> = ({ onOpenGame }) => {
   const projects: Project[] = [
     {
       title: 'macOS Web Portfolio',
@@ -23,9 +29,11 @@ export const ProjectsApp: React.FC = () => {
       link: 'https://github.com/Oh-JongJin/myPage',
     },
     {
-      title: 'Cooking RPG 2D',
-      description: '요리와 탐험 요소를 결합한 레트로 2D 롤플레잉 게임 프로젝트.',
-      tags: ['Game Dev', 'JavaScript', 'Pixel Art'],
+      title: '지하철 5호선 — 소개팅 가는 길 (2D 레트로 RPG)',
+      description: 'Godot 엔진으로 제작된 2D 쯔꾸르 스타일 지하철 탐험 게임. 웹 캔버스 엔진으로 100% 포팅 완료!',
+      tags: ['Game Dev', 'HTML5 Canvas', 'Pixel Art', 'Godot Port'],
+      actionText: '게임 플레이하기 ▶',
+      onAction: onOpenGame,
     },
   ];
 
@@ -63,15 +71,27 @@ export const ProjectsApp: React.FC = () => {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-1.5 mt-4">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-2 py-0.5 rounded text-[10px] bg-white/10 text-neutral-300"
+            <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between">
+              <div className="flex flex-wrap gap-1.5">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-2 py-0.5 rounded text-[10px] bg-white/10 text-neutral-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {project.actionText && (
+                <button
+                  onClick={project.onAction}
+                  className="px-2.5 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 text-xs font-semibold flex items-center gap-1 transition-all hover:scale-105"
                 >
-                  {tag}
-                </span>
-              ))}
+                  <Gamepad2 className="w-3.5 h-3.5" />
+                  {project.actionText}
+                </button>
+              )}
             </div>
           </div>
         ))}
