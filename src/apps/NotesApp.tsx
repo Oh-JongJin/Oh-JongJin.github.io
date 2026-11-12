@@ -162,9 +162,9 @@ export const NotesApp: React.FC<NotesAppProps> = ({
           }
           onMaximize?.();
         }}
-        className={`h-11 bg-[#202022] border-b border-[#2d2d30] flex items-center justify-between px-3 select-none flex-shrink-0 ${
-          isMobile ? '' : 'cursor-grab active:cursor-grabbing'
-        } ${isMaximized ? 'rounded-none' : 'rounded-t-[18px]'}`}
+        className={`h-11 bg-[#202022] border-b border-[#2d2d30] flex items-center justify-between px-3 select-none flex-shrink-0 cursor-default ${
+          isMaximized ? 'rounded-none' : 'rounded-t-[18px]'
+        }`}
       >
         {/* ================= 모바일 상단 툴바 레이아웃 ================= */}
         {isMobile ? (

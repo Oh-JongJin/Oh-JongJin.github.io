@@ -313,7 +313,7 @@ export const MessagesApp: React.FC<MessagesAppProps> = ({
               if (target.closest('button') || target.closest('input')) return;
               onMaximize?.();
             }}
-            className="h-12 bg-[#1a1a1c] border-b border-[#2d2d30] flex items-center justify-between px-3.5 flex-shrink-0 cursor-grab active:cursor-grabbing"
+            className="h-12 bg-[#1a1a1c] border-b border-[#2d2d30] flex items-center justify-between px-3.5 flex-shrink-0 cursor-default"
           >
             {/* macOS 신호등 (Red, Yellow, Green) 버튼 */}
             <div
@@ -430,7 +430,7 @@ export const MessagesApp: React.FC<MessagesAppProps> = ({
               if (target.closest('button')) return;
               onMaximize?.();
             }}
-            className="h-12 bg-[#1f1f22] border-b border-[#2d2d30] flex items-center justify-between px-3.5 sm:px-4 flex-shrink-0 select-none"
+            className="h-12 bg-[#1f1f22] border-b border-[#2d2d30] flex items-center justify-between px-3.5 sm:px-4 flex-shrink-0 select-none cursor-default"
           >
             {/* 좌측: 모바일일 때는 신호등 버튼 배치 + 상대 프로필 */}
             <div className="flex items-center gap-2.5">

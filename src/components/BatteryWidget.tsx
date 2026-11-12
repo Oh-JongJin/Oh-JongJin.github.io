@@ -136,7 +136,7 @@ export const BatteryWidget: React.FC<BatteryWidgetProps> = ({
       animate={{ x: position.x, y: position.y }}
       transition={{ type: 'spring', stiffness: 480, damping: 32 }}
       onDragEnd={handleDragEnd}
-      className="absolute cursor-grab active:cursor-grabbing z-10 origin-top-left"
+      className="absolute cursor-default z-10 origin-top-left"
     >
       {/* 리퀴드 글래스 컨테이너 (모바일에서 적절한 크기로 패딩 조절) */}
       <div

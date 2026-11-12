@@ -225,7 +225,7 @@ export const Window: React.FC<WindowProps> = ({
             if (target.closest('button')) return;
             handleToggleMaximize();
           }}
-          className={`h-9 border-b flex items-center justify-between px-3.5 cursor-grab active:cursor-grabbing select-none relative z-10 ${
+          className={`h-9 border-b flex items-center justify-between px-3.5 cursor-default select-none relative z-10 ${
             _id === 'settings'
               ? 'bg-[#1c1c1e] border-white/5'
               : 'bg-white/10 border-white/10'

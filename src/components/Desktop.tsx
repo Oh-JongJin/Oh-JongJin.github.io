@@ -54,7 +54,7 @@ export const Desktop: React.FC<DesktopProps> = ({ onOpenApp }) => {
                   isDraggingRef.current = false;
                 }, 100);
               }}
-              className="pointer-events-auto flex flex-col items-center w-20 sm:w-24 p-1 cursor-grab active:cursor-grabbing group"
+              className="pointer-events-auto flex flex-col items-center w-20 sm:w-24 p-1 cursor-default group"
               onClick={(e) => {
                 e.stopPropagation();
                 if (isDraggingRef.current) return;
