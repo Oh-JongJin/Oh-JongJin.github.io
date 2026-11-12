@@ -15,6 +15,11 @@ import { SettingsApp } from './apps/SettingsApp';
 import { NotesApp } from './apps/NotesApp';
 import { MessagesApp } from './apps/MessagesApp';
 import { SubwayGameApp } from './apps/SubwayGameApp';
+import { MusicApp } from './apps/MusicApp';
+import { TrashApp } from './apps/TrashApp';
+import { AboutThisMacModal } from './components/AboutThisMacModal';
+import { Spotlight } from './components/Spotlight';
+import { ResumeModal } from './components/ResumeModal';
 
 // 실제 사용자의 Mac Dock 정품 아이콘들
 import finderIcon from './assets/dock/finder.png';
@@ -74,6 +79,24 @@ export const App: React.FC = () => {
     }, 10000);
     return () => clearInterval(timer);
   }, [isManualOverride]);
+
+  // 사과 메뉴 모달, Spotlight, 이력서, 잠자기 상태
+  const [isAboutMacOpen, setIsAboutMacOpen] = useState(false);
+  const [isSpotlightOpen, setIsSpotlightOpen] = useState(false);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [isSleeping, setIsSleeping] = useState(false);
+
+  // Spotlight 단축키 리스너 (Cmd + Space, Ctrl + Space, Cmd + K)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && (e.code === 'Space' || e.key === 'k' || e.key === 'K')) {
+        e.preventDefault();
+        setIsSpotlightOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const [windows, setWindows] = useState<Record<string, WindowState>>({
     about: {
@@ -155,6 +178,26 @@ export const App: React.FC = () => {
       width: 760,
       height: 530,
       component: <SubwayGameApp />,
+    },
+    music: {
+      id: 'music',
+      title: '음악',
+      isOpen: false,
+      isMinimized: false,
+      zIndex: 10,
+      width: 380,
+      height: 440,
+      component: <MusicApp />,
+    },
+    trash: {
+      id: 'trash',
+      title: '휴지통',
+      isOpen: false,
+      isMinimized: false,
+      zIndex: 10,
+      width: 600,
+      height: 420,
+      component: <TrashApp />,
     },
   });
 
@@ -303,10 +346,10 @@ export const App: React.FC = () => {
     },
     {
       id: 'music',
-      title: 'Apple Music',
+      title: '음악',
       iconSrc: musicIcon,
-      isOpen: false,
-      onClick: () => window.open('https://music.apple.com/kr/new', '_blank'),
+      isOpen: windows.music?.isOpen ?? false,
+      onClick: () => toggleDockApp('music'),
     },
     {
       id: 'appstore',
@@ -349,8 +392,8 @@ export const App: React.FC = () => {
       id: 'trash',
       title: '휴지통',
       iconSrc: trashIcon,
-      isOpen: false,
-      onClick: () => setActiveAppTitle('Finder'),
+      isOpen: windows.trash?.isOpen ?? false,
+      onClick: () => toggleDockApp('trash'),
     },
   ];
 
@@ -407,6 +450,10 @@ export const App: React.FC = () => {
         onToggleDarkMode={handleToggleDarkMode}
         batteryPercent={battery.macbook}
         isCharging={battery.isCharging}
+        onOpenAboutMac={() => setIsAboutMacOpen(true)}
+        onOpenSettings={() => focusWindow('settings')}
+        onOpenSpotlight={() => setIsSpotlightOpen(true)}
+        onSleep={() => setIsSleeping(true)}
       />
 
       {/* 배터리 위젯 (상단바와 동기화 + 에어팟/마우스 랜덤값 + 격자 스냅) */}
@@ -418,13 +465,18 @@ export const App: React.FC = () => {
       />
 
       {/* 바탕화면 아이콘 (모바일 반응형 크기 적용) */}
-      <Desktop onOpenApp={(appId) => focusWindow(appId)} />
+      <Desktop
+        onOpenApp={(appId) => focusWindow(appId)}
+        onOpenResume={() => setIsResumeOpen(true)}
+      />
 
       {/* 윈도우 창들 */}
       {Object.values(windows).map((win) => {
-        // 시스템 설정 창 및 프로젝트 창 실시간 바인딩
+        // 시스템 설정 창, 프로젝트 창, About Me 실시간 바인딩
         let content = win.component;
-        if (win.id === 'settings') {
+        if (win.id === 'about') {
+          content = <AboutMeApp onOpenResume={() => setIsResumeOpen(true)} />;
+        } else if (win.id === 'settings') {
           content = (
             <SettingsApp
               isDarkMode={isDarkMode}
@@ -466,6 +518,45 @@ export const App: React.FC = () => {
 
       {/* 하단 독 (모바일 반응형 슬림화 & 가로 스크롤 대응) */}
       <Dock apps={dockApps} />
+
+      {/* ================= 모달 및 오버레이 컴포넌트들 ================= */}
+      {/* 1. 이 Mac에 관하여 모달 */}
+      <AboutThisMacModal
+        isOpen={isAboutMacOpen}
+        onClose={() => setIsAboutMacOpen(false)}
+        onOpenSettings={() => focusWindow('settings')}
+        onOpenAboutMe={() => focusWindow('about')}
+      />
+
+      {/* 2. Spotlight 검색창 */}
+      <Spotlight
+        isOpen={isSpotlightOpen}
+        onClose={() => setIsSpotlightOpen(false)}
+        onOpenApp={(appId) => focusWindow(appId)}
+        onOpenResume={() => setIsResumeOpen(true)}
+      />
+
+      {/* 3. 이력서 미리보기 모달 */}
+      <ResumeModal
+        isOpen={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
+      />
+
+      {/* 4. 잠자기 (화면 암전 오버레이) */}
+      {isSleeping && (
+        <div
+          onClick={() => setIsSleeping(false)}
+          className="fixed inset-0 z-[100] bg-black/98 cursor-pointer flex flex-col items-center justify-center select-none animate-fade-in"
+        >
+          <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-3">
+            <span className="text-2xl animate-pulse">🌙</span>
+          </div>
+          <div className="text-white text-sm font-semibold">잠자기 모드</div>
+          <div className="text-neutral-500 text-xs mt-1 animate-pulse">
+            화면 아무 곳이나 클릭하여 깨우기
+          </div>
+        </div>
+      )}
     </div>
   );
 };

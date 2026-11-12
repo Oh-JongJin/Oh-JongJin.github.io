@@ -1,7 +1,11 @@
 import React from 'react';
-import { Mail, Github, MapPin, Sparkles } from 'lucide-react';
+import { Mail, Github, MapPin, Sparkles, FileText } from 'lucide-react';
 
-export const AboutMeApp: React.FC = () => {
+interface AboutMeAppProps {
+  onOpenResume?: () => void;
+}
+
+export const AboutMeApp: React.FC<AboutMeAppProps> = ({ onOpenResume }) => {
   return (
     <div className="p-4 sm:p-6 max-w-2xl mx-auto space-y-5 sm:space-y-6">
       {/* 프로필 헤더 (모바일 반응형 중앙 정렬 및 폰트 축소 대응) */}
@@ -57,8 +61,16 @@ export const AboutMeApp: React.FC = () => {
         </div>
       </div>
 
-      {/* 링크 버튼 */}
-      <div className="pt-2 text-center sm:text-left">
+      {/* 링크 및 액션 버튼들 */}
+      <div className="pt-2 flex flex-col sm:flex-row items-center gap-2.5">
+        <button
+          onClick={onOpenResume}
+          className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-xs font-semibold shadow transition-all text-white w-full sm:w-auto"
+        >
+          <FileText className="w-4 h-4" />
+          이력서 (Resume) 보기
+        </button>
+
         <a
           href="https://github.com/Oh-JongJin"
           target="_blank"
@@ -66,7 +78,7 @@ export const AboutMeApp: React.FC = () => {
           className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-medium border border-white/20 transition-all text-white w-full sm:w-auto"
         >
           <Github className="w-4 h-4" />
-          GitHub 프로필 방문하기
+          GitHub 프로필
         </a>
       </div>
     </div>

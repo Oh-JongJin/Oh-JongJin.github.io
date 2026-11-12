@@ -2,12 +2,14 @@ import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import folderIcon from '../assets/folder.png';
 import githubIcon from '../assets/github.svg';
+import notesIcon from '../assets/dock/notes.png';
 
 interface DesktopProps {
   onOpenApp: (appId: string) => void;
+  onOpenResume?: () => void;
 }
 
-export const Desktop: React.FC<DesktopProps> = ({ onOpenApp }) => {
+export const Desktop: React.FC<DesktopProps> = ({ onOpenApp, onOpenResume }) => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const isDraggingRef = useRef(false);
 
@@ -17,6 +19,12 @@ export const Desktop: React.FC<DesktopProps> = ({ onOpenApp }) => {
       title: 'Finder',
       iconUrl: folderIcon,
       onOpen: () => onOpenApp('about'),
+    },
+    {
+      id: 'resume',
+      title: '이력서.pdf',
+      iconUrl: notesIcon,
+      onOpen: () => onOpenResume?.(),
     },
     {
       id: 'github',

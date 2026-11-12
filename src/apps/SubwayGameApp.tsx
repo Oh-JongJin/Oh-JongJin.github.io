@@ -8,6 +8,8 @@ import {
   HelpCircle,
   CheckCircle2,
   Gauge,
+  Maximize2,
+  Minimize2,
 } from 'lucide-react';
 
 // ==================== 게임 상수 정의 ====================
@@ -57,6 +59,25 @@ export const SubwayGameApp: React.FC = () => {
   }, [isMobile]);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const gameContainerRef = useRef<HTMLDivElement | null>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  useEffect(() => {
+    const handleFsChange = () => {
+      setIsFullscreen(Boolean(document.fullscreenElement));
+    };
+    document.addEventListener('fullscreenchange', handleFsChange);
+    return () => document.removeEventListener('fullscreenchange', handleFsChange);
+  }, []);
+
+  const toggleFullScreen = () => {
+    if (!gameContainerRef.current) return;
+    if (!document.fullscreenElement) {
+      gameContainerRef.current.requestFullscreen?.().catch(() => {});
+    } else {
+      document.exitFullscreen?.().catch(() => {});
+    }
+  };
 
   // ==================== 게임 상태 ====================
   const [currentCar, setCurrentCar] = useState(4); // 5-4호차부터 시작
@@ -845,7 +866,10 @@ export const SubwayGameApp: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-full bg-[#12151d] text-white flex flex-col select-none overflow-hidden font-sans">
+    <div
+      ref={gameContainerRef}
+      className="relative w-full h-full bg-[#12151d] text-white flex flex-col select-none overflow-hidden font-sans"
+    >
       {/* ==================== 상단 툴바 / 정보창 ==================== */}
       <div className="h-10 bg-[#1e2330]/90 backdrop-blur-md px-3 sm:px-4 flex items-center justify-between border-b border-white/10 z-20">
         <div className="flex items-center gap-2 text-xs font-semibold text-neutral-200">
@@ -886,6 +910,19 @@ export const SubwayGameApp: React.FC = () => {
             title="조작법 안내"
           >
             <HelpCircle className="w-4 h-4" />
+          </button>
+
+          {/* 전체화면 모드 토글 */}
+          <button
+            onClick={toggleFullScreen}
+            className="p-1.5 rounded-md hover:bg-white/10 text-neutral-300 hover:text-white transition-colors"
+            title={isFullscreen ? '전체화면 종료 (ESC)' : '전체화면으로 플레이'}
+          >
+            {isFullscreen ? (
+              <Minimize2 className="w-4 h-4 text-amber-300" />
+            ) : (
+              <Maximize2 className="w-4 h-4" />
+            )}
           </button>
 
           {/* 캐릭터 이동 속도 조절 슬라이더 */}

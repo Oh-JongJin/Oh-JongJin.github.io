@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Wifi, Search, Apple, Moon, Sun, Zap } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Wifi, Search, Apple, Moon, Sun, Zap, Info, Settings, MoonStar, RotateCcw } from 'lucide-react';
 
 interface MenuBarProps {
   activeAppTitle: string;
@@ -7,6 +7,10 @@ interface MenuBarProps {
   onToggleDarkMode: () => void;
   batteryPercent: number;
   isCharging: boolean;
+  onOpenAboutMac?: () => void;
+  onOpenSettings?: () => void;
+  onOpenSpotlight?: () => void;
+  onSleep?: () => void;
 }
 
 export const MenuBar: React.FC<MenuBarProps> = ({
@@ -15,8 +19,27 @@ export const MenuBar: React.FC<MenuBarProps> = ({
   onToggleDarkMode,
   batteryPercent,
   isCharging,
+  onOpenAboutMac,
+  onOpenSettings,
+  onOpenSpotlight,
+  onSleep,
 }) => {
   const [time, setTime] = useState('');
+  const [isAppleMenuOpen, setIsAppleMenuOpen] = useState(false);
+  const appleMenuRef = useRef<HTMLDivElement>(null);
+
+  // 외부 클릭 시 사과 메뉴 닫기
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (appleMenuRef.current && !appleMenuRef.current.contains(e.target as Node)) {
+        setIsAppleMenuOpen(false);
+      }
+    };
+    if (isAppleMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isAppleMenuOpen]);
 
   useEffect(() => {
     const updateTime = () => {
@@ -52,9 +75,70 @@ export const MenuBar: React.FC<MenuBarProps> = ({
     <div className="fixed top-0 left-0 right-0 h-7 z-50 flex items-center justify-between px-2 sm:px-3 text-xs text-white/90 bg-black/35 backdrop-blur-xl border-b border-white/10 select-none">
       {/* 좌측: 사과 로고 & 활성 앱 이름 */}
       <div className="flex items-center space-x-2 sm:space-x-4">
-        <button className="flex items-center hover:opacity-75 transition-opacity pl-1">
-          <Apple className="w-3.5 h-3.5 fill-current" />
-        </button>
+        {/* 사과 로고 및 드롭다운 메뉴 */}
+        <div className="relative" ref={appleMenuRef}>
+          <button
+            onClick={() => setIsAppleMenuOpen(!isAppleMenuOpen)}
+            className={`flex items-center p-1 rounded hover:bg-white/10 transition-colors ${
+              isAppleMenuOpen ? 'bg-white/20' : ''
+            }`}
+            title="애플 메뉴"
+          >
+            <Apple className="w-3.5 h-3.5 fill-current" />
+          </button>
+
+          {/* 사과 드롭다운 메뉴 */}
+          {isAppleMenuOpen && (
+            <div className="absolute top-7 left-0 w-52 rounded-xl bg-[#1e1e22]/95 border border-white/15 shadow-2xl py-1.5 backdrop-blur-2xl text-neutral-200 z-50 text-xs animate-fade-in font-sans">
+              <button
+                onClick={() => {
+                  setIsAppleMenuOpen(false);
+                  onOpenAboutMac?.();
+                }}
+                className="w-full px-3 py-1.5 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2 transition-colors"
+              >
+                <Info className="w-3.5 h-3.5" />
+                <span>이 Mac에 관하여</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setIsAppleMenuOpen(false);
+                  onOpenSettings?.();
+                }}
+                className="w-full px-3 py-1.5 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2 transition-colors"
+              >
+                <Settings className="w-3.5 h-3.5" />
+                <span>시스템 설정...</span>
+              </button>
+
+              <div className="h-[1px] bg-white/10 my-1 mx-2" />
+
+              <button
+                onClick={() => {
+                  setIsAppleMenuOpen(false);
+                  onSleep?.();
+                }}
+                className="w-full px-3 py-1.5 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2 transition-colors"
+              >
+                <MoonStar className="w-3.5 h-3.5" />
+                <span>잠자기</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setIsAppleMenuOpen(false);
+                  window.location.reload();
+                }}
+                className="w-full px-3 py-1.5 text-left hover:bg-blue-600 hover:text-white flex items-center gap-2 transition-colors"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>재시동...</span>
+              </button>
+            </div>
+          )}
+        </div>
+
         <span className="font-semibold text-white drop-shadow truncate max-w-[120px] sm:max-w-none">
           {activeAppTitle}
         </span>
@@ -108,7 +192,13 @@ export const MenuBar: React.FC<MenuBarProps> = ({
         </div>
 
         <Wifi className="w-3.5 h-3.5 hidden sm:inline" />
-        <Search className="w-3.5 h-3.5 hidden md:inline" />
+        <button
+          onClick={onOpenSpotlight}
+          className="hover:opacity-75 transition-opacity p-0.5"
+          title="Spotlight 검색 (Cmd + Space)"
+        >
+          <Search className="w-3.5 h-3.5 hidden md:inline" />
+        </button>
         <span className="font-medium tracking-tight text-white drop-shadow ml-0.5 text-[11px] sm:text-xs">
           {time}
         </span>
